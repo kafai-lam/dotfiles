@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if ! command -v mise >/dev/null; then
+if (( ! $+commands[mise] )); then
   return
 fi
 

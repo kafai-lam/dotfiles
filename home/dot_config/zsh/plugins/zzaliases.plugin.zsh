@@ -2,28 +2,27 @@
 
 alias zshrc="$EDITOR ~/.zshrc"
 
-command -v python >/dev/null && alias py="python"
-command -v pip >/dev/null && alias pip="noglob pip"
-command -v poetry >/dev/null && alias poetry="noglob poetry"
-command -v poetry >/dev/null && alias p="$aliases[poetry]"
-command -v chezmoi >/dev/null && alias ch="chezmoi"
-command -v chezmoi >/dev/null && alias chcd="cd $(chezmoi source-path)"
-command -v docker >/dev/null && alias dk="docker"
-command -v lazydocker >/dev/null && alias ldk="lazydocker"
-command -v lazygit >/dev/null && alias lg="lazygit"
-command -v nvim >/dev/null && alias vim="nvim"
-command -v terraform >/dev/null && alias tf="terraform"
-command -v brew >/dev/null && alias b="brew"
-alias y="yarn"
-alias jo="joshuto"
+(( $+commands[brew] )) && alias b="brew"
+(( $+commands[chezmoi] )) && alias ch="chezmoi"
+(( $+commands[chezmoi] )) && alias chcd="cd $(chezmoi source-path)"
+(( $+commands[joshuto] )) && alias jo="joshuto"
+(( $+commands[lazydocker] )) && alias ldk="lazydocker"
+(( $+commands[lazygit] )) && alias lg="lazygit"
+(( $+commands[nvim] )) && alias vim="nvim"
+(( $+commands[pip] )) && alias pip="noglob pip"
+(( $+commands[poetry] )) && alias p="$aliases[poetry]"
+(( $+commands[poetry] )) && alias poetry="noglob poetry"
+(( $+commands[python] )) && alias py="python"
+(( $+commands[terraform] )) && alias tf="terraform"
+(( $+commands[yarn] )) && alias y="yarn"
 
-if command -v bat >/dev/null; then
+if (( $+commands[bat] )); then
   alias cat="bat"
-elif command -v batcat >/dev/null; then
+elif (( $+commands[batcat] )); then
   alias cat="batcat"
 fi
 
-if command -v kubectl >/dev/null; then
+if (( $+commands[kubectl] )); then
   alias k="kubectl"
   alias ka="kubectl apply"
   alias kaf="kubectl apply -f"
@@ -36,10 +35,9 @@ if command -v kubectl >/dev/null; then
   alias kccc="kubectl config current-context"
   alias kcgc="kubectl config get-contexts"
 
-  command -v k9s >/dev/null && alias ks="k9s"
-  command -v kubectx >/dev/null && alias kc="kubectx"
-  command -v kubens >/dev/null && alias kns="kubens"
-  command -v kubectl-hns >/dev/null && alias khns="kubectl-hns"
+  (( $+commands[k9s] ))&& alias ks="k9s"
+  (( $+commands[kubectx] )) && alias kc="kubectx"
+  (( $+commands[kubens] )) && alias kns="kubens"
 fi
 
 # Define functions and completions.
@@ -59,35 +57,4 @@ venv() {
 
 brew-dump() {
   brew bundle dump --force --global --no-vscode
-}
-
-mise-venv() {
-  version="${1:-3.11}"
-  cat <<EOF >.mise.toml
-[env]
-_.file = ".env"
-_.python.venv = ".venv"
-
-
-[tools]
-python = "$version"
-uv = "latest"
-EOF
-}
-
-mise-venv-create() {
-  version="${1:-3.11}"
-  $XDG_DATA_HOME/mise/installs/python/$version/bin/python -m venv .venv
-}
-
-code-python-settings() {
-  if [[ ! -d '.vscode' ]]; then
-    mkdir .vscode
-  fi
-  cat <<EOF >.vscode/settings.json
-{
-  "python.terminal.activateEnvironment": true,
-  "python.envFile": "\${workspaceFolder}/.env",
-}
-EOF
 }

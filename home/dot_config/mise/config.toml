@@ -1,12 +1,15 @@
 [tools]
-node = "20"
-uv = "latest"
-rust = "latest"
+act = "latest"
+age = "latest"
+cloudflared = "latest"
+lazydocker = "latest"
+lazygit = "latest"
+mc = "latest"
+restish = "latest"
+ripgrep = "latest"
+ripgrep-all = "latest"
+yazi = "latest"
 
 [settings]
 pipx_uvx = true
 experimental = true
-
-[settings.python]
-compile = true
-venv_auto_create = true

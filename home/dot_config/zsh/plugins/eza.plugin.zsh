@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if ! command -v eza >/dev/null; then
+if (( ! $+commands[eza] )); then
   return
 fi
 

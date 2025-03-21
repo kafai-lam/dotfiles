@@ -82,8 +82,6 @@ fpath+=(
 # Export environment variables.
 export GPG_TTY=$TTY
 export GOKU_EDN_CONFIG_FILE="$XDG_CONFIG_HOME/karabiner/karabiner.edn"
-# export HOMEBREW_NO_AUTO_UPDATE=1
-# export HOMEBREW_BUNDLE_NO_LOCK=1
 export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
 export HOMEBREW_BUNDLE_FILE_GLOBAL="$XDG_CONFIG_HOME/homebrew/Brewfile"
 export EGET_BIN=$HOME/bin
@@ -95,7 +93,9 @@ if command -v brew >/dev/null; then
   export LDFLAGS="-L$(brew --prefix openssl)/lib"
 fi
 
-if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+if [ "$VSCODE_INJECTION" = "1" ]; then
+    export EDITOR="code --wait"
+elif [[ "$TERM_PROGRAM" == "vscode" ]]; then
   export VISUAL="code --wait"
 elif command -v nvim >/dev/null; then
   export VISUAL="nvim"

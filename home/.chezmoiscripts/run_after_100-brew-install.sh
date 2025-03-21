@@ -2,10 +2,10 @@
 
 if ! command -v brew &>/dev/null; then
   echo "Installing hmebrew"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 if command -v brew &>/dev/null; then
   echo "Installing libaries and applications with homebrew"
-  brew bundle install --global || true
+  NONINTERACTIVE=1 $HOMEBREW_PREFIX/bin/brew bundle install --global || true
 fi

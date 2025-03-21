@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if ! command -v go >/dev/null; then
+if (( ! $+commands[go] )); then
   return
 fi
 
