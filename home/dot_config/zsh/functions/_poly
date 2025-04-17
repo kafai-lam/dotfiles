@@ -1,7 +1,0 @@
-#compdef poly
-
-_poly_completion() {
-  eval $(env _TYPER_COMPLETE_ARGS="${words[1,$CURRENT]}" _POLY_COMPLETE=complete_zsh poly)
-}
-
-compdef _poly_completion poly

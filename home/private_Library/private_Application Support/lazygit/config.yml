@@ -1,9 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 git:
   parseEmoji: true
   paging:
     colorArg: always
-    pager: diff-so-fancy
-    # pager: delta --paging=never
+    pager: delta --paging=never --diff-so-fancy
 customCommands:
   # retrieved from: https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium#conventional-commit
   - description: "Create new conventional commit"
@@ -69,13 +69,8 @@ customCommands:
         body: "Are you sure you want to commit?"
     command: "git commit --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Message}}'"
     loadingText: "Creating conventional commit..."
-  - key: "<c-z>"
-    command: "codegpt commit --preview"
-    context: "files"
-    loadingText: "write commit message by CodeGPT"
-    subprocess: true
   - description: "Add empty commit"
-    # key: "E"
+    key: "M"
     context: "commits"
     command: "git commit --allow-empty -m '{{.Form.Message}}'"
     loadingText: "Committing empty commit..."

@@ -17,11 +17,11 @@ toggle_function_keys() {
     local current_state=$(defaults read -g com.apple.keyboard.fnState)
 
     if [ "$current_state" = 0 ]; then
-        echo "Enabling function keys as standard function keys..."
         defaults write -g com.apple.keyboard.fnState -bool true
+        echo "Function Keys is Function Key"
     else
-        echo "Disabling function keys and using them for system functions..."
         defaults write -g com.apple.keyboard.fnState -bool false
+        echo "Fn Keys is System Key"
     fi
 }
 
