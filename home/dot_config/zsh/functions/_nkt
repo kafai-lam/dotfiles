@@ -1,0 +1,341 @@
+#compdef _nkt nkt
+
+_arguments_chains() {
+    _arguments -C \
+        '--days[]::()'
+}
+_arguments_compile() {
+    _arguments -C \
+        ':item:{compadd $(nkt completion item $words)}' \
+        '--journal[]:journal:{compadd $(nkt completion list --collection journal)}' \
+        '--time[]:time:{compadd $(nkt completion item $words)}' \
+        '--last[]::()' \
+        '--directory[]:directory:{compadd $(nkt completion list --collection directory)}' \
+        '--tasklist[]:tasklist:{compadd $(nkt completion list --collection tasklist)}' \
+        '--open[]::()' \
+        '--strict[]::()' \
+        '--compiler[]::()'
+}
+_arguments_edit() {
+    _arguments -C \
+        '::item:{compadd $(nkt completion item $words)}' \
+        '--journal[]:journal:{compadd $(nkt completion list --collection journal)}' \
+        '--time[]:time:{compadd $(nkt completion item $words)}' \
+        '--last[]::()' \
+        '--directory[]:directory:{compadd $(nkt completion list --collection directory)}' \
+        '--tasklist[]:tasklist:{compadd $(nkt completion list --collection tasklist)}' \
+        '--new[]::()' \
+        '-n[]::()' \
+        '--ext[]::()' \
+        '--path-only[]::()'
+}
+_arguments_find() {
+    _arguments -C \
+        '::what:()' \
+        '--case[]::()' \
+        '--rows[]::()' \
+        '--preview[]::()'
+}
+_arguments_help() {
+    _arguments -C \
+        '::command:()'
+}
+_arguments_import() {
+    _arguments -C \
+        ':path:_files' \
+        '--directory[]:directory:{compadd $(nkt completion list --collection directory)}' \
+        '--asset[]::()' \
+        '--force[]::()' \
+        '--ext[]::()' \
+        '--move[]::()' \
+        '--type[]::()'
+}
+_arguments_init() {
+    _arguments -C \
+        '--reinit[]::()' \
+        '--reinit-all[]::()' \
+        '--force[]::()'
+}
+_arguments_list() {
+    _arguments -C \
+        '--sort[]:sort:{compadd alpha alphabetical modified created canonical}' \
+        '::what:{compadd tags compilers $(nkt completion list --all-collections)}' \
+        '--type[]:type:{compadd d dir directory j journal t tl tasklist}' \
+        '--directory[]:directory:{compadd $(nkt completion list --collection directory)}' \
+        '--journal[]:journal:{compadd $(nkt completion list --collection journal)}' \
+        '--tasklist[]:tasklist:{compadd $(nkt completion list --collection tasklist)}' \
+        '--hash[]::()' \
+        '--long-hash[]::()' \
+        '--done[]::()' \
+        '--archived[]::()' \
+        '--date[]::()'
+}
+_arguments_log() {
+    _arguments -C \
+        '::text:()' \
+        '--journal[]::()' \
+        '-j[]::()'
+}
+_arguments_migrate() {
+    _arguments -C
+}
+_arguments_new() {
+    _arguments -C \
+        ':type:{compadd journal tasklist directory stack chain tag}' \
+        ':name:()'
+}
+_arguments_peek() {
+    _arguments -C \
+        ':stack:{compadd $(nkt completion list --collection stacks)}'
+}
+_arguments_pop() {
+    _arguments -C \
+        ':stack:{compadd $(nkt completion list --collection stacks)}' \
+        '::index:()'
+}
+_arguments_push() {
+    _arguments -C \
+        ':item:{compadd $(nkt completion item $words)}' \
+        '--journal[]:journal:{compadd $(nkt completion list --collection journal)}' \
+        '--time[]:time:{compadd $(nkt completion item $words)}' \
+        '--last[]::()' \
+        '--directory[]:directory:{compadd $(nkt completion list --collection directory)}' \
+        '--tasklist[]:tasklist:{compadd $(nkt completion list --collection tasklist)}' \
+        ':stack:{compadd $(nkt completion list --collection stacks)}' \
+        '::index:()' \
+        '--message[]::()' \
+        '-m[]::()'
+}
+_arguments_read() {
+    _arguments -C \
+        '::item:{compadd $(nkt completion item $words)}' \
+        '--journal[]:journal:{compadd $(nkt completion list --collection journal)}' \
+        '--time[]:time:{compadd $(nkt completion item $words)}' \
+        '--last[]::()' \
+        '--directory[]:directory:{compadd $(nkt completion list --collection directory)}' \
+        '--tasklist[]:tasklist:{compadd $(nkt completion list --collection tasklist)}' \
+        '--limit[]::()' \
+        '-n[]::()' \
+        '--date[]::()' \
+        '-d[]::()' \
+        '--all[]::()' \
+        '-a[]::()' \
+        '--tasks[]::()' \
+        '-t[]::()' \
+        '--page[]::()' \
+        '-p[]::()'
+}
+_arguments_remove() {
+    _arguments -C \
+        ':selection:{compadd $(nkt completion item $words)}' \
+        '--journal[]:journal:{compadd $(nkt completion list --collection journal)}' \
+        '--time[]:time:{compadd $(nkt completion item $words)}' \
+        '--last[]::()' \
+        '--directory[]:directory:{compadd $(nkt completion list --collection directory)}' \
+        '--tasklist[]:tasklist:{compadd $(nkt completion list --collection tasklist)}'
+}
+_arguments_rename() {
+    _arguments -C \
+        ':from:{compadd $(nkt completion item $words)}' \
+        '--from-journal[]:from-journal:{compadd $(nkt completion list --collection journal)}' \
+        '--from-time[]:from-time:{compadd $(nkt completion item $words)}' \
+        '--from-last[]::()' \
+        '--from-directory[]:from-directory:{compadd $(nkt completion list --collection directory)}' \
+        '--from-tasklist[]:from-tasklist:{compadd $(nkt completion list --collection tasklist)}' \
+        ':to:{compadd $(nkt completion item $words)}' \
+        '--to-journal[]:to-journal:{compadd $(nkt completion list --collection journal)}' \
+        '--to-time[]:to-time:{compadd $(nkt completion item $words)}' \
+        '--to-last[]::()' \
+        '--to-directory[]:to-directory:{compadd $(nkt completion list --collection directory)}' \
+        '--to-tasklist[]:to-tasklist:{compadd $(nkt completion list --collection tasklist)}'
+}
+_arguments_select() {
+    _arguments -C \
+        '::item:{compadd $(nkt completion item $words)}' \
+        '--journal[]:journal:{compadd $(nkt completion list --collection journal)}' \
+        '--time[]:time:{compadd $(nkt completion item $words)}' \
+        '--last[]::()' \
+        '--directory[]:directory:{compadd $(nkt completion list --collection directory)}' \
+        '--tasklist[]:tasklist:{compadd $(nkt completion list --collection tasklist)}'
+}
+_arguments_tag() {
+    _arguments -C \
+        ':item:{compadd $(nkt completion item $words)}' \
+        '--journal[]:journal:{compadd $(nkt completion list --collection journal)}' \
+        '--time[]:time:{compadd $(nkt completion item $words)}' \
+        '--last[]::()' \
+        '--directory[]:directory:{compadd $(nkt completion list --collection directory)}' \
+        '--tasklist[]:tasklist:{compadd $(nkt completion list --collection tasklist)}' \
+        '--delete[]::()' \
+        '-d[]::()'
+}
+_arguments_task() {
+    _arguments -C \
+        ':outcome:()' \
+        '::action:()' \
+        '--tasklist[]::()' \
+        '--details[]::()' \
+        '--due[]::()' \
+        '--importance[]::()' \
+        '-i[]::()'
+}
+_arguments_set() {
+    _arguments -C \
+        ':what:()' \
+        '::item:{compadd $(nkt completion item $words)}' \
+        '--journal[]:journal:{compadd $(nkt completion list --collection journal)}' \
+        '--time[]:time:{compadd $(nkt completion item $words)}' \
+        '--last[]::()' \
+        '--directory[]:directory:{compadd $(nkt completion list --collection directory)}' \
+        '--tasklist[]:tasklist:{compadd $(nkt completion list --collection tasklist)}' \
+        '--chain[]:chain:{compadd $(nkt completion list --collection chains)}' \
+        '-c[]:c:{compadd $(nkt completion list --collection chains)}' \
+        '--due[]::()' \
+        '--importance[]:importance:(low medium high)' \
+        '-i[]:i:(low medium high)'
+}
+_arguments_sync() {
+    _arguments -C
+}
+_arguments_completion_sub_list() {
+    _arguments -C \
+        '--collection[]::()' \
+        '--all-collections[]::()' \
+        '--tags[]::()'
+}
+_arguments_completion_sub_item() {
+    _arguments -C \
+        '::item:{compadd $(nkt completion item $words)}' \
+        '--journal[]:journal:{compadd $(nkt completion list --collection journal)}' \
+        '--time[]:time:{compadd $(nkt completion item $words)}' \
+        '--last[]::()' \
+        '--directory[]:directory:{compadd $(nkt completion list --collection directory)}' \
+        '--tasklist[]:tasklist:{compadd $(nkt completion list --collection tasklist)}'
+}
+_arguments_completion() {
+    local line state subcmds
+    subcmds=(
+        'list:List completion helper.'
+        'item:Selection completion helper.'
+    )
+    _arguments \
+        '1: :{_describe 'command' subcmds}' \
+        '*:: :->args'
+    case $line[1] in
+        list)
+            _arguments_completion_sub_list
+        ;;
+        item)
+            _arguments_completion_sub_item
+        ;;
+    esac
+}
+_subcommands() {
+    local -a commands
+    commands=(
+        'chains:View and interact with habitual chains.'
+        'compile:Compile a note into various formats.'
+        'config:View and modify the configuration of nkt'
+        'edit:Edit or create a note in the editor.'
+        'find:Find in notes.'
+        'help:Print this help message or help for other commands.'
+        'import:Import a note.'
+        'init:(Re)Initialize the home directory structure.'
+        'list:List collections and other information in various ways.'
+        'log:Quickly log something to a journal from the command line'
+        'migrate:Migrate differing versions of nkt'\''s topology'
+        'new:Create a new tag or collection.'
+        'peek:Peek at a stack'
+        'pop:Pop from a stack'
+        'push:Push onto a stack'
+        'read:Read notes, task details, and journals.'
+        'remove:Remove items, tags, or entire collections themselves.'
+        'rename:Move or rename a note, directory, journal, or tasklist.'
+        'select:Select an item or collection.'
+        'tag:Tag an item or collection.'
+        'task:Add a task to a specified task list.'
+        'set:Modify attributes of entries, notes, chains, or tasks.'
+        'sync:Sync root directory to remote git repository'
+        'completion:Shell completion helper'
+        )
+    _describe 'command' commands
+}
+
+local line state
+
+_arguments \
+    '1:command:_subcommands' \
+    '*::arg:->args'
+
+case $line[1] in
+    chains|chain)
+        _arguments_chains
+    ;;
+    compile)
+        _arguments_compile
+    ;;
+    edit|e|e)
+        _arguments_edit
+    ;;
+    find|f|fp|fe|fr|fo)
+        _arguments_find
+    ;;
+    help)
+        _arguments_help
+    ;;
+    import|imp)
+        _arguments_import
+    ;;
+    init)
+        _arguments_init
+    ;;
+    list|ls)
+        _arguments_list
+    ;;
+    log)
+        _arguments_log
+    ;;
+    migrate)
+        _arguments_migrate
+    ;;
+    new)
+        _arguments_new
+    ;;
+    peek)
+        _arguments_peek
+    ;;
+    pop)
+        _arguments_pop
+    ;;
+    push)
+        _arguments_push
+    ;;
+    read|r|rp)
+        _arguments_read
+    ;;
+    remove|rm)
+        _arguments_remove
+    ;;
+    rename|mv)
+        _arguments_rename
+    ;;
+    select)
+        _arguments_select
+    ;;
+    tag)
+        _arguments_tag
+    ;;
+    task)
+        _arguments_task
+    ;;
+    set)
+        _arguments_set
+    ;;
+    sync)
+        _arguments_sync
+    ;;
+    completion)
+        _arguments_completion
+    ;;
+
+esac

@@ -36,8 +36,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -180,8 +180,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -252,8 +252,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -377,8 +377,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -489,8 +489,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -611,14 +611,16 @@ never\:"Disables colored output"))' \
 '(--offline)--refresh[Refresh all cached data]' \
 '(--offline)--no-refresh[]' \
 '(--package)--all-packages[Sync all packages in the workspace]' \
+'--check[Check if the Python environment is synchronized with the project]' \
+'--no-check[]' \
 '-n[Avoid reading from or writing to the cache, instead using a temporary directory for the duration of the operation]' \
 '--no-cache[Avoid reading from or writing to the cache, instead using a temporary directory for the duration of the operation]' \
 '(--python-preference)--managed-python[Require use of uv-managed Python versions]' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -717,8 +719,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -743,7 +745,7 @@ never\:"Disables colored output"))' \
 _arguments "${_arguments_options[@]}" : \
 '--format=[The format to which \`uv.lock\` should be exported]:FORMAT:((requirements-txt\:"Export in \`requirements.txt\` format"))' \
 '(--all-packages)--package=[Export the dependencies for a specific package in the workspace]:PACKAGE:_default' \
-'(--all-packages)*--prune=[Prune the given package from the dependency tree]:PRUNE:_default' \
+'(--all-packages)*--prune=[Prune the given package from the dependency tree]:PACKAGE:_default' \
 '(--all-extras)*--extra=[Include optional dependencies from the specified extra name]:EXTRA:_default' \
 '*--no-extra=[Exclude the specified optional dependencies, if \`--all-extras\` is supplied]:NO_EXTRA:_default' \
 '(--only-group --only-dev)*--group=[Include dependencies from the specified dependency group]:GROUP:_default' \
@@ -813,6 +815,8 @@ never\:"Disables colored output"))' \
 '(--group --all-groups --no-dev)--only-dev[Only include the development dependency group]' \
 '--no-default-groups[Ignore the default dependency groups]' \
 '(--only-group --only-dev)--all-groups[Include dependencies from all dependency groups]' \
+'--no-annotate[Exclude comment annotations indicating the source of each package]' \
+'--annotate[]' \
 '--no-header[Exclude the comment header at the top of the generated output file]' \
 '--header[]' \
 '--no-editable[Install any editable dependencies, including the project and any workspace members, as non-editable]' \
@@ -842,8 +846,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -992,8 +996,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1037,8 +1041,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1076,6 +1080,7 @@ _arguments "${_arguments_options[@]}" : \
 '*-c+[Constrain versions using the given requirements files]:CONSTRAINTS:_default' \
 '*--constraints=[Constrain versions using the given requirements files]:CONSTRAINTS:_default' \
 '*--overrides=[Override versions using the given requirements files]:OVERRIDES:_default' \
+'*--env-file=[Load environment variables from a \`.env\` file]:ENV_FILE:_files' \
 '*--index=[The URLs to use when resolving dependencies, in addition to the default index]:INDEX:_default' \
 '--default-index=[The URL of the default package index (by default\: <https\://pypi.org/simple>)]:DEFAULT_INDEX:_default' \
 '-i+[(Deprecated\: use \`--default-index\` instead) The URL of the Python package index (by default\: <https\://pypi.org/simple>)]:INDEX_URL:_default' \
@@ -1131,6 +1136,7 @@ never\:"Disables colored output"))' \
 '--project=[Run the command within the given project directory]:PROJECT:_files' \
 '--config-file=[The path to a \`uv.toml\` file to use for configuration]:CONFIG_FILE:_files' \
 '--isolated[Run the tool in an isolated virtual environment, ignoring any already-installed tools]' \
+'--no-env-file[Avoid reading environment variables from a \`.env\` file]' \
 '--no-index[Ignore the registry index (e.g., PyPI), instead relying on direct URL dependencies and those provided via \`--find-links\`]' \
 '-U[Allow package upgrades, ignoring pinned versions in any existing output file. Implies \`--refresh\`]' \
 '--upgrade[Allow package upgrades, ignoring pinned versions in any existing output file. Implies \`--refresh\`]' \
@@ -1156,8 +1162,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1186,6 +1192,7 @@ _arguments "${_arguments_options[@]}" : \
 '*-c+[Constrain versions using the given requirements files]:CONSTRAINTS:_default' \
 '*--constraints=[Constrain versions using the given requirements files]:CONSTRAINTS:_default' \
 '*--overrides=[Override versions using the given requirements files]:OVERRIDES:_default' \
+'*--env-file=[Load environment variables from a \`.env\` file]:ENV_FILE:_files' \
 '*--index=[The URLs to use when resolving dependencies, in addition to the default index]:INDEX:_default' \
 '--default-index=[The URL of the default package index (by default\: <https\://pypi.org/simple>)]:DEFAULT_INDEX:_default' \
 '-i+[(Deprecated\: use \`--default-index\` instead) The URL of the Python package index (by default\: <https\://pypi.org/simple>)]:INDEX_URL:_default' \
@@ -1241,6 +1248,7 @@ never\:"Disables colored output"))' \
 '--project=[Run the command within the given project directory]:PROJECT:_files' \
 '--config-file=[The path to a \`uv.toml\` file to use for configuration]:CONFIG_FILE:_files' \
 '--isolated[Run the tool in an isolated virtual environment, ignoring any already-installed tools]' \
+'--no-env-file[Avoid reading environment variables from a \`.env\` file]' \
 '--no-index[Ignore the registry index (e.g., PyPI), instead relying on direct URL dependencies and those provided via \`--find-links\`]' \
 '-U[Allow package upgrades, ignoring pinned versions in any existing output file. Implies \`--refresh\`]' \
 '--upgrade[Allow package upgrades, ignoring pinned versions in any existing output file. Implies \`--refresh\`]' \
@@ -1266,8 +1274,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1376,8 +1384,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1475,8 +1483,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1523,8 +1531,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--managed-python[Require use of uv-managed Python versions]' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1569,8 +1577,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1615,8 +1623,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1661,8 +1669,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1710,8 +1718,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1771,8 +1779,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1791,6 +1799,7 @@ never\:"Disables colored output"))' \
 '--help[Display the concise help for this command]' \
 '-V[Display the uv version]' \
 '--version[Display the uv version]' \
+'::request -- A Python request to filter by:_default' \
 && ret=0
 ;;
 (install)
@@ -1825,8 +1834,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1850,6 +1859,7 @@ never\:"Disables colored output"))' \
 ;;
 (find)
 _arguments "${_arguments_options[@]}" : \
+'(--no-project --system --no-system)--script=[Find the environment for a Python script, rather than the current project]:SCRIPT:_files' \
 '--cache-dir=[Path to the cache directory]:CACHE_DIR:_files' \
 '--python-preference=[]:PYTHON_PREFERENCE:((only-managed\:"Only use managed Python installations; never use system Python installations"
 managed\:"Prefer managed Python installations over system Python installations"
@@ -1874,8 +1884,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1924,8 +1934,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -1971,8 +1981,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -2019,8 +2029,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -2069,8 +2079,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -2290,8 +2300,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -2463,8 +2473,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -2657,8 +2667,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -2717,8 +2727,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -2772,8 +2782,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -2847,8 +2857,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -2901,8 +2911,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -2976,8 +2986,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3025,8 +3035,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3110,8 +3120,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3223,8 +3233,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3284,8 +3294,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3330,8 +3340,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3383,8 +3393,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3430,8 +3440,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3477,8 +3487,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3523,8 +3533,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3568,8 +3578,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3613,8 +3623,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3659,8 +3669,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3704,8 +3714,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3754,8 +3764,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3807,8 +3817,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3854,8 +3864,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3899,8 +3909,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -3948,8 +3958,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -4002,8 +4012,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -4052,8 +4062,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -4100,8 +4110,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \
@@ -4142,8 +4152,8 @@ never\:"Do not ever allow Python downloads"))' \
 '-n[]' \
 '--no-cache[]' \
 '--no-python-downloads[]' \
-'(-v --verbose)-q[]' \
-'(-v --verbose)--quiet[]' \
+'(-v --verbose)*-q[]' \
+'(-v --verbose)*--quiet[]' \
 '(-q --quiet)*-v[]' \
 '(-q --quiet)*--verbose[]' \
 '--native-tls[]' \
@@ -4192,8 +4202,8 @@ never\:"Disables colored output"))' \
 '(--python-preference)--no-managed-python[Disable use of uv-managed Python versions]' \
 '--allow-python-downloads[Allow automatically downloading Python when required. \[env\: "UV_PYTHON_DOWNLOADS=auto"\]]' \
 '--no-python-downloads[Disable automatic downloads of Python. \[env\: "UV_PYTHON_DOWNLOADS=never"\]]' \
-'(-v --verbose)-q[Do not print any output]' \
-'(-v --verbose)--quiet[Do not print any output]' \
+'(-v --verbose)*-q[Use quiet output]' \
+'(-v --verbose)*--quiet[Use quiet output]' \
 '(-q --quiet)*-v[Use verbose output]' \
 '(-q --quiet)*--verbose[Use verbose output]' \
 '(--color)--no-color[Disable colors]' \

@@ -1,14 +1,6 @@
 [tools]
-act = "latest"
 age = "latest"
-cloudflared = "latest"
-lazydocker = "latest"
-lazygit = "latest"
 mc = "latest"
-restish = "latest"
-ripgrep = "latest"
-ripgrep-all = "latest"
-yazi = "latest"
 
 [settings]
 pipx_uvx = true
