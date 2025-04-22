@@ -5,10 +5,9 @@ git:
     colorArg: always
     pager: delta --paging=never --diff-so-fancy
 customCommands:
-  # retrieved from: https://github.com/jesseduffield/lazygit/wiki/Custom-Commands-Compendium#conventional-commit
   - description: "Create new conventional commit"
-    key: "Z"
-    context: "global"
+    key: "<c-v>"
+    context: files
     prompts:
       - type: "menu"
         key: "Type"
@@ -69,8 +68,9 @@ customCommands:
         body: "Are you sure you want to commit?"
     command: "git commit --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Message}}'"
     loadingText: "Creating conventional commit..."
+
   - description: "Add empty commit"
-    key: "M"
+    # key: "E"
     context: "commits"
     command: "git commit --allow-empty -m '{{.Form.Message}}'"
     loadingText: "Committing empty commit..."
@@ -79,6 +79,7 @@ customCommands:
         title: "message"
         key: "Message"
         initialValue: "empty commit"
+
   - description: "Pull from a specific remote repository"
     # key: "<c-p>"
     context: "files"
@@ -95,29 +96,16 @@ customCommands:
         title: "Remote branch:"
         suggestions:
           command: "git branch --remote --list '{{.Form.Remote}}/*' --format='%(refname:short)' | sed 's/{{.Form.Remote}}\\///'"
-  - description: "Check out GitHub Pull Request"
-    # key: "v"
-    context: "localBranches"
-    loadingText: "Checking out GitHub Pull Request..."
-    command: "gh pr checkout {{.Form.PullRequestNumber}}"
-    prompts:
-      - type: "menuFromCommand"
-        title: "Which PR do you want to check out?"
-        key: "PullRequestNumber"
-        command: >-
-          gh pr list --json number,title,headRefName,updatedAt
-          --template '{{`{{range .}}{{printf "#%v: %s - %s (%s)" .number .title .headRefName (timeago .updatedAt)}}{{end}}`}}'
-        filter: "#(?P<number>[0-9]+): (?P<title>.+) - (?P<ref_name>[^ ]+).*"
-        valueFormat: "{{.number}}"
-        labelFormat: '{{"#" | black | bold}}{{.number | white | bold}} {{.title | yellow | bold}}{{" [" | black | bold}}{{.ref_name | green}}{{"]" | black | bold}}'
+
   - description: "Push a specific commit (and any preceding)"
-    # - key: "<c-l>"
+    # key: "P"
     command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
     context: "commits"
     loadingText: "Pushing commit..."
     stream: true
+
   - description: "Push to a specific remote repository"
-    # key: "<c-p>"
+    # key: "<c-P>"
     context: "global"
     loadingText: "Pushing ..."
     prompts:
@@ -134,3 +122,107 @@ customCommands:
           - value: "push --force-with-lease"
           - value: "push --force"
     command: "git {{index .PromptResponses 1}} {{index .PromptResponses 0}}"
+
+  - description: "Check out GitHub Pull Request"
+    key: "v"
+    context: "localBranches"
+    loadingText: "Checking out GitHub Pull Request..."
+    command: "gh pr checkout {{.Form.PullRequestNumber}}"
+    prompts:
+      - type: "menuFromCommand"
+        title: "Which PR do you want to check out?"
+        key: "PullRequestNumber"
+        command: >-
+          gh pr list --json number,title,headRefName,updatedAt
+          --template '{{`{{range .}}{{printf "#%v: %s - %s (%s)" .number .title .headRefName (timeago .updatedAt)}}{{end}}`}}'
+        filter: "#(?P<number>[0-9]+): (?P<title>.+) - (?P<ref_name>[^ ]+).*"
+        valueFormat: "{{.number}}"
+        labelFormat: '{{"#" | black | bold}}{{.number | white | bold}} {{.title | yellow | bold}}{{" [" | black | bold}}{{.ref_name | green}}{{"]" | black | bold}}'
+
+  - description: "prune deleted remote branches"
+    # key: "<c-p>"
+    command: "git remote prune {{.SelectedRemote.Name}}"
+    context: "remotes"
+    loadingText: "Pruning..."
+
+  # Git Town
+  - description: "Git-Town sYnc"
+    # key: "Y"
+    context: "global"
+    command: "git-town sync --all"
+    stream: true
+    loadingText: "Syncing"
+  - description: "Git-Town Undo (undo the last git-town command)"
+    # key: "U"
+    context: "global"
+    command: "git-town undo"
+    prompts:
+      - type: "confirm"
+        title: "Undo Last Command"
+        body: "Are you sure you want to Undo the last git-town command?"
+    stream: true
+    loadingText: "Undoing Git-Town Command"
+  - description: "Git-Town Repo (opens the repo link)"
+    key: "!"
+    context: "global"
+    command: "git-town repo"
+    stream: true
+    loadingText: "Opening Repo Link"
+  - description: "Git-Town Append"
+    # key: "a"
+    context: "localBranches"
+    prompts:
+      - type: "input"
+        title: "Enter name of new child branch. Branches off of '{{.CheckedOutBranch.Name}}'"
+        key: "BranchName"
+    command: "git-town append {{.Form.BranchName}}"
+    stream: true
+    loadingText: "Appending"
+  - description: "Git-Town Hack (creates a new branch)"
+    # key: "h"
+    context: "localBranches"
+    prompts:
+      - type: "input"
+        title: "Enter name of new branch. Branches off of 'Main'"
+        key: "BranchName"
+    command: "git-town hack {{.Form.BranchName}}"
+    stream: true
+    loadingText: "Hacking"
+  - description: "Git-Town Delete (deletes the current feature branch and sYnc)"
+    # key: "K"
+    context: "localBranches"
+    command: "git-town delete"
+    prompts:
+      - type: "confirm"
+        title: "Delete current feature branch"
+        body: "Are you sure you want to delete the current feature branch?"
+    stream: true
+    loadingText: "Deleting Feature Branch"
+  - description: "Git-Town Propose (creates a pull request)"
+    # key: "p"
+    context: "localBranches"
+    command: "git-town propose"
+    stream: true
+    loadingText: "Creating pull request"
+  - description: "Git-Town Prepend (creates a branch between the curent branch and its parent)"
+    # key: "P"
+    context: "localBranches"
+    prompts:
+      - type: "input"
+        title: "Enter name of the for child branch between '{{.CheckedOutBranch.Name}}' and its parent"
+        key: "BranchName"
+    command: "git-town prepend {{.Form.BranchName}}"
+    stream: true
+    loadingText: "Prepending"
+  - description: "Git-Town Skip (skip branch with merge conflicts when syncing)"
+    # key: "S"
+    context: "localBranches"
+    command: "git-town skip"
+    stream: true
+    loadingText: "Skiping"
+  - description: "Git-Town GO aka:continue (continue after resolving merge conflicts)"
+    # key: "G"
+    context: "files"
+    command: "git-town continue"
+    stream: true
+    loadingText: "Continuing"

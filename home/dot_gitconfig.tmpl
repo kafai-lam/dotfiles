@@ -1,0 +1,56 @@
+[user]
+email = {{ .git.email }}
+name = {{ .git.username }}
+signingkey = {{ .git.signingkey }}
+
+[core]
+pager = delta --diff-so-fancy
+# pager = diff-so-fancy | less --tabs=4 -RF
+excludesFile = ~/.gitignore
+
+[init]
+defaultBranch = main
+
+[commit]
+gpgsign = true
+
+[rebase]
+autoStash = true
+autosquash = true
+updateRefs = true
+
+[push]
+autoSetupRemote = true
+
+[pull]
+rebase = true
+
+[diff]
+tool = code
+
+[difftool "code"]
+cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+tool = code
+conflictstyle = zdiff3
+
+[mergetool "code"]
+cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+
+[interactive]
+; diffFilter = diff-so-fancy --patch
+diffFilter = delta --color-only --diff-so-fancy
+
+[diff-so-fancy]
+markEmptyLines = true
+
+[delta]
+navigate = true  # use n and N to move between diff sections
+line-numbers = true
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
