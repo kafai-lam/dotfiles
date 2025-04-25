@@ -3,7 +3,9 @@
 echo "Setting up macos preferences with defaults"
 
 defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write com.apple.AppleMultitouchTrackpad "TrackpadThreeFingerDrag" -bool true
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.HIToolbox AppleFnUsageType -int 1
 
 defaults write com.apple.menuextra.clock DateFormat -string "\"EEE d MMM HH:mm:ss\""
 

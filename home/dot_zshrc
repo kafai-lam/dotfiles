@@ -74,9 +74,9 @@ z4h init || return
 path+=(
   $HOME/bin
   $HOME/.local/bin
-  $HOME/.lmstudio/bin
 )
 fpath+=(
+  $HOME/.zfunc
   $XDG_CONFIG_HOME/zsh/functions
 )
 

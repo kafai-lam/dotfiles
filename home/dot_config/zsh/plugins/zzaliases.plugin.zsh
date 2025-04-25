@@ -5,6 +5,7 @@ alias zshrc="$EDITOR ~/.zshrc"
 (( $+commands[brew] )) && alias b="brew"
 (( $+commands[chezmoi] )) && alias ch="chezmoi"
 (( $+commands[chezmoi] )) && alias chcd="cd $(chezmoi source-path)"
+(( $+commands[chezmoi] )) && alias ched="$EDITOR $(chezmoi source-path)"
 (( $+commands[joshuto] )) && alias jo="joshuto"
 (( $+commands[lazydocker] )) && alias ldk="lazydocker"
 (( $+commands[lazygit] )) && alias lg="lazygit"
@@ -56,5 +57,9 @@ venv() {
 }
 
 brew-dump() {
-  brew bundle dump --force --global --no-vscode
+  if (( $+commands[chezmoi] )); then
+    brew bundle dump --no-vscode --no-restart --file=- | egrep "$(brew leaves | xargs printf '"%s"|')tap|cask" > $(chezmoi source-path)/dot_config/homebrew/Brewfile
+  else
+    brew bundle dump --no-vscode --no-restart --file=- | egrep "$(brew leaves | xargs printf '"%s"|')tap|cask" > $HOMEBREW_BUNDLE_FILE_GLOBAL
+  fi
 }
