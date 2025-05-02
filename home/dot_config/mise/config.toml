@@ -1,7 +1,14 @@
 [tools]
 age = "latest"
 mc = "latest"
+node = "lts"
+pre-commit = "latest"
+python = "3.12.10"
+uv = "0.7"
+"pipx:llm" = { version = "latest", uvx_args = "--with llm-git,llm-mistral,llm-ollama" }
 
 [settings]
-pipx_uvx = true
 experimental = true
+pipx_uvx = true
+python.uv_venv_auto = true
+idiomatic_version_file_enable_tools = ["python"]

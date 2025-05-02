@@ -240,3 +240,11 @@ customCommands:
     command: "git-town continue"
     stream: true
     loadingText: "Continuing"
+
+  # Generate Commit Message with LLM
+  - description: "Describe Stage Change"
+    key: "<c-l>"
+    context: "files"
+    loadingText: "Generating ..."
+    command: "llm git describe-staged"
+    subprocess: true
