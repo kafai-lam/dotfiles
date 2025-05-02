@@ -145,6 +145,20 @@ customCommands:
     context: "remotes"
     loadingText: "Pruning..."
 
+  # Git Absorb
+  - description: "Make Fixup Commit with Git Absorb"
+    key: "<c-a>"
+    context: "files"
+    loadingText: "Fixup ..."
+    command: "git-absorb"
+    stream: true
+  - description: "Make Fixup Commit with Git Absorb with base"
+    key: "<c-a>"
+    context: "commits"
+    loadingText: "Fixup ..."
+    command: "git-absorb --base {{.SelectedLocalCommit.Sha}}"
+    stream: true
+
   # Git Town
   - description: "Git-Town sYnc"
     # key: "Y"
