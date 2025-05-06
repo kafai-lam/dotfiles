@@ -124,7 +124,13 @@ customCommands:
           - value: "push --force"
     command: "git {{index .PromptResponses 1}} {{index .PromptResponses 0}}"
 
-  - description: "Check out GitHub Pull Request"
+  # Github
+  - description: "Open GitHub Pull Request"
+    key: "<c-r>"
+    command: "gh pr create --fill --web"
+    context: "global"
+    loadingText: "Creating pull request on GitHub"
+  - description: "List and Select GitHub PR for Checkout"
     key: "v"
     context: "localBranches"
     loadingText: "Checking out GitHub Pull Request..."
