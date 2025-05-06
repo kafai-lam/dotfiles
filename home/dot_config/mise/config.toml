@@ -3,5 +3,7 @@ age = "latest"
 mc = "latest"
 
 [settings]
-pipx_uvx = true
 experimental = true
+pipx.uvx = true
+python.uv_venv_auto = true
+idiomatic_version_file_enable_tools = ["python"]
