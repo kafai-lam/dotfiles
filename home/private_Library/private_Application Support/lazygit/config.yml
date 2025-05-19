@@ -247,3 +247,16 @@ customCommands:
     command: "git-town continue"
     stream: true
     loadingText: "Continuing"
+
+  # Generate Commit Message with LLM
+  - description: "Generate Commit Message with additional context"
+    key: "<c-k>"
+    context: "files"
+    loadingText: "Generating ..."
+    prompts:
+      - type: "input"
+        title: "Extra Context"
+        key: "Extra"
+        initialValue: ""
+    command: "llm git commit {{ if .Form.Extra }}--commit-extra-context '{{ .Form.Extra }}'{{ end }}"
+    subprocess: true
