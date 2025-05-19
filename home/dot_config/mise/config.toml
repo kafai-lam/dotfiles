@@ -1,6 +1,11 @@
 [tools]
 age = "latest"
 mc = "latest"
+node = "lts"
+pre-commit = "latest"
+python = "3.12.10"
+uv = "0.7"
+"ubi:o2sh/onefetch" = "latest"
 
 [settings]
 experimental = true
