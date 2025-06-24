@@ -41,6 +41,11 @@ if (( $+commands[kubectl] )); then
   (( $+commands[kubens] )) && alias kns="kubens"
 fi
 
+if (( $+commands[mise] )); then
+  alias m="mise"
+  alias mr="mise run"
+fi
+
 # Define functions and completions.
 md() {
   [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1"
