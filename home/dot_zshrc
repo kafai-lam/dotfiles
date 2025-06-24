@@ -48,6 +48,10 @@ zstyle ':z4h:ssh:*' enable 'no'
 # zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
 zstyle ':z4h:ssh:*' send-extra-files '~/.config/bat'
 
+# Config zsh-hist
+zstyle ':hist:*' auto-format yes
+zstyle ':hist:*' expand-aliases no
+
 # Autoload functions.
 autoload -Uz zmv
 autoload -Uz bashcompinit
@@ -63,6 +67,7 @@ zle -N edit-command-line
 z4h install ohmyzsh/ohmyzsh || return
 z4h install agkozak/zsh-z || return
 z4h install hlissner/zsh-autopair || return
+z4h install marlonrichert/zsh-hist || return
 
 # Install or update core components (fzf, zsh-autosuggestions, etc.) and
 # initialize Zsh. After this point console I/O is unavailable until Zsh
@@ -87,7 +92,8 @@ export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
 export HOMEBREW_BUNDLE_FILE_GLOBAL="$XDG_CONFIG_HOME/homebrew/Brewfile"
 export EGET_BIN=$HOME/bin
 export LESSOPEN="|lesspipe.sh %s"
-export TABBY_DISABLE_USAGE_COLLECTION=1
+export HISTSIZE=1200000000
+export SAVEHIST=1000000000
 
 if command -v brew >/dev/null; then
   export CFLAGS="-I$(brew --prefix openssl)/include"
@@ -109,6 +115,7 @@ fi
 z4h source ohmyzsh/ohmyzsh/plugins/gitignore/gitignore.plugin.zsh
 z4h source ohmyzsh/ohmyzsh/plugins/git/git.plugin.zsh
 z4h source hlissner/zsh-autopair/autopair.zsh
+z4h load marlonrichert/zsh-hist
 _Z_CMD=j z4h load agkozak/zsh-z
 
 # Define key bindings.
@@ -132,6 +139,7 @@ alias clear=z4h-clear-screen-soft-bottom
 setopt glob_dots    # no special treatment for file names with a leading dot
 setopt no_auto_menu # require an extra TAB press to open the completion menu
 setopt null_glob
+unsetopt HIST_REDUCE_BLANKS
 
 if [ -d "$XDG_CONFIG_HOME/zsh/plugins" ]; then
   for file in $XDG_CONFIG_HOME/zsh/plugins/*; do
