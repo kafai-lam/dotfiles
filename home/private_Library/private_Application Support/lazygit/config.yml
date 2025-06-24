@@ -69,7 +69,6 @@ customCommands:
         body: "Are you sure you want to commit?"
     command: "git commit --message '{{.Form.Type}}{{ if .Form.Scope }}({{ .Form.Scope }}){{ end }}{{.Form.Breaking}}: {{.Form.Message}}'"
     loadingText: "Creating conventional commit..."
-
   - description: "Add empty commit"
     # key: "E"
     context: "commits"
@@ -80,7 +79,6 @@ customCommands:
         title: "message"
         key: "Message"
         initialValue: "empty commit"
-
   - description: "Pull from a specific remote repository"
     # key: "<c-p>"
     context: "files"
@@ -97,14 +95,12 @@ customCommands:
         title: "Remote branch:"
         suggestions:
           command: "git branch --remote --list '{{.Form.Remote}}/*' --format='%(refname:short)' | sed 's/{{.Form.Remote}}\\///'"
-
   - description: "Push a specific commit (and any preceding)"
     # key: "P"
     command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
     context: "commits"
     loadingText: "Pushing commit..."
-    stream: true
-
+    output: log
   - description: "Push to a specific remote repository"
     # key: "<c-P>"
     context: "global"
@@ -123,7 +119,6 @@ customCommands:
           - value: "push --force-with-lease"
           - value: "push --force"
     command: "git {{index .PromptResponses 1}} {{index .PromptResponses 0}}"
-
   # Github
   - description: "Open GitHub Pull Request"
     key: "<c-r>"
@@ -140,39 +135,35 @@ customCommands:
         title: "Which PR do you want to check out?"
         key: "PullRequestNumber"
         command: >-
-          gh pr list --json number,title,headRefName,updatedAt
-          --template '{{`{{range .}}{{printf "#%v: %s - %s (%s)" .number .title .headRefName (timeago .updatedAt)}}{{end}}`}}'
+          gh pr list --json number,title,headRefName,updatedAt --template '{{`{{range .}}{{printf "#%v: %s - %s (%s)" .number .title .headRefName (timeago .updatedAt)}}{{end}}`}}'
         filter: "#(?P<number>[0-9]+): (?P<title>.+) - (?P<ref_name>[^ ]+).*"
         valueFormat: "{{.number}}"
         labelFormat: '{{"#" | black | bold}}{{.number | white | bold}} {{.title | yellow | bold}}{{" [" | black | bold}}{{.ref_name | green}}{{"]" | black | bold}}'
-
   - description: "prune deleted remote branches"
     # key: "<c-p>"
     command: "git remote prune {{.SelectedRemote.Name}}"
     context: "remotes"
     loadingText: "Pruning..."
-
   # Git Absorb
   - description: "Make Fixup Commit with Git Absorb"
     key: "<c-a>"
     context: "files"
     loadingText: "Fixup ..."
     command: "git-absorb"
-    stream: true
+    output: log
   - description: "Make Fixup Commit with Git Absorb with base"
     key: "<c-a>"
     context: "commits"
     loadingText: "Fixup ..."
     command: "git-absorb --base {{.SelectedLocalCommit.Sha}}"
-    stream: true
-
+    output: log
   # Git Town
   - description: "Git-Town sYnc"
     # key: "Y"
     context: "global"
     command: "git-town sync --all"
-    stream: true
     loadingText: "Syncing"
+    output: log
   - description: "Git-Town Undo (undo the last git-town command)"
     # key: "U"
     context: "global"
@@ -181,14 +172,14 @@ customCommands:
       - type: "confirm"
         title: "Undo Last Command"
         body: "Are you sure you want to Undo the last git-town command?"
-    stream: true
     loadingText: "Undoing Git-Town Command"
+    output: log
   - description: "Git-Town Repo (opens the repo link)"
     key: "!"
     context: "global"
     command: "git-town repo"
-    stream: true
     loadingText: "Opening Repo Link"
+    output: log
   - description: "Git-Town Append"
     # key: "a"
     context: "localBranches"
@@ -197,8 +188,8 @@ customCommands:
         title: "Enter name of new child branch. Branches off of '{{.CheckedOutBranch.Name}}'"
         key: "BranchName"
     command: "git-town append {{.Form.BranchName}}"
-    stream: true
     loadingText: "Appending"
+    output: log
   - description: "Git-Town Hack (creates a new branch)"
     # key: "h"
     context: "localBranches"
@@ -207,8 +198,8 @@ customCommands:
         title: "Enter name of new branch. Branches off of 'Main'"
         key: "BranchName"
     command: "git-town hack {{.Form.BranchName}}"
-    stream: true
     loadingText: "Hacking"
+    output: log
   - description: "Git-Town Delete (deletes the current feature branch and sYnc)"
     # key: "K"
     context: "localBranches"
@@ -217,14 +208,14 @@ customCommands:
       - type: "confirm"
         title: "Delete current feature branch"
         body: "Are you sure you want to delete the current feature branch?"
-    stream: true
     loadingText: "Deleting Feature Branch"
+    output: log
   - description: "Git-Town Propose (creates a pull request)"
     # key: "p"
     context: "localBranches"
     command: "git-town propose"
-    stream: true
     loadingText: "Creating pull request"
+    output: log
   - description: "Git-Town Prepend (creates a branch between the curent branch and its parent)"
     # key: "P"
     context: "localBranches"
@@ -233,21 +224,20 @@ customCommands:
         title: "Enter name of the for child branch between '{{.CheckedOutBranch.Name}}' and its parent"
         key: "BranchName"
     command: "git-town prepend {{.Form.BranchName}}"
-    stream: true
     loadingText: "Prepending"
+    output: log
   - description: "Git-Town Skip (skip branch with merge conflicts when syncing)"
     # key: "S"
     context: "localBranches"
     command: "git-town skip"
-    stream: true
     loadingText: "Skiping"
+    output: log
   - description: "Git-Town GO aka:continue (continue after resolving merge conflicts)"
     # key: "G"
     context: "files"
     command: "git-town continue"
-    stream: true
     loadingText: "Continuing"
-
+    output: log
   # Generate Commit Message with LLM
   - description: "Generate Commit Message with additional context"
     key: "<c-k>"
@@ -258,5 +248,5 @@ customCommands:
         title: "Extra Context"
         key: "Extra"
         initialValue: ""
-    command: "llm git commit {{ if .Form.Extra }}--commit-extra-context '{{ .Form.Extra }}'{{ end }}"
-    subprocess: true
+    command: "llm git commit {{ if .Form.Extra }}--extra-context '{{ .Form.Extra }}'{{ end }}"
+    output: terminal
