@@ -1,13 +1,13 @@
 [tools]
-age = "latest"
-mc = "latest"
 node = "lts"
 pre-commit = "latest"
-python = "3.12.10"
-uv = "0.7"
+python = "3.12"
+rust = "latest"
+uv = "latest"
 "pipx:llm-cmd-git" = "latest"
 "pipx:llm" = { version = "latest", uvx_args = "--with llm-cmd-git,llm-mistral,llm-ollama" }
-"ubi:o2sh/onefetch" = "latest"
+"pipx:pgcli" = "latest"
+"ubi:sosedoff/pgweb" = "latest"
 
 [settings]
 experimental = true
