@@ -83,7 +83,6 @@
     azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
     gcloud                  # google cloud cli account and project (https://cloud.google.com/)
     google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
-    hermit
     toolbox                 # toolbox name (https://github.com/containers/toolbox)
     context                 # user@hostname
     nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
@@ -1578,12 +1577,6 @@
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
     p10k segment -f 208 -i '⭐' -t 'hello, %n'
-  }
-
-  function prompt_hermit() {
-    if [ ! -z "$HERMIT_ENV" ]; then
-      p10k segment -f 188 -i '🐚' -t 'hermit'
-    fi
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job
