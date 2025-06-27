@@ -1,6 +1,9 @@
 {
   "Profiles": [
     {
+      "Guid": "EDC9CC49-29A5-4B49-AFE6-396BC9CCA2D6",
+      "Name": "default",
+      "Description": "Default",
       "Working Directory": "~/Developer",
       "Prompt Before Closing 2": false,
       "Selected Text Color": {
@@ -47,7 +50,6 @@
       "Non-ASCII Anti Aliased": true,
       "Sync Title": false,
       "Disable Window Resizing": true,
-      "Description": "Default",
       "Close Sessions On End": true,
       "Jobs to Ignore": ["rlogin", "ssh", "slogin", "telnet"],
       "Non-ASCII Ligatures": true,
@@ -471,9 +473,7 @@
         "Alpha Component": 1,
         "Green Component": 0.32549020648002625
       },
-      "Name": "default",
       "Blinking Cursor": false,
-      "Guid": "EDC9CC49-29A5-4B49-AFE6-396BC9CCA2D6",
       "Idle Code": 0,
       "Ansi 10 Color": {
         "Red Component": 0.3490196168422699,
