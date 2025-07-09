@@ -1,0 +1,168 @@
+:root {
+  --vimium-background-color: #000000;
+  --vimium-background-text-color: #FFFFFF;
+  --vimium-foreground-color: #000000;
+  --vimium-foreground-text-color: #FFFFFF;
+
+  --vimium-foreground-text-color-match: #FFDD55;
+  --vimium-foreground-text-color-url: #88BBFF;
+  --vimium-background-color-selected: #1166FF;
+  --vimium-background-color-hint: #FFD752;
+  --vimium-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
+  --vimium-border: #404040;
+}
+
+/* ------------ HINTS ------------ */
+#vimium-hint-marker-container div.internal-vimium-hint-marker,
+#vimium-hint-marker-container div.vimiumHintMarker {
+  background: var(--vimium-background-color-hint);
+  box-shadow: var(--vimium-shadow);
+  border-radius: 2px;
+  border: none;
+  padding: 3px;
+}
+
+#vimium-hint-marker-container div span {
+  color: var(--vimium-foreground-color);
+  font-weight: bold;
+  text-shadow: none;
+}
+
+#vimium-hint-marker-container div > .matchingCharacter {
+  opacity: 0.3;
+}
+
+#vimium-hint-marker-container div > .matchingCharacter ~ span {
+  color: var(--vimium-foreground-color);
+  text-shadow: none;
+}
+
+/* ------------ VOMNIBAR ------------ */
+#vomnibar {
+  animation: show 500ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  background-color: var(--vimium-background-color);
+  border: 1px solid var(--vimium-border);
+  box-shadow: var(--vimium-shadow);
+  border-radius: 6px;
+  width: 768px;
+  overflow: hidden;
+  position: relative;
+  margin-inline: auto;
+}
+
+/* Animate Slide in */
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#vomnibar #vomnibar-search-area,
+#vomnibar input {
+  background: var(--vimium-background-color);
+  border: none;
+  box-shadow: none;
+  color: var(--vimium-foreground-text-color);
+}
+
+#vomnibar #vomnibar-search-area {
+  padding: 4px 24px;
+  border-radius: 6px;
+}
+
+#vomnibar input {
+  border: none;
+  padding: 2px;
+}
+
+#vomnibar ul {
+  background: var(--vimium-background-color);
+  border-top: 1px solid var(--vimium-border);
+  margin: 4px;
+}
+
+#vomnibar li {
+  border-bottom: none;
+  padding: 4px;
+}
+
+#vomnibar li .top-half {
+  padding: 2px;
+}
+
+#vomnibar li .bottom-half {
+  padding-top: 0px;
+  padding-bottom: 1px;
+}
+
+#vomnibar li .source {
+  color: #CCCCCC;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 2px;
+}
+
+#vomnibar li em,
+#vomnibar li .title {
+  color: var(--vimium-foreground-text-color);
+}
+
+#vomnibar li .url {
+  color: var(--vimium-foreground-text-color-url);
+}
+
+#vomnibar li .url .match {
+  color: var(--vimium-foreground-text-color-match);
+}
+
+#vomnibar li .title .match {
+  color: var(--vimium-foreground-text-color-match);
+  font-weight: bold;
+}
+
+#vomnibar li.selected {
+  background-color: var(--vimium-background-color-selected);
+  border-radius: 6px;
+}
+
+#vomnibar li.selected .url,
+#vomnibar li.selected .title {
+  color: var(--vimium-foreground-text-color);
+}
+
+#vomnibar li.selected .url .match,
+#vomnibar li.selected .title .match {
+  /* Changes '.match' to '--vimium-fg' when selected */
+  color: var(--vimium-foreground-text-color);
+}
+
+/* ------------ HUD ------------ */
+div#hud-body {
+  background: var(--vimium-background-color);
+  border: 1px solid var(--vimium-border);
+  box-shadow: var(--vimium-shadow);
+  border-radius: 6px;
+}
+
+div#hud-body span#hud-find-input,
+div#hud-body #hud {
+  color: var(--vimium-foreground-text-color);
+  font-size: 13px;
+}
+
+div#hud-body .hud-find {
+  background-color: transparent;
+  border: none;
+}
+
+div#hud-body #search-area {
+  background-color: transparent;
+  padding: 6px;
+}
