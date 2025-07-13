@@ -1,7 +1,7 @@
 [tools]
 node = "lts"
 pre-commit = "latest"
-python = "3.12"
+python = "3.12.10"
 rust = "latest"
 uv = "latest"
 "pipx:llm-cmd-git" = "latest"
