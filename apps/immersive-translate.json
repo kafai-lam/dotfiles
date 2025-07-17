@@ -1,0 +1,270 @@
+{
+  "isChangedAlwaysTranslatedUrls": true,
+  "aiAssistantIds": [
+    "bilingual-mix",
+    "twitter",
+    "tech",
+    "reddit",
+    "news",
+    "music",
+    "medical",
+    "legal",
+    "github",
+    "game",
+    "ecommerce",
+    "financial",
+    "fiction",
+    "ao3",
+    "ebook",
+    "design",
+    "web3",
+    "paper",
+    "paraphrase"
+  ],
+  "interfaceLanguage": "en",
+  "targetLanguage": "zh-TW",
+  "translationService": "google",
+  "subtitleTranslateService": "zhipu",
+  "inputTranslationService": "inherit",
+  "mouseHoverTranslationService": "inherit",
+  "updatedAt": "2025-07-15T13:35:21.737Z",
+  "localUpdatedAt": "2025-07-15T13:35:21.737Z",
+  "translationUrlPattern": {
+    "matches": [],
+    "excludeMatches": []
+  },
+  "modifiedBySystem": true,
+  "pcFloatBallMainBtnTooltipShownCount": 1,
+  "translationServiceChangedbyUserAt": "2025-07-15T13:33:07.501Z",
+  "translationTheme": "dotted",
+  "translationThemePatterns": {
+    "dotted": {
+      "italics": true
+    }
+  },
+  "generalRule": {
+    "mouseHoverHoldKey": "Alt",
+    "mouseHoverPreferenceKey": "Alt",
+    "subtitleRule.add": {
+      "youtubeAutoEnableSubtitle": false,
+      "autoEnableSubtitle": false,
+      "showQuickButton": true,
+      "preTranslation": true,
+      "humanPreferred": true,
+      "translationMode": "inherit",
+      "sourceFontSize": "100",
+      "translationFontSize": "100"
+    },
+    "isTranslateTitle": false,
+    "selectionTranslation.add": {
+      "enable": true,
+      "triggerMode": "Shift"
+    },
+    "preTranslateLimiter.add": {
+      "side.enableTranslate": false
+    }
+  },
+  "pcFloatBall": {
+    "enable": false,
+    "blockUrls": [
+      "*immersivetranslate.com/preview",
+      "*.immersivetranslate.com/download-subtitle*"
+    ],
+    "guideBlockUrls": [
+      "https://onboarding.immersivetranslate.com*",
+      "https://immersivetranslate.com/accounts/login*",
+      "https://immersivetranslate.cn/accounts/login*"
+    ],
+    "clickType": "translate",
+    "afterInstalledAt": "2023-10-28",
+    "fixedPosition": "right",
+    "upgradeVisible": true,
+    "upgradeShowLimit": 20,
+    "isPc": true,
+    "enableSidePanel": false
+  },
+  "shortcuts": {
+    "translateWithCustomServices": {
+      "translateWithCustom2": "bing",
+      "translateWithCustom1": "google",
+      "translateWithCustom3": "zhipu"
+    }
+  },
+  "translationLanguagePattern": {
+    "excludeMatches": [
+      "zh-TW"
+    ],
+    "matches": []
+  },
+  "translationModeLanguagePattern": {
+    "translationMatches": [
+      "zh-TW",
+      "ko",
+      "es",
+      "de",
+      "fr",
+      "ru",
+      "id",
+      "vi",
+      "th"
+    ],
+    "dualMatches": []
+  },
+  "translationServices": {
+    "yandex": {
+      "visible": false
+    },
+    "gemini": {
+      "visible": false
+    },
+    "claude": {
+      "visible": false
+    },
+    "openai": {
+      "visible": false
+    },
+    "deepl": {
+      "visible": false
+    },
+    "zhipu": {
+      "visible": true
+    },
+    "bing": {
+      "visible": false
+    },
+    "deepseek": {
+      "visible": false
+    },
+    "siliconcloud": {
+      "visible": false
+    },
+    "zhipu-pro": {
+      "visible": false
+    },
+    "transmart": {
+      "visible": false
+    },
+    "ollama": {
+      "visible": true,
+      "model": "qwen3:1.7b",
+      "maxTextLengthPerRequest": "1024",
+      "systemPrompt": "You are a professional, authentic machine translation engine.{{title_prompt}}{{summary_prompt}}{{terms_prompt}}\n\n/no_think"
+    },
+    "custom-ai-2I9Rh0px": {
+      "type": "custom-ai",
+      "extends": "custom-ai",
+      "name": "Mistral",
+      "apiUrl": "https://api.mistral.ai/v1/chat/completions",
+      "model": "mistral-small-latest",
+      "APIKEY": "68ObTDAAfYZo0jpJqN710SmtBySz1BzU",
+      "visible": true,
+      "limit": "1",
+      "maxTextGroupLengthPerRequest": "3"
+    }
+  },
+  "translationMode": "dual",
+  "customAiAssistants": [],
+  "autoSync": false,
+  "inputTranslationMode": "dual",
+  "terms": {
+    "version": 1,
+    "exportedAt": "2025-07-15T13:35:27.585Z",
+    "data": [
+      {
+        "id": "default",
+        "name": "Default Terms",
+        "author": "self",
+        "description": "Default common terms with common terms",
+        "matches": [
+          "*"
+        ],
+        "glossaries": [
+          {
+            "k": "LLM",
+            "v": ""
+          },
+          {
+            "k": "LLMs",
+            "v": ""
+          }
+        ],
+        "order": 0,
+        "active": true,
+        "i18ns": {
+          "zh-CN": {
+            "name": "默认",
+            "description": "默认术语库"
+          },
+          "zh-TW": {
+            "name": "預設",
+            "description": "預設術語庫"
+          },
+          "en": {
+            "name": "Default",
+            "description": "Default glossary"
+          },
+          "ja": {
+            "name": "デフォルト",
+            "description": "デフォルトの用語集"
+          },
+          "ar": {
+            "name": "افتراضي",
+            "description": "قائمة المصطلحات الافتراضية"
+          },
+          "de": {
+            "name": "Standard",
+            "description": "Standard-Glossar"
+          },
+          "es": {
+            "name": "Predeterminado",
+            "description": "Glosario predeterminado"
+          },
+          "fa": {
+            "name": "پیش‌فرض",
+            "description": "واژه‌نامه پیش‌فرض"
+          },
+          "fr": {
+            "name": "Défaut",
+            "description": "Glossaire par défaut"
+          },
+          "he": {
+            "name": "ברירת מחדל",
+            "description": "מילון מונחים ברירת מחדל"
+          },
+          "hi": {
+            "name": "डिफ़ॉल्ट",
+            "description": "डिफ़ॉल्ट शब्दावली"
+          },
+          "hu": {
+            "name": "Alapértelmezett",
+            "description": "Alapértelmezett szószedet"
+          },
+          "it": {
+            "name": "Predefinito",
+            "description": "Glossario predefinito"
+          },
+          "pt-BR": {
+            "name": "Padrão",
+            "description": "Glossário padrão"
+          },
+          "ru": {
+            "name": "По умолчанию",
+            "description": "Глоссарий по умолчанию"
+          },
+          "ko": {
+            "name": "기본값",
+            "description": "기본 용어집"
+          },
+          "pt-PT": {
+            "name": "Padrão",
+            "description": "Glossário padrão"
+          },
+          "tr": {
+            "name": "Varsayılan",
+            "description": "Varsayılan sözlük"
+          }
+        }
+      }
+    ]
+  }
+}
