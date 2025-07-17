@@ -15,7 +15,7 @@ alias zshrc="$EDITOR ~/.zshrc"
 (( $+commands[poetry] )) && alias poetry="noglob poetry"
 (( $+commands[python] )) && alias py="python"
 (( $+commands[terraform] )) && alias tf="terraform"
-(( $+commands[yarn] )) && alias y="yarn"
+(( $+commands[yazi] )) && alias y="yazi"
 
 if (( $+commands[bat] )); then
   alias cat="bat"
