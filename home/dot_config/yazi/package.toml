@@ -1,0 +1,7 @@
+[[plugin.deps]]
+use = "ahkohd/eza-preview"
+rev = "b114b01"
+hash = "7676d7da18953f4351048004ab45f0f4"
+
+[flavor]
+deps = []

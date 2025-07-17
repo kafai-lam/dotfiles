@@ -7,7 +7,7 @@ alias zshrc="$EDITOR ~/.zshrc"
 (( $+commands[lazygit] )) && alias lg="lazygit"
 (( $+commands[nvim] )) && alias vim="nvim"
 (( $+commands[terraform] )) && alias tf="terraform"
-(( $+commands[yarn] )) && alias y="yarn"
+(( $+commands[yazi] )) && alias y="yazi"
 
 if (( $+commands[bat] )); then
   alias cat="bat"
