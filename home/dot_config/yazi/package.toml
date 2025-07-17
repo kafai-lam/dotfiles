@@ -1,0 +1,27 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "de53d90"
+hash = "2143a53182dbbe935a1abd1623424aa5"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "de53d90"
+hash = "3996fc74044bc44144b323686f887e1"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "de53d90"
+hash = "f10a14e823382d90fab5b3ee54cb38fe"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:zoom"
+rev = "de53d90"
+hash = "4a47a9cd4d8b3a963cb4cc593664b77e"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "de53d90"
+hash = "63b6c222bf2103b3023389dde5e2ecfe"
+
+[flavor]
+deps = []
