@@ -64,9 +64,8 @@ zle -N edit-command-line
 # This doesn't do anything apart from cloning the repository and keeping it
 # up-to-date. Cloned files can be used after `z4h init`. This is just an
 # example. If you don't plan to use Oh My Zsh, delete this line.
-z4h install ohmyzsh/ohmyzsh || return
-z4h install agkozak/zsh-z || return
 z4h install hlissner/zsh-autopair || return
+z4h install ohmyzsh/ohmyzsh || return
 z4h install marlonrichert/zsh-hist || return
 
 # Install or update core components (fzf, zsh-autosuggestions, etc.) and
@@ -112,11 +111,13 @@ elif command -v vim >/dev/null; then
 fi
 
 # Source plugins.
+z4h source hlissner/zsh-autopair/autopair.zsh
 z4h source ohmyzsh/ohmyzsh/plugins/gitignore/gitignore.plugin.zsh
 z4h source ohmyzsh/ohmyzsh/plugins/git/git.plugin.zsh
-z4h source hlissner/zsh-autopair/autopair.zsh
+z4h source ohmyzsh/ohmyzsh/plugins/aliases/aliases.plugin.zsh
+z4h load ohmyzsh/ohmyzsh/plugins/docker-compose
 z4h load marlonrichert/zsh-hist
-_Z_CMD=j z4h load agkozak/zsh-z
+_Z_CMD=j z4h load z4h load ohmyzsh/ohmyzsh/plugins/z
 
 # Define key bindings.
 z4h bindkey edit-command-line Ctrl+V # edit the current command line
