@@ -3,17 +3,9 @@
 alias zshrc="$EDITOR ~/.zshrc"
 
 (( $+commands[brew] )) && alias b="brew"
-(( $+commands[chezmoi] )) && alias ch="chezmoi"
-(( $+commands[chezmoi] )) && alias chcd="cd $(chezmoi source-path)"
-(( $+commands[chezmoi] )) && alias ched="$EDITOR $(chezmoi source-path)"
-(( $+commands[joshuto] )) && alias jo="joshuto"
 (( $+commands[lazydocker] )) && alias ldk="lazydocker"
 (( $+commands[lazygit] )) && alias lg="lazygit"
 (( $+commands[nvim] )) && alias vim="nvim"
-(( $+commands[pip] )) && alias pip="noglob pip"
-(( $+commands[poetry] )) && alias p="$aliases[poetry]"
-(( $+commands[poetry] )) && alias poetry="noglob poetry"
-(( $+commands[python] )) && alias py="python"
 (( $+commands[terraform] )) && alias tf="terraform"
 (( $+commands[yazi] )) && alias y="yazi"
 
@@ -21,6 +13,12 @@ if (( $+commands[bat] )); then
   alias cat="bat"
 elif (( $+commands[batcat] )); then
   alias cat="batcat"
+fi
+
+if (( $+commands[chezmoi] )); then
+  alias ch="chezmoi"
+  alias chcd="cd $(chezmoi source-path)"
+  alias ched="$EDITOR $(chezmoi source-path)"
 fi
 
 if (( $+commands[kubectl] )); then
@@ -41,11 +39,6 @@ if (( $+commands[kubectl] )); then
   (( $+commands[kubens] )) && alias kns="kubens"
 fi
 
-if (( $+commands[mise] )); then
-  alias m="mise"
-  alias mr="mise run"
-fi
-
 # Define functions and completions.
 md() {
   [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1"
@@ -56,15 +49,3 @@ dotenv-source() {
   [[ -f $dotenv_file ]] && set -a && source $dotenv_file && set +a
 }
 
-venv() {
-  venv_path="${1:-.venv}"
-  [[ -f $venv_path/bin/activate ]] && source $venv_path/bin/activate
-}
-
-brew-dump() {
-  if (( $+commands[chezmoi] )); then
-    brew bundle dump --no-vscode --no-restart --file=- | egrep "$(brew leaves | xargs printf '"%s"|')tap|cask" > $(chezmoi source-path)/dot_config/homebrew/Brewfile
-  else
-    brew bundle dump --no-vscode --no-restart --file=- | egrep "$(brew leaves | xargs printf '"%s"|')tap|cask" > $HOMEBREW_BUNDLE_FILE_GLOBAL
-  fi
-}
