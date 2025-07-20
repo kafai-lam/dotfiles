@@ -1,11 +1,7 @@
 #!/usr/bin/env zsh
 
 brew-dump() {
-  if (( $+commands[chezmoi] )); then
-    brew bundle dump --no-vscode --no-restart --file=- | egrep "$(brew leaves | xargs printf '"%s"|')tap|cask" > $(chezmoi source-path)/dot_config/homebrew/Brewfile
-  else
-    brew bundle dump --no-vscode --no-restart --file=- | egrep "$(brew leaves | xargs printf '"%s"|')tap|cask" > $HOMEBREW_BUNDLE_FILE_GLOBAL
-  fi
+  brew bundle dump --no-vscode --no-restart --file=- | egrep "$(brew leaves | xargs printf '"%s"|')tap|cask" > $HOMEBREW_BUNDLE_FILE_GLOBAL
 }
 
 function brews() {
