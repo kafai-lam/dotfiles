@@ -95,11 +95,6 @@ export LESSOPEN="|lesspipe.sh %s"
 export HISTSIZE=1200000000
 export SAVEHIST=1000000000
 
-if command -v brew >/dev/null; then
-  export CFLAGS="-I$(brew --prefix openssl)/include"
-  export LDFLAGS="-L$(brew --prefix openssl)/lib"
-fi
-
 if [[ "$TERM_PROGRAM" == "vscode" ]]; then
   export EDITOR="code --wait"
   export VISUAL="code --wait"
