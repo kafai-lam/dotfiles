@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 if (( ! $+commands[mise] )); then
   return
 fi

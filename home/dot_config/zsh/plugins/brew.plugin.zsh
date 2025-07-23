@@ -1,7 +1,16 @@
-#!/usr/bin/env zsh
+export HOMEBREW_BUNDLE_FILE_GLOBAL="$XDG_CONFIG_HOME/homebrew/Brewfile"
 
-brew-dump() {
-  brew bundle dump --no-vscode --no-restart --file=- | egrep "$(brew leaves | xargs printf '"%s"|')tap|cask" > $HOMEBREW_BUNDLE_FILE_GLOBAL
+function brew-dump() {
+  if [[ -f $HOMEBREW_BUNDLE_FILE_GLOBAL.local ]]; then
+    brew bundle dump --no-vscode --no-restart --file=- \
+    | grep -E "$(brew leaves | xargs printf '%s|')tap|cask" \
+    | grep -Fvx -f $HOMEBREW_BUNDLE_FILE_GLOBAL.local \
+    > $HOMEBREW_BUNDLE_FILE_GLOBAL
+  else
+    brew bundle dump --no-vscode --no-restart --file=- \
+    | grep -E "$(brew leaves | xargs printf '%s|')tap|cask" \
+    > $HOMEBREW_BUNDLE_FILE_GLOBAL
+  fi
 }
 
 function brews() {

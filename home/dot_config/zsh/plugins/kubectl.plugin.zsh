@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 if (( $+commands[kubectl] )); then
   alias k="kubectl"
   alias ka="kubectl apply"
@@ -17,4 +15,3 @@ fi
 (( $+commands[k9s] ))&& alias ks="k9s"
 (( $+commands[kubectx] )) && alias kc="kubectx"
 (( $+commands[kubens] )) && alias kns="kubens"
-

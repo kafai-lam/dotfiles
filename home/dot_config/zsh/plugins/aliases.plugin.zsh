@@ -1,6 +1,5 @@
-#!/usr/bin/env zsh
-
-alias zshrc="$EDITOR ~/.zshrc"
+alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
+alias config="$EDITOR $XDG_CONFIG_HOME"
 
 (( $+commands[brew] )) && alias b="brew"
 (( $+commands[lazydocker] )) && alias ldk="lazydocker"
@@ -30,4 +29,3 @@ dotenv-source() {
   dotenv_file="${1:-.env}"
   [[ -f $dotenv_file ]] && set -a && source $dotenv_file && set +a
 }
-

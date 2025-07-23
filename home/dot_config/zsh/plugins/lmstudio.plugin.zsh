@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 if (( ! $+commands[lms] )); then
   return
 fi

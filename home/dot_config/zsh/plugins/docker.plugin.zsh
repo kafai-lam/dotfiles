@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 if (( ! $+commands[docker] )); then
   return
 fi
