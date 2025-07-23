@@ -54,10 +54,8 @@ zstyle ':hist:*' expand-aliases 'no'
 
 # Autoload functions.
 autoload -Uz zmv
-autoload -Uz bashcompinit
-bashcompinit
-autoload -Uz edit-command-line
-zle -N edit-command-line
+autoload -Uz compinit && compinit
+autoload -Uz edit-command-line && zle -N edit-command-line
 
 # Clone additional Git repositories from GitHub.
 #
@@ -106,11 +104,9 @@ z4h source hlissner/zsh-autopair/autopair.zsh
 z4h source ohmyzsh/ohmyzsh/plugins/gitignore/gitignore.plugin.zsh
 z4h source ohmyzsh/ohmyzsh/plugins/git/git.plugin.zsh
 z4h source ohmyzsh/ohmyzsh/plugins/aliases/aliases.plugin.zsh
-_Z_CMD=j z4h load z4h load ohmyzsh/ohmyzsh/plugins/z
-for file in $ZDOTDIR/plugins/*; do z4h source $file; done
-
 z4h load ohmyzsh/ohmyzsh/plugins/docker-compose
 z4h load marlonrichert/zsh-hist
+for file in $ZDOTDIR/plugins/*; do z4h source $file; done
 
 # Define key bindings.
 z4h bindkey edit-command-line Ctrl+V # edit the current command line
