@@ -11,7 +11,6 @@ zstyle ':z4h:' auto-update 'no'
 zstyle ':z4h:' auto-update-days '28'
 
 # Start tmux if not already in tmux.
-# zstyle ':z4h:' start-tmux       command tmux -u new -A -D -t z4h
 zstyle ':z4h:' start-tmux no
 
 # Move prompt to the bottom when zsh starts and on Ctrl+L.
@@ -30,8 +29,12 @@ zstyle ':z4h:autosuggestions' forward-char 'accept'
 # Recursively traverse directories when TAB-completing files.
 zstyle ':z4h:fzf-complete' recurse-dirs 'no'
 
+# Use system fzf instead of the bundled one
+zstyle ':z4h:*' fzf-command fzf
+
 # Enable direnv to automatically source .envrc files.
 zstyle ':z4h:direnv' enable 'no'
+
 # Show "loading" and "unloading" notifications from direnv.
 zstyle ':z4h:direnv:success' notify 'yes'
 
@@ -40,23 +43,20 @@ zstyle ':z4h:direnv:success' notify 'yes'
 # zstyle ':z4h:ssh:example-hostname1' enable 'yes'
 # zstyle ':z4h:ssh:*.example-hostname2' enable 'no'
 # The default value if none of the overrides above match the hostname.
-zstyle ':z4h:ssh:rpi' enable 'yes'
-zstyle ':z4h:ssh:*' enable 'no'
 
 # Send these files over to the remote host when connecting over SSH to the
 # enabled hosts.
-# zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
-zstyle ':z4h:ssh:*' send-extra-files '~/.config/bat'
+zstyle ':z4h:ssh:*' send-extra-files '~/.zshenv' '~/.config/zsh/plugins/*'
 
 # Config zsh-hist
-zstyle ':hist:*' auto-format yes
-zstyle ':hist:*' expand-aliases no
+zstyle ':hist:*' auto-format 'yes'
+zstyle ':hist:*' expand-aliases 'no'
 
 # Autoload functions.
 autoload -Uz zmv
 autoload -Uz bashcompinit
-autoload -Uz edit-command-line
 bashcompinit
+autoload -Uz edit-command-line
 zle -N edit-command-line
 
 # Clone additional Git repositories from GitHub.
@@ -64,9 +64,8 @@ zle -N edit-command-line
 # This doesn't do anything apart from cloning the repository and keeping it
 # up-to-date. Cloned files can be used after `z4h init`. This is just an
 # example. If you don't plan to use Oh My Zsh, delete this line.
-z4h install ohmyzsh/ohmyzsh || return
-z4h install agkozak/zsh-z || return
 z4h install hlissner/zsh-autopair || return
+z4h install ohmyzsh/ohmyzsh || return
 z4h install marlonrichert/zsh-hist || return
 
 # Install or update core components (fzf, zsh-autosuggestions, etc.) and
@@ -77,25 +76,21 @@ z4h init || return
 
 # Extend PATH.
 path+=(
-  $HOME/bin
   $HOME/.local/bin
 )
 fpath+=(
-  $HOME/.zfunc
-  $XDG_CONFIG_HOME/zsh/functions
+  $ZDOTDIR/functions
 )
 
 # Export environment variables.
 export GPG_TTY=$TTY
-export GOKU_EDN_CONFIG_FILE="$XDG_CONFIG_HOME/karabiner/karabiner.edn"
-export HOMEBREW_BUNDLE_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
-export HOMEBREW_BUNDLE_FILE_GLOBAL="$XDG_CONFIG_HOME/homebrew/Brewfile"
-export EGET_BIN=$HOME/bin
 export LESSOPEN="|lesspipe.sh %s"
 export HISTSIZE=1200000000
 export SAVEHIST=1000000000
+export EGET_BIN=$HOME/bin
+export GOKU_EDN_CONFIG_FILE="$XDG_CONFIG_HOME/karabiner/karabiner.edn"
 
-if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+if command -v code >/dev/null; then
   export EDITOR="code --wait"
   export VISUAL="code --wait"
 elif command -v nvim >/dev/null; then
@@ -107,16 +102,20 @@ elif command -v vim >/dev/null; then
 fi
 
 # Source plugins.
+z4h source hlissner/zsh-autopair/autopair.zsh
 z4h source ohmyzsh/ohmyzsh/plugins/gitignore/gitignore.plugin.zsh
 z4h source ohmyzsh/ohmyzsh/plugins/git/git.plugin.zsh
-z4h source hlissner/zsh-autopair/autopair.zsh
+z4h source ohmyzsh/ohmyzsh/plugins/aliases/aliases.plugin.zsh
+_Z_CMD=j z4h load z4h load ohmyzsh/ohmyzsh/plugins/z
+for file in $ZDOTDIR/plugins/*; do z4h source $file; done
+
+z4h load ohmyzsh/ohmyzsh/plugins/docker-compose
 z4h load marlonrichert/zsh-hist
-_Z_CMD=j z4h load agkozak/zsh-z
 
 # Define key bindings.
 z4h bindkey edit-command-line Ctrl+V # edit the current command line
 
-z4h bindkey undo Ctrl+/ Shift+Tab # undo the last command line change
+z4h bindkey undo Ctrl+/ # undo the last command line change
 z4h bindkey redo Option+/         # redo the last undone command line change
 
 z4h bindkey z4h-cd-back Shift+Left     # cd into the previous directory
@@ -135,9 +134,3 @@ setopt glob_dots    # no special treatment for file names with a leading dot
 setopt no_auto_menu # require an extra TAB press to open the completion menu
 setopt null_glob
 unsetopt HIST_REDUCE_BLANKS
-
-if [ -d "$XDG_CONFIG_HOME/zsh/plugins" ]; then
-  for file in $XDG_CONFIG_HOME/zsh/plugins/*; do
-    z4h source $file
-  done
-fi

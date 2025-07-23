@@ -1,5 +1,3 @@
-#!/usr/bin/env zsh
-
 (( $+commands[pip] )) && alias pip="noglob pip"
 (( $+commands[poetry] )) && alias poetry="noglob poetry"
 (( $+commands[python] )) && alias py="python"
