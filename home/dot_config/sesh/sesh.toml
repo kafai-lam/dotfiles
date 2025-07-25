@@ -1,0 +1,23 @@
+[default_session]
+preview_command = "eza --group-directories-first --icons --all --git --color=always -lh {}"
+
+[[session]]
+name = "Dotfiles 󱗿"
+path = "~/.local/share/chezmoi"
+startup_command = "yazi"
+windows = ["lazygit"]
+
+[[session]]
+name = "Downloads 󰇚"
+path = "~/Downloads"
+startup_command = "yazi"
+
+[[session]]
+name = "Spotify "
+path = "~/.config/spotify-player"
+startup_command = "spotify_player"
+
+
+[[window]]
+name = "lazygit "
+startup_script = "lazygit"
