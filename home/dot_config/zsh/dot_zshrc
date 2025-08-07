@@ -11,7 +11,11 @@ zstyle ':z4h:' auto-update 'no'
 zstyle ':z4h:' auto-update-days '28'
 
 # Start tmux if not already in tmux.
-zstyle ':z4h:' start-tmux system
+if [ "$TERM_PROGRAM" = "vscode" ]; then
+  zstyle ':z4h:' start-tmux no
+else
+  zstyle ':z4h:' start-tmux system
+fi
 
 # Move prompt to the bottom when zsh starts and on Ctrl+L.
 zstyle ':z4h:' prompt-at-bottom 'yes'
