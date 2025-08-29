@@ -44,9 +44,6 @@
   border: 1px solid var(--vimium-border);
   box-shadow: var(--vimium-shadow);
   border-radius: 6px;
-  width: 768px;
-  overflow: hidden;
-  position: relative;
   margin-inline: auto;
 }
 
