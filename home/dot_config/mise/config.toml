@@ -5,6 +5,7 @@ pre-commit = "latest"
 python = "3.12.10"
 rust = "latest"
 uv = "latest"
+"npm:@qwen-code/qwen-code" = "latest"
 "pipx:llm-cmd-git" = "latest"
 "pipx:llm" = { version = "latest", uvx_args = "--with llm-cmd-git,llm-mistral,llm-ollama" }
 "pipx:pgcli" = "latest"
