@@ -24,7 +24,7 @@ multi_line = True
 # If multi_line_mode is set to "safe", in multi-line mode, [Enter] will always
 # insert a newline, and [Esc] [Enter] or [Alt]-[Enter] must be used to execute
 # a command.
-multi_line_mode = safe
+multi_line_mode = psql
 
 # Destructive warning will alert you before executing a sql statement
 # that may cause harm to the database such as "drop table", "drop database",
