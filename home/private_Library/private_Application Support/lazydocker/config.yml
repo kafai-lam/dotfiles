@@ -1,3 +1,5 @@
+gui:
+  returnImmediately: true
 customCommands:
   containers:
     - name: bash
