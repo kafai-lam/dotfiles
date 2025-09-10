@@ -1,0 +1,14 @@
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+cursor-style-blink = false
+focus-follows-mouse = true
+font-family = FiraCode Nerd Font Mono
+macos-option-as-alt = true
+quit-after-last-window-closed = true
+shell-integration-features = no-cursor,sudo,title
+theme = GitHub-Dark-Dimmed
+cursor-color = white
