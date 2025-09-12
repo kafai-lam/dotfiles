@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
 
-if command -v ya &>/dev/null; then
+if (( $+commands[ya] )); then
   ya pkg install || true
 fi

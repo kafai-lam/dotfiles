@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if command -v mise &>/dev/null; then
+if (( $+commands[mise] )); then
   echo "Installing packages with mise"
   mise install --cd $HOME || true
   mise upgrade

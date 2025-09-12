@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if command -v duti &>/dev/null; then
+if (( $+commands[duti] )); then
   echo "Set default uti with duti"
   duti $XDG_CONFIG_HOME/duti/config.duti || true
 fi
