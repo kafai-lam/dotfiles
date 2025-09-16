@@ -1,17 +1,12 @@
 [tools]
-gemini-cli = "latest"
 node = "lts"
 pre-commit = "latest"
 python = "3.12.10"
 rust = "latest"
 uv = "latest"
-"npm:@qwen-code/qwen-code" = "latest"
 "pipx:llm" = { version = "latest", uvx_args = "--with llm-cmd-git,llm-mistral,llm-ollama" }
 "pipx:pgcli" = "latest"
 "pipx:rich-cli" = "latest"
-"ubi:dagimg-dot/gitsnip" = "latest"
-"ubi:sosedoff/pgweb" = "latest"
-"ubi:zyedidia/eget" = "latest"
 
 [settings]
 experimental = true
