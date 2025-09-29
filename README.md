@@ -57,6 +57,6 @@ All essential command-line tools and desktop applications are managed via a `Bre
 
 Forget `nvm`, `pyenv`, or `asdf`. `mise` is a next-generation, polyglot version manager that can handle them all. It's used here to manage versions for Node.js, Python, Rust, and other development tools, configured via a single `.toml` file.
 
-### [LazyVim](https://www.lazyvim.org/)
+### [AstroNvim](https://docs.astronvim.com/)
 
-The Neovim configuration is based on LazyVim, a modern Neovim setup powered by the `lazy.nvim` plugin manager. It provides a feature-rich, IDE-like experience that is both extensible and fast.
+The Neovim configuration is based on AstroNvim, a modern and elegant Neovim configuration featuring a beautiful UI and a set of carefully curated plugins. It provides a feature-rich, IDE-like experience that is both extensible and fast.
