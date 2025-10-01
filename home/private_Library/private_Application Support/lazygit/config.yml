@@ -255,3 +255,9 @@ customCommands:
     context: "files"
     loadingText: "Generating ..."
     command: "git commit --no-edit"
+  - description: "Pre-commit"
+    key: "<c-j>"
+    context: "files"
+    loadingText: "Running..."
+    command: "pre-commit"
+    output: terminal
