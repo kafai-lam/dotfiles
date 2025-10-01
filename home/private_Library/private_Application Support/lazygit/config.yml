@@ -250,3 +250,8 @@ customCommands:
         initialValue: ""
     command: "llm git commit {{ if .Form.Extra }}--extra-context '{{ .Form.Extra }}'{{ end }}"
     output: terminal
+  - description: "Prepare Commit Message by LLM"
+    key: "<c-l>"
+    context: "files"
+    loadingText: "Generating ..."
+    command: "git commit --no-edit"
