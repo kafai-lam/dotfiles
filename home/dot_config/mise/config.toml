@@ -3,7 +3,7 @@ gemini-cli = "latest"
 node = "lts"
 opencode = "latest"
 pre-commit = "latest"
-python = "3.12.10"
+python = "3.12"
 rust = "latest"
 uv = "latest"
 "github:smtg-ai/claude-squad" = "latest"
@@ -11,7 +11,6 @@ uv = "latest"
 "npm:@qwen-code/qwen-code" = "latest"
 "pipx:llm" = { version = "latest", uvx_args = "--with llm-cmd-git,llm-mistral,llm-ollama" }
 "pipx:pgcli" = "latest"
-"pipx:rich-cli" = "latest"
 
 [settings]
 experimental = true
