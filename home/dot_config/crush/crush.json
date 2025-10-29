@@ -1,0 +1,18 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "providers": {
+    "Bifrost": {
+      "type": "openai-compat",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "models": [
+        {
+          "id": "opencode/grok-code",
+          "name": "Bifrost: OpenCode Grok Code",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        }
+      ]
+    }
+  }
+}
