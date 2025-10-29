@@ -1,0 +1,12 @@
+{
+  "custom_models": [
+    {
+      "model_display_name": "Bifrost: OpenCode Grok Code",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "model": "opencode/grok-code",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    }
+  ]
+}
