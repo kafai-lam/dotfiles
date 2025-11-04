@@ -2,9 +2,9 @@
 git:
   parseEmoji: true
   overrideGpg: true
-  paging:
-    colorArg: always
-    pager: delta --paging=never --diff-so-fancy
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never --diff-so-fancy
 customCommands:
   - description: "Create new conventional commit"
     key: "<c-v>"
