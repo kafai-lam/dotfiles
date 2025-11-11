@@ -2,7 +2,6 @@
 (( $+commands[poetry] )) && alias poetry="noglob poetry"
 (( $+commands[python] )) && alias py="python"
 (( $+commands[uv] )) && alias uv="noglob uv"
-(( $+commands[llm] )) && eval "$(_LLM_COMPLETE=zsh_source llm)"
 
 # Find python file
 alias pyfind='find . -name "*.py"'
