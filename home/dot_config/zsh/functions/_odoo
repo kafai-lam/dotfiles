@@ -1,72 +1,379 @@
-#compdef odoo odoo
+#compdef odoo odoo-bin
+
+typeset -ga _odoo_cli_commands=(
+  'cloc:Count lines of code per modules'
+  'db:Create, drop, dump, load databases'
+  'deploy:Deploy a module on an Odoo instance'
+  'genproxytoken:Generate and (re)set proxy access token in config file'
+  'help:Display the list of available commands'
+  'neutralize:Neutralize a production database for testing'
+  'obfuscate:Obfuscate data in a given odoo database'
+  'populate:Inject fake data inside a database for testing'
+  'scaffold:Generates an Odoo module skeleton.'
+  'server:Start the odoo server (default command)'
+  'shell:Start odoo in an interactive shell'
+  'start:Quickly start the odoo server with default options'
+  'tsconfig:Generates tsconfig files for javascript code'
+)
+
+typeset -ga _odoo_scaffold_templates=(
+  'default:Default module template'
+  'l10n_payroll:Payroll localization template'
+  'theme:Theme module template'
+)
+
+typeset -ga _odoo_server_options=(
+  '(-h --help)'{-h,--help}'[Show help text]'
+  '--version[Show Odoo version]'
+  '(-d --database)'{-d,--database}'[Specify database(s) to use]:database:_files'
+  '(-i --init)'{-i,--init}'[Modules to install]:modules:'
+  '(-u --update)'{-u,--update}'[Modules to update]:modules:'
+  '--addons-path[Directories to scan for modules]:directories:_files -/'
+  '--upgrade-path[Additional upgrade path]:path:_files -/'
+  '--load[Server-wide modules to load]:modules:'
+  '(-c --config)'{-c,--config}'[Path to alternate config file]:config file:_files'
+  '(-D --data-dir)'{-D,--data-dir}'[Directory to store Odoo data]:directory:_files -/'
+  '(-s --save)'{-s,--save}'[Save server configuration]'
+  '--without-demo[Disable demo data loading]:modules:'
+  '--pidfile[Path to store server pid]:pidfile:_files'
+  '--stop-after-init[Stop server after initialization]'
+  '--geoip-city-db[Path to GeoIP City database]:file:_files'
+  '--geoip-country-db[Path to GeoIP Country database]:file:_files'
+  '--test-enable[Run tests after module installation]'
+  '--test-file[Run a python test file]:file:_files -g "*.py"'
+  '--test-tags[Filter which tests to execute]:tags:'
+  '--screenshots[Directory to write test screenshots]:directory:_files -/'
+  '--screencasts[Directory to write test screencasts]:directory:_files -/'
+  '(-r --db_user)'{-r,--db_user}'[Database username]:username:'
+  '(-w --db_password)'{-w,--db_password}'[Database password]:password:'
+  '--db_host[Database host]:hostname:_hosts'
+  '--db_port[Database port]:port:'
+  '--db-filter[Hide databases not matching filter]:filter:'
+  '--db-template[Template for new databases]:template:'
+  '--pg_path[Path to PostgreSQL binaries]:path:_files -/'
+  '--no-database-list[Suppress database listing]'
+  '--db_sslmode[PostgreSQL SSL mode]:mode:(disable allow prefer require verify-ca verify-full)'
+  '--unaccent[Enable unaccent extension for new databases]'
+  '--email-from[Email address for FROM field]:email:'
+  '--from-filter[Email address or domain for SMTP filter]:filter:'
+  '--smtp[SMTP server address]:server:_hosts'
+  '--smtp-port[SMTP server port]:port:'
+  '--smtp-ssl[Use SSL/STARTSSL for SMTP]'
+  '--smtp-user[SMTP username]:username:'
+  '--smtp-password[SMTP password]:password:'
+  '--smtp-ssl-certificate-filename[Path to SSL certificate]:file:_files'
+  '--smtp-ssl-private-key-filename[Path to SSL private key]:file:_files'
+  '--load-language[Languages to load]:languages:'
+  '(-l --language)'{-l,--language}'[Language for translation file]:language:'
+  '--i18n-export[Export translations to file]:file:_files'
+  '--i18n-import[Import translations from file]:file:_files'
+  '--i18n-overwrite[Overwrite existing translations]'
+  '--modules[Specify modules to export]:modules:'
+  '--dev[Enable developer features]:features:_values -s , features all xml reload qweb "(i)p(u)db" werkzeug'
+  '--no-http[Do not start HTTP workers]'
+  '--http-interface[HTTP server interface]:interface:_ip_addresses'
+  '(-p --http-port)'{-p,--http-port}'[HTTP server port]:port:'
+  '--gevent-port[Gevent websocket port]:port:'
+  '--proxy-mode[Enable proxy mode]'
+  '--x-sendfile[Use X-Sendfile for file streaming]'
+  '--logfile[Log to file instead of stderr]:file:_files'
+  '--syslog[Log to syslog]'
+  '--log-db[Log to database]:database:'
+  '--log-handler[Configure a log handler]:spec:'
+  '--log-web[Enable DEBUG logging of HTTP requests]'
+  '--log-sql[Enable DEBUG logging of SQL queries]'
+  '--log-level[Set logging level]:level:(critical error warn debug debug_sql debug_rpc debug_rpc_answer)'
+  '--workers[Number of workers to use]:count:'
+)
+
+_odoo_complete_server_like() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C ${_odoo_server_options[@]}
+}
+
+_odoo_complete_start() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  local -a start_opts=(
+    '--path[Directory containing project modules]:directory:_files -/'
+    '(-d --database)'{-d,--database}'[Database name to use]:database:'
+  )
+  _arguments -C \
+    ${start_opts[@]} \
+    ${_odoo_server_options[@]}
+}
+
+_odoo_complete_populate() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  local -a populate_opts=(
+    '--size[Population size to generate]:size:(small medium large)'
+    '--models[Comma separated model names or patterns]:models:'
+    '--profile[Profile record population]'
+    '--rollback[Rollback instead of committing data]'
+  )
+  _arguments -C \
+    ${populate_opts[@]} \
+    ${_odoo_server_options[@]}
+}
+
+_odoo_complete_neutralize() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '--stdout[Print SQL instead of applying it]' \
+    ${_odoo_server_options[@]}
+}
+
+_odoo_complete_obfuscate() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  local -a obfuscate_opts=(
+    '--pwd[Password used to cypher/uncypher data]:password:'
+    '--fields[List of table.column entries to (un)obfuscate]:fields:'
+    '--exclude[List of table.column entries to exclude]:fields:'
+    '--file[File containing the list of table.column entries]:file:_files'
+    '--unobfuscate[Run in unobfuscation mode]'
+    '--allfields[Attempt to (un)obfuscate every eligible field]'
+    '--vacuum[Vacuum tables after unobfuscating]'
+    '--pertablecommit[Commit after each table]'
+    '(-y --yes)'{-y,--yes}'[Do not prompt for confirmation]'
+  )
+  _arguments -C \
+    ${obfuscate_opts[@]} \
+    ${_odoo_server_options[@]}
+}
+
+_odoo_complete_deploy() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '--db[Database to use when no db-filter is set]:database:' \
+    '--login[Login to authenticate]:login:' \
+    '--password[Password to authenticate]:password:' \
+    '--verify-ssl[Verify the SSL certificate]' \
+    '--force[Force init even if module is already installed]' \
+    '1:path to module directory:_files -/' \
+    '2::server URL:_urls'
+}
+
+_odoo_scaffold_builtin_templates() {
+  local -a templates=("${_odoo_scaffold_templates[@]}")
+  _describe -t odoo-scaffold-templates 'built-in templates' templates
+}
+
+_odoo_complete_scaffold() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '(-t --template)'{-t,--template}'[Template to use]:template:->template' \
+    '1:module name:_guard "^-*" "module name"' \
+    '2::destination directory:_files -/' && return
+
+  case $state in
+    template)
+      _alternative \
+        'builtins:built-in templates:_odoo_scaffold_builtin_templates' \
+        'paths:template path:_files -/'
+      ;;
+  esac
+}
+
+_odoo_complete_shell() {
+  _odoo_complete_server_like
+}
+
+_odoo_complete_cloc() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '(-d --database)'{-d,--database}'[Database name to analyze]:database:' \
+    '(-p --path)'{-p,--path}'[File or directory path to analyze]:path:_files -/' \
+    '(-v --verbose)'{-v,--verbose}'[Increase verbosity]'
+}
+
+_odoo_complete_tsconfig() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '--addons-path[Comma separated addon paths]:paths:_files -/'
+}
+
+_odoo_complete_genproxytoken() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '(-c --config)'{-c,--config}'[Alternative config file]:config file:_files' \
+    '--token-length[Length of the generated token]:length:'
+}
+
+_odoo_complete_db() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  local -a db_opts=(
+    '(-c --config)'{-c,--config}'[Path to alternate config file]:config file:_files'
+    '(-D --data-dir)'{-D,--data-dir}'[Directory to store Odoo data]:directory:_files -/'
+    '--addons-path[Directories to scan for modules]:directories:_files -/'
+    '(-r --db_user)'{-r,--db_user}'[Database username]:username:'
+    '(-w --db_password)'{-w,--db_password}'[Database password]:password:'
+    '--pg_path[Path to PostgreSQL binaries]:path:_files -/'
+    '--db_host[Database host]:hostname:_hosts'
+    '--db_port[Database port]:port:'
+    '--db_sslmode[PostgreSQL SSL mode]:mode:(disable allow prefer require verify-ca verify-full)'
+  )
+
+  _arguments -C \
+    ${db_opts[@]} \
+    '1:db command:->db_cmd' \
+    '*:: :->db_args' && return
+
+  case $state in
+    db_cmd)
+      local -a db_commands=(
+        'load:Load a dump file'
+        'dump:Create a dump with filestore'
+        'duplicate:Duplicate a database including filestore'
+        'rename:Rename a database including filestore'
+        'drop:Delete a database including filestore'
+      )
+      _describe -t odoo-db-commands 'db commands' db_commands
+      ;;
+    db_args)
+      local cmd=${line[1]}
+      case $cmd in
+        load)
+          _odoo_db_load
+          ;;
+        dump)
+          _odoo_db_dump
+          ;;
+        duplicate)
+          _odoo_db_duplicate
+          ;;
+        rename)
+          _odoo_db_rename
+          ;;
+        drop)
+          _odoo_db_drop
+          ;;
+      esac
+      ;;
+  esac
+}
+
+_odoo_db_load() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '(-f --force)'{-f,--force}'[Drop target database if it exists]' \
+    '(-n --neutralize)'{-n,--neutralize}'[Neutralize the database after restore]' \
+    '1:database or dump:->load_target' \
+    '2::dump file:_files' && return
+
+  case $state in
+    load_target)
+      _alternative \
+        'databases:database name:_message "database name"' \
+        'dumps:dump file:_files'
+      ;;
+  esac
+}
+
+_odoo_db_dump() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '1:database name:_message "database name"' \
+    '2::dump path:_files'
+}
+
+_odoo_db_duplicate() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '(-f --force)'{-f,--force}'[Drop target database if it exists]' \
+    '(-n --neutralize)'{-n,--neutralize}'[Neutralize the duplicated database]' \
+    '1:source database:_message "source database"' \
+    '2:target database:_message "target database"'
+}
+
+_odoo_db_rename() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '(-f --force)'{-f,--force}'[Drop target database if it exists]' \
+    '1:source database:_message "source database"' \
+    '2:target database:_message "target database"'
+}
+
+_odoo_db_drop() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '1:database name:_message "database name"'
+}
 
 _odoo() {
   local curcontext="$curcontext" state line
   typeset -A opt_args
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Show help text]' \
-    '--version[Show Odoo version]' \
-    '(-d --database)'{-d,--database}'[Specify database(s) to use]:database:_files' \
-    '(-i --init)'{-i,--init}'[Modules to install]:modules:' \
-    '(-u --update)'{-u,--update}'[Modules to update]:modules:' \
-    '--addons-path[Directories to scan for modules]:directories:_files -/' \
-    '--upgrade-path[Additional upgrade path]:path:_files -/' \
-    '--load[Server-wide modules to load]:modules:' \
-    '(-c --config)'{-c,--config}'[Path to alternate config file]:config file:_files' \
-    '(-D --data-dir)'{-D,--data-dir}'[Directory to store Odoo data]:directory:_files -/' \
-    '(-s --save)'{-s,--save}'[Save server configuration]' \
-    '--without-demo[Disable demo data loading]:modules:' \
-    '--pidfile[Path to store server pid]:pidfile:_files' \
-    '--stop-after-init[Stop server after initialization]' \
-    '--geoip-city-db[Path to GeoIP City database]:file:_files' \
-    '--geoip-country-db[Path to GeoIP Country database]:file:_files' \
-    '--test-enable[Run tests after module installation]' \
-    '--test-file[Run a python test file]:file:_files -g "*.py"' \
-    '--test-tags[Filter which tests to execute]:tags:' \
-    '--screenshots[Directory to write test screenshots]:directory:_files -/' \
-    '--screencasts[Directory to write test screencasts]:directory:_files -/' \
-    '(-r --db_user)'{-r,--db_user}'[Database username]:username:' \
-    '(-w --db_password)'{-w,--db_password}'[Database password]:password:' \
-    '--db_host[Database host]:hostname:_hosts' \
-    '--db_port[Database port]:port:' \
-    '--db-filter[Hide databases not matching filter]:filter:' \
-    '--db-template[Template for new databases]:template:' \
-    '--pg_path[Path to PostgreSQL binaries]:path:_files -/' \
-    '--no-database-list[Suppress database listing]' \
-    '--db_sslmode[PostgreSQL SSL mode]:mode:(disable allow prefer require verify-ca verify-full)' \
-    '--unaccent[Enable unaccent extension for new databases]' \
-    '--email-from[Email address for FROM field]:email:' \
-    '--from-filter[Email address or domain for SMTP filter]:filter:' \
-    '--smtp[SMTP server address]:server:_hosts' \
-    '--smtp-port[SMTP server port]:port:' \
-    '--smtp-ssl[Use SSL/STARTSSL for SMTP]' \
-    '--smtp-user[SMTP username]:username:' \
-    '--smtp-password[SMTP password]:password:' \
-    '--smtp-ssl-certificate-filename[Path to SSL certificate]:file:_files' \
-    '--smtp-ssl-private-key-filename[Path to SSL private key]:file:_files' \
-    '--load-language[Languages to load]:languages:' \
-    '(-l --language)'{-l,--language}'[Language for translation file]:language:' \
-    '--i18n-export[Export translations to file]:file:_files' \
-    '--i18n-import[Import translations from file]:file:_files' \
-    '--i18n-overwrite[Overwrite existing translations]' \
-    '--modules[Specify modules to export]:modules:' \
-    '--dev[Enable developer features]:features:_values -s , features all xml reload qweb "(i)p(u)db" werkzeug' \
-    '--no-http[Do not start HTTP workers]' \
-    '--http-interface[HTTP server interface]:interface:_ip_addresses' \
-    '(-p --http-port)'{-p,--http-port}'[HTTP server port]:port:' \
-    '--gevent-port[Gevent websocket port]:port:' \
-    '--proxy-mode[Enable proxy mode]' \
-    '--x-sendfile[Use X-Sendfile for file streaming]' \
-    '--logfile[Log to file instead of stderr]:file:_files' \
-    '--syslog[Log to syslog]' \
-    '--log-db[Log to database]:database:' \
-    '--log-handler[Configure a log handler]:spec:' \
-    '--log-web[Enable DEBUG logging of HTTP requests]' \
-    '--log-sql[Enable DEBUG logging of SQL queries]' \
-    '--log-level[Set logging level]:level:(critical error warn debug debug_sql debug_rpc debug_rpc_answer)' \
-    '--workers[Number of workers to use]:count:'
+    ${_odoo_server_options[@]} \
+    '1:command:->command' \
+    '*:: :->args' && return
 
+  case $state in
+    command)
+      _describe -t odoo-commands 'odoo commands' _odoo_cli_commands
+      ;;
+    args)
+      local cmd=${line[1]:-server}
+      case $cmd in
+        server)
+          _odoo_complete_server_like
+          ;;
+        shell)
+          _odoo_complete_shell
+          ;;
+        start)
+          _odoo_complete_start
+          ;;
+        populate)
+          _odoo_complete_populate
+          ;;
+        neutralize)
+          _odoo_complete_neutralize
+          ;;
+        obfuscate)
+          _odoo_complete_obfuscate
+          ;;
+        deploy)
+          _odoo_complete_deploy
+          ;;
+        scaffold)
+          _odoo_complete_scaffold
+          ;;
+        db)
+          _odoo_complete_db
+          ;;
+        cloc)
+          _odoo_complete_cloc
+          ;;
+        tsconfig)
+          _odoo_complete_tsconfig
+          ;;
+        genproxytoken)
+          _odoo_complete_genproxytoken
+          ;;
+        help)
+          ;;
+        *)
+          _odoo_complete_server_like
+          ;;
+      esac
+      ;;
+  esac
 }
 
 _odoo "$@"
