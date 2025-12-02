@@ -15,6 +15,7 @@ zstyle ':z4h:' start-tmux no
 
 # Move prompt to the bottom when zsh starts and on Ctrl+L.
 zstyle ':z4h:' prompt-at-bottom 'yes'
+tput cup 9999 0
 
 # Keyboard type: 'mac' or 'pc'.
 zstyle ':z4h:bindkey' keyboard 'mac'
@@ -112,6 +113,7 @@ for file in $ZDOTDIR/plugins/*; do z4h source $file; done
 
 # Define key bindings.
 z4h bindkey edit-command-line Ctrl+V # edit the current command line
+z4h bindkey z4h-clear-screen-soft-bottom Ctrl+L
 
 z4h bindkey undo Ctrl+/ Shift+Tab # undo the last command line change
 z4h bindkey redo Option+/         # redo the last undone command line change
