@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+# tpm config hash: {{ include "dot_config/tmux/tmux.conf" | sha256sum }}
+
+echo "Installing tmux plugins with tpm"
+
+$XDG_CONFIG_HOME/tmux/plugins/tpm/bin/install_plugins
