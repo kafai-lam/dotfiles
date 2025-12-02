@@ -106,6 +106,7 @@ z4h source ohmyzsh/ohmyzsh/plugins/gitignore/gitignore.plugin.zsh
 z4h source ohmyzsh/ohmyzsh/plugins/git/git.plugin.zsh
 z4h source ohmyzsh/ohmyzsh/plugins/aliases/aliases.plugin.zsh
 z4h load ohmyzsh/ohmyzsh/plugins/docker-compose
+z4h load ohmyzsh/ohmyzsh/plugins/macos
 z4h load marlonrichert/zsh-hist
 for file in $ZDOTDIR/plugins/*; do z4h source $file; done
 
