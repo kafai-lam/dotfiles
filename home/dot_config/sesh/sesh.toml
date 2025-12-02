@@ -2,22 +2,30 @@
 preview_command = "eza --group-directories-first --icons --all --git --color=always -lh {}"
 
 [[session]]
-name = "Dotfiles 󱗿"
-path = "~/.local/share/chezmoi"
-startup_command = "yazi"
-windows = ["lazygit"]
+name = "config"
+path = "~/.config"
+startup_command = "vim"
 
 [[session]]
-name = "Downloads 󰇚"
+name = "chezmoi"
+path = "~/.local/share/chezmoi"
+startup_command = "lazygit"
+windows = ["vim"]
+
+[[session]]
+name = "downloads"
 path = "~/Downloads"
 startup_command = "yazi"
 
 [[session]]
-name = "Spotify "
+name = "spotify"
 path = "~/.config/spotify-player"
 startup_command = "spotify_player"
 
+[[window]]
+name = "vim"
+startup_script = "vim"
 
 [[window]]
-name = "lazygit "
+name = "lazygit"
 startup_script = "lazygit"
