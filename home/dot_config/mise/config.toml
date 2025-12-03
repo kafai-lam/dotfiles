@@ -1,4 +1,6 @@
 [tools]
+amp = "latest"
+bun = "latest"
 claude-squad = "latest"
 codex = "latest"
 gemini-cli = "latest"
@@ -14,6 +16,7 @@ uv = "latest"
 
 [settings]
 experimental = true
+idiomatic_version_file_enable_tools = ["python"]
+npm.bun = true
 pipx.uvx = true
 python.uv_venv_auto = true
-idiomatic_version_file_enable_tools = ["python"]
