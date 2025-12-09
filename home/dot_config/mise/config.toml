@@ -1,19 +1,18 @@
 [tools]
-gemini-cli = "latest"
+amp = "latest"
+bun = "latest"
+gemini = "latest"
 node = "lts"
 opencode = "latest"
-pre-commit = "latest"
 python = "3.12"
 rust = "latest"
 uv = "latest"
-"github:smtg-ai/claude-squad" = "latest"
-"npm:@openai/codex" = "latest"
 "npm:@qwen-code/qwen-code" = "latest"
 "pipx:llm" = { version = "latest", uvx_args = "--with llm-cmd-git,llm-mistral,llm-ollama" }
-"pipx:pgcli" = "latest"
 
 [settings]
 experimental = true
+idiomatic_version_file_enable_tools = ["python"]
+npm.bun = true
 pipx.uvx = true
 python.uv_venv_auto = true
-idiomatic_version_file_enable_tools = ["python"]
