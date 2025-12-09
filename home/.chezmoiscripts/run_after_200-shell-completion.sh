@@ -13,6 +13,6 @@
 (( $+commands[uvx] )) && uvx --generate-shell-completion zsh > ~/.config/zsh/completions/_uvx
 
 if (( $+commands[ollama] )); then
-  curl https://gist.githubusercontent.com/obeone/9313811fd61a7cbb843e0001a4434c58/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh > ~/.config/zsh/completions/_ollama
+  curl -sS https://gist.githubusercontent.com/obeone/9313811fd61a7cbb843e0001a4434c58/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh > ~/.config/zsh/completions/_ollama
 fi
 
