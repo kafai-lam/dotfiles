@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 
 if (( $+commands[ya] )); then
-  ya pkg install || true
+  echo "Installing yazi plugins"
+  ya pkg install > /dev/null 2>&1 || true
 fi

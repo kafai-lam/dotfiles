@@ -25,8 +25,11 @@ brew-dump () {
 }
 
 update_dotfiles() {
+    echo "Updating Brewfile..."
     brew-dump
+    echo "Running chezmoi re-add..."
     chezmoi re-add
+    echo "Dotfiles update completed."
 }
 
 update_dotfiles
