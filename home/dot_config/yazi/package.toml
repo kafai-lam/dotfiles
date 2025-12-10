@@ -1,27 +1,27 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "de53d90"
-hash = "2143a53182dbbe935a1abd1623424aa5"
+rev = "19dc890"
+hash = "b26d542e75151835d7bc885f6dda74cb"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "de53d90"
+rev = "19dc890"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "de53d90"
-hash = "f10a14e823382d90fab5b3ee54cb38fe"
+rev = "19dc890"
+hash = "4fccaaf10c36dc2466e2438a386ff017"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:zoom"
-rev = "de53d90"
-hash = "4a47a9cd4d8b3a963cb4cc593664b77e"
+rev = "19dc890"
+hash = "9dee2bf990ea941ccf67df74bca45468"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "de53d90"
-hash = "63b6c222bf2103b3023389dde5e2ecfe"
+rev = "19dc890"
+hash = "27ca02f49fd236b5cc7bf03c243859fe"
 
 [flavor]
 deps = []
