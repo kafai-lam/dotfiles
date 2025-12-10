@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+# yazi plugin hash: {{ include "dot_config/yazi/package.toml" | sha256sum }}
+
 if (( $+commands[ya] )); then
   echo "Installing yazi plugins"
   ya pkg install > /dev/null 2>&1 || true

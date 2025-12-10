@@ -1,5 +1,7 @@
 #!/usr/bin/env zsh
 
+# duti config hash: {{ include "dot_config/duti/config.duti" | sha256sum }}
+
 if (( $+commands[duti] )); then
   echo "Set default uti with duti"
   duti $XDG_CONFIG_HOME/duti/config.duti || true

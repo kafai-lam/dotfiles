@@ -5,5 +5,5 @@ if (( ! $+commands[brew] )); then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
   echo "Updating homebrew"
-  brew update
+  brew update-if-needed
 fi
