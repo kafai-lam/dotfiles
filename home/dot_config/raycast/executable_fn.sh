@@ -18,10 +18,10 @@ toggle_function_keys() {
 
     if [ "$current_state" = 0 ]; then
         defaults write -g com.apple.keyboard.fnState -bool true
-        echo "Function Keys is Function Key"
+        echo "Fn Keys are F1-F12 now"
     else
         defaults write -g com.apple.keyboard.fnState -bool false
-        echo "Fn Keys is System Key"
+        echo "Fn Keys are System Function Key now"
     fi
 }
 
