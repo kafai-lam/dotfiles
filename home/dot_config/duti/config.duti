@@ -11,4 +11,5 @@ com.microsoft.VSCode .txt all
 com.microsoft.VSCode .xml all
 com.microsoft.VSCode .yaml all
 com.microsoft.VSCode .yml all
-org.mozilla.firefoxdeveloperedition .pdf all
+ai.perplexity.comet .pdf all
+
