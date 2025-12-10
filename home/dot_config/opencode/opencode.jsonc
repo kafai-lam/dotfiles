@@ -11,6 +11,18 @@
       "models": {
         "opencode/grok-code": {
           "name": "Grok Code"
+        },
+        "mistral/ministral-14b-latest": {
+          "name": "Ministral"
+        },
+        "mistral/mistral-large-latest": {
+          "name": "Mistral Large"
+        },
+        "mistral/codestral-latest": {
+          "name": "Codestral"
+        },
+        "mistral/devstral-2512": {
+          "name": "Devstral"
         }
       }
     }

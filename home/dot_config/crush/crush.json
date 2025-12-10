@@ -8,7 +8,31 @@
       "models": [
         {
           "id": "opencode/grok-code",
-          "name": "Bifrost: OpenCode Grok Code",
+          "name": "OpenCode Zen: Grok Code",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "mistral/ministral-14b-latest",
+          "name": "Ministral",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "mistral/mistral-large-latest",
+          "name": "Mistral Large",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "mistral/codestral-latest",
+          "name": "Codestral",
+          "context_window": 128000,
+          "default_max_tokens": 128000
+        },
+        {
+          "id": "mistral/devstral-2512",
+          "name": "Devstral",
           "context_window": 256000,
           "default_max_tokens": 256000
         }
