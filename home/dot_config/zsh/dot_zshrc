@@ -75,6 +75,7 @@ z4h init || return
 # Extend PATH.
 path+=(
   $HOME/.local/bin
+  $HOME/.config/raycast/scripts
 )
 fpath+=(
   $ZDOTDIR/completions
