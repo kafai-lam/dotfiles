@@ -4,13 +4,11 @@ preview_command = "eza --group-directories-first --icons --all --git --color=alw
 [[session]]
 name = "config"
 path = "~/.config"
-startup_command = "vim"
 
 [[session]]
 name = "chezmoi"
 path = "~/.local/share/chezmoi"
 startup_command = "lazygit"
-windows = ["vim"]
 
 [[session]]
 name = "downloads"
