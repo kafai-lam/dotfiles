@@ -1,0 +1,44 @@
+# Commit message should have following structure:
+#
+# {Subject}
+#
+# {Description}
+#
+# {Footer}
+#
+# # Subject (Required)
+# - Keep it under 50 characters if possible
+# - Use imperative statements, e.g. "Fix broken Javadoc link"
+# - Capitalize the first letter
+# - Do not end with a period
+#
+# # Description (Optional)
+# - Can be skipped if changes are small and trival
+# - Separate from the header with a blank line
+# - Wrap lines in the body at 72 characters or less
+# - Explain what changed and why these changes were necessary.
+# - Avoid direct references to file names or specific line numbers
+# - Always consider any provided user context
+# - Avoid filler words
+#
+# # Footer (Optional)
+# - Including footer only if the branch mentions specific issue numbers
+# - Add them in the format: `Closes #123`, `Fixes #746` etc.
+#
+# # Examples
+# ## Simple and trivial changes example
+# Add contribution guidelines
+#
+# ## When user context is empty or doesn't mention specific tickets/issues
+# Add social login via Google
+#
+# Implement OAuth2 integration for Google authentication
+#
+# ## When user context mentions specific tickets/issues
+# Prevent racing of requests
+#
+# Introduce a request id and a reference to latest request. Dismiss
+# incoming responses other than from latest request.Remove timeouts
+# which were used to mitigate the racing issue but are obsolete now.
+#
+# Fixes #328

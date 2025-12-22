@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+[[ "$COMMIT_SOURCE" == "template" ]] || exit 0
+
+die() {
+  printf "prepare-commit-msg: %s\n" "$*" 2>&1
+  exit 0
+}
+
+require() {
+  if ! command -v "$1" >/dev/null 2>&1; then
+    die "missing dependency: $1"
+  fi
+}
+
+require aichat
+require sed
+
+system_prompt=$(
+  cat <<'EOF'
+You are a git assistant for writing git commit message.
+Your goal is to analyze the changes and create an appropriate commit message based on the provided git diff input following the specified style and best practices.
+Identify the primary purpose of the changes (e.g., new feature, bug fix, refactoring).
+Use provided instructions and extra context to guide your responses.
+
+Output requirements:
+- Output ONLY the commit message text (no quotes, no markdown).
+- Prefer a single subject line with no body for trivial change.
+- Be concrete and specific to the diff; mention key modules/files when helpful
+EOF
+)
+
+
+recent_commits="$(git log -3 --pretty=format:'%B---' 2>/dev/null || true)"
+if [[ -z "$recent_commits" ]]; then
+  recent_commits="(none)"
+fi
+
+staged_diff="$(git diff --staged)"
+
+build_user_prompt() {
+  cat <<EOF
+Current commit template as style guide:
+$(cat $COMMIT_MSG_FILE)
+
+---
+Git Staged diff:
+$staged_diff
+
+---
+Recent commit messages as example:
+$recent_commits
+EOF
+}
+
+generate_message() {
+  if command -v gum >/dev/null 2>&1; then
+    build_user_prompt | gum spin --title "generating commit message..." -- aichat -S --prompt "$system_prompt"
+  else
+    build_user_prompt | aichat -S --prompt "$system_prompt"
+  fi
+}
+
+sanitize_message() {
+  local msg
+  msg="$(cat)"
+  printf "%s" "$msg" | sed -E 's/[[:space:]]+$//'
+}
+
+if ! generated_message="$(generate_message | sanitize_message)"; then
+  die "failed to generate message (is aichat configured?)"
+fi
+
+if [[ -z "$(printf "%s" "$generated_message" | tr -d '[:space:]')" ]]; then
+  die "LLM returned an empty message"
+fi
+
+no_edit=0
+case "${GIT_EDITOR:-}" in
+  ":"|"true") no_edit=1 ;;
+esac
+
+temp="$(cat "$1")"
+if (( no_edit )); then
+  temp="$(git stripspace --strip-comments <<< "$temp")"
+fi
+printf "%s\n\n%s" "$generated_message" "$temp" > "$COMMIT_MSG_FILE"

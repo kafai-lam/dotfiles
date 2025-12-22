@@ -1,0 +1,72 @@
+# Commit message should have following structure:
+# {Type}({Scope}): {Subject}
+#
+# {Description}
+#
+# {Footer}
+#
+# # Type (Required)
+# - feat: New feature addition
+# - fix: Bug fix that resolves an issue
+# - docs: Documentation-only changes
+# - style: Formatting, missing semi-colons, etc (no code logic change)
+# - refactor: Code refactoring that neither fixes nor adds features
+# - perf: Performance improvements
+# - test: Adding missing tests or correcting existing tests
+# - chore: Maintenance tasks (dependencies, config files)
+# - build: Affects build system/external dependencies
+# - ci: CI configuration changes
+# - revert: Revert previous commits
+#
+# # Scope (Optional)
+# Specify code section/component being modified
+#
+# # Subject (Required)
+# - Keep it under 50 characters
+# - Use imperative statements, e.g. "Fix broken Javadoc link"
+# - Capitalize the first letter
+# - Do not end with a period
+#
+# # Description (Optional)
+# - Can be skipped if changes are small and trival
+# - Separate from the header with a blank line
+# - Wrap lines in the body at 72 characters or less
+# - Explain what changed and why these changes were necessary.
+# - Avoid direct references to file names or specific line numbers
+# - Always consider any provided user context
+# - Avoid filler words
+#
+# # Footer (Optional)
+# - Including footer only if the branch mentions specific issue numbers
+# - Add them in the format: `Closes #123`, `Fixes #746` etc.
+#
+# # Breaking Changes (Optional)
+# - Add to footer Only if breaking changes were introduced
+# - Mark with "!" after type/scope, e.g.
+#   feat(api)!: remove deprecated endpoints
+# - Include migration instructions in body/footer
+#
+# # Examples
+# ## Simple and trivial changes example
+# docs(readme): Add contribution guidelines
+#
+# ## When user context is empty or doesn't mention specific tickets/issues
+# feat(auth): Add social login via Google
+#
+# Implement OAuth2 integration for Google authentication
+#
+# ## When Changes introduce breaking changes
+# chore!: drop support for Node 6
+#
+# BREAKING CHANGE: use JavaScript features not available in Node 6.
+#
+# ## When user context mentions specific tickets/issues
+# fix(web): Prevent racing of requests
+#
+# Introduce a request id and a reference to latest request. Dismiss
+# incoming responses other than from latest request.
+#
+# Remove timeouts which were used to mitigate the racing issue but are
+# obsolete now.
+#
+# Fixes #328
