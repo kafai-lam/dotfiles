@@ -1,5 +1,4 @@
 [tools]
-amp = "latest"
 bun = "latest"
 gemini = "latest"
 node = "lts"
