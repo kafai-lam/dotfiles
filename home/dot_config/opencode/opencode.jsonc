@@ -27,6 +27,6 @@
       }
     }
   },
-  "model": "bifrost/opencode/grok-code",
+  "model": "bifrost/mistral/devstral-2512",
   "autoupdate": false
 }
