@@ -15,11 +15,6 @@ name = "downloads"
 path = "~/Downloads"
 startup_command = "yazi"
 
-[[session]]
-name = "spotify"
-path = "~/.config/spotify-player"
-startup_command = "spotify_player"
-
 [[window]]
 name = "vim"
 startup_script = "vim"
