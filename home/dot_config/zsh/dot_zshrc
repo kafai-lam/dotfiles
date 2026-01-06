@@ -11,7 +11,7 @@ zstyle ':z4h:' auto-update 'no'
 zstyle ':z4h:' auto-update-days '28'
 
 # Start tmux if not already in tmux.
-zstyle ':z4h:' start-tmux system
+zstyle ':z4h:' start-tmux no
 
 # Move prompt to the bottom when zsh starts and on Ctrl+L.
 zstyle ':z4h:' prompt-at-bottom 'yes'
@@ -90,7 +90,7 @@ export SAVEHIST=1000000000
 export EGET_BIN=$HOME/bin
 export GOKU_EDN_CONFIG_FILE="$XDG_CONFIG_HOME/karabiner/karabiner.edn"
 
-if [[ ( $+commands[code] ) && ( $TERM_PROGRAM == "vscode" || $TERM_PROGRAM == "tmux" ) ]]; then
+if (( $+commands[code] )); then
   export EDITOR="code --wait"
   export VISUAL="code --wait"
 elif (( $+commands[nvim] )); then
