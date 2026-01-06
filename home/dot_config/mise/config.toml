@@ -5,6 +5,7 @@ node = "lts"
 opencode = "latest"
 python = "3.12"
 uv = "latest"
+"github:tobi/try-cli" = "v1.5.0"
 "npm:@qwen-code/qwen-code" = "latest"
 "pipx:llm" = { version = "latest", uvx_args = "--with llm-cmd-git" }
 
