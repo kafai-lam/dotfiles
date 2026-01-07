@@ -12,3 +12,4 @@ quit-after-last-window-closed = true
 shell-integration-features = no-cursor,sudo,title
 theme = GitHub Dark Dimmed
 cursor-color = white
+font-size = 12
