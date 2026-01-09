@@ -6,6 +6,7 @@
 (( $+commands[llm] )) && _LLM_COMPLETE=zsh_source llm > ~/.config/zsh/completions/_llm
 (( $+commands[neon] )) && neon completion > ~/.config/zsh/completions/_neon
 (( $+commands[neonctl] )) && neonctl completion > ~/.config/zsh/completions/_neonctl
+(( $+commands[opencode] )) && opencode completion > ~/.config/zsh/completions/_opencode
 (( $+commands[sesh] )) && sesh completion zsh > ~/.config/zsh/completions/_sesh
 (( $+commands[sops] )) && sops completion zsh > ~/.config/zsh/completions/_sops
 (( $+commands[talosctl] )) && talosctl completion zsh > ~/.config/zsh/completions/_talosctl
