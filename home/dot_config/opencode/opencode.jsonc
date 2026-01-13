@@ -9,8 +9,11 @@
         "baseURL": "http://bifrost.orb.local/openai"
       },
       "models": {
-        "opencode/grok-code": {
-          "name": "Grok Code"
+        "mistral/codestral-latest": {
+          "name": "Codestral"
+        },
+        "mistral/devstral-2512": {
+          "name": "Devstral"
         },
         "mistral/ministral-14b-latest": {
           "name": "Ministral"
@@ -18,11 +21,17 @@
         "mistral/mistral-large-latest": {
           "name": "Mistral Large"
         },
-        "mistral/codestral-latest": {
-          "name": "Codestral"
+        "opencode/big-pickle": {
+          "name": "OpenCode Zen: Big Pickle"
         },
-        "mistral/devstral-2512": {
-          "name": "Devstral"
+        "opencode/glm-4.7-free": {
+          "name": "OpenCode Zen: GLM 4.7"
+        },
+        "opencode/grok-code": {
+          "name": "OpenCode Zen: Grok Code"
+        },
+        "opencode/minimax-m2.1-free": {
+          "name": "OpenCode Zen: MiniMax 2.1"
         }
       }
     }
