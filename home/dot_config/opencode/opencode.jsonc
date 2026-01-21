@@ -1,41 +1,48 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "github",
+  "model": "bifrost/opencode/grok-code",
+  "small_model": "bifrost/mistral/labs-devstral-small-2512",
+  "autoupdate": false,
   "provider": {
     "bifrost": {
       "name": "Bifrost",
       "npm": "@ai-sdk/openai-compatible",
       "options": {
-        "baseURL": "http://bifrost.orb.local/openai"
+        "baseURL": "http://bifrost.orb.local/openai",
       },
       "models": {
         "mistral/codestral-latest": {
-          "name": "Codestral"
+          "name": "Codestral",
         },
         "mistral/devstral-2512": {
-          "name": "Devstral"
+          "name": "Devstral 2",
+        },
+        "mistral/labs-devstral-small-2512": {
+          "name": "Devstral Small 2",
         },
         "mistral/ministral-14b-latest": {
-          "name": "Ministral"
+          "name": "Ministral",
         },
         "mistral/mistral-large-latest": {
-          "name": "Mistral Large"
+          "name": "Mistral Large",
         },
         "opencode/big-pickle": {
-          "name": "OpenCode Zen: Big Pickle"
+          "name": "Big Pickle",
         },
         "opencode/glm-4.7-free": {
-          "name": "OpenCode Zen: GLM 4.7"
+          "name": "GLM 4.7",
+        },
+        "opencode/gpt-5-nano": {
+          "name": "GPT 5 Nano",
         },
         "opencode/grok-code": {
-          "name": "OpenCode Zen: Grok Code"
+          "name": "Grok Code Fast 1",
         },
         "opencode/minimax-m2.1-free": {
-          "name": "OpenCode Zen: MiniMax 2.1"
-        }
-      }
-    }
+          "name": "MiniMax M2.1",
+        },
+      },
+    },
   },
-  "model": "bifrost/mistral/devstral-2512",
-  "autoupdate": false
 }

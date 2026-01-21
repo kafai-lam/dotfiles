@@ -32,25 +32,31 @@
         },
         {
           "id": "opencode/big-pickle",
-          "name": "OpenCode Zen: Big Pickle",
+          "name": "Big Pickle",
           "context_window": 256000,
           "default_max_tokens": 256000
         },
         {
           "id": "opencode/glm-4.7-free",
-          "name": "OpenCode Zen: GLM 4.7",
+          "name": "GLM 4.7",
           "context_window": 256000,
           "default_max_tokens": 256000
         },
         {
+          "id": "opencode/gpt-5-nano",
+          "name": "GPT 5 Nano",
+          "context_window": 400000,
+          "default_max_tokens": 400000
+        },
+        {
           "id": "opencode/grok-code",
-          "name": "OpenCode Zen: Grok Code",
+          "name": "Grok Code Fast 1",
           "context_window": 256000,
           "default_max_tokens": 256000
         },
         {
           "id": "opencode/minimax-m2.1-free",
-          "name": "OpenCode Zen: MiniMax 2.1",
+          "name": "MiniMax M2.1",
           "context_window": 256000,
           "default_max_tokens": 256000
         }

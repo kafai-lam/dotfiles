@@ -2,7 +2,7 @@
   "custom_models": [
     {
       "model": "mistral/codestral-latest",
-      "model_display_name": "Codestral",
+      "model_display_name": "Bifrost: Codestral",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -10,7 +10,7 @@
     },
     {
       "model": "mistral/devstral-2512",
-      "model_display_name": "Devstral",
+      "model_display_name": "Bifrost: Devstral",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -18,7 +18,7 @@
     },
     {
       "model": "mistral/ministral-14b-latest",
-      "model_display_name": "Ministral",
+      "model_display_name": "Bifrost: Ministral",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -26,7 +26,7 @@
     },
     {
       "model": "mistral/mistral-large-latest",
-      "model_display_name": "Mistral Large",
+      "model_display_name": "Bifrost: Mistral Large",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -34,7 +34,7 @@
     },
     {
       "model": "opencode/big-pickle",
-      "model_display_name": "OpenCode Zen: Big Pickle",
+      "model_display_name": "Bifrost: Big Pickle",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -42,15 +42,23 @@
     },
     {
       "model": "opencode/glm-4.7-free",
-      "model_display_name": "OpenCode Zen: GLM 4.7",
+      "model_display_name": "Bifrost: GLM 4.7",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
       "max_tokens": 256000
     },
     {
+      "model": "opencode/gpt-5-nano",
+      "model_display_name": "Bifrost: GPT 5 Nano",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 400000
+    },
+    {
       "model": "opencode/grok-code",
-      "model_display_name": "OpenCode Zen: Grok Code",
+      "model_display_name": "Bifrost: Grok Code",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -58,7 +66,7 @@
     },
     {
       "model": "opencode/minimax-m2.1-free",
-      "model_display_name": "OpenCode Zen: MiniMax 2.1",
+      "model_display_name": "Bifrost: MiniMax M2.1",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",

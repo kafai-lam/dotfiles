@@ -10,5 +10,6 @@ clients:
       - name: mistral/mistral-large-latest
       - name: opencode/big-pickle
       - name: opencode/glm-4.7-free
+      - name: opencode/gpt-5-nano
       - name: opencode/grok-code
       - name: opencode/minimax-m2.1-free

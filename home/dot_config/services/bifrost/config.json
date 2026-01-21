@@ -3,7 +3,8 @@
   "client": {
     "drop_excess_requests": false,
     "enable_governance": false,
-    "enable_logging": true
+    "enable_logging": true,
+    "allowed_origins": ["http://bifrost.orb.local", "https://bifrost.orb.local"]
   },
   "config_store": {
     "enabled": true,
@@ -21,9 +22,12 @@
   },
   "providers": {
     "mistral": {
+      "network_config": {
+        "default_request_timeout_in_seconds": 120
+      },
       "concurrency_and_buffer_size": {
         "concurrency": 1,
-        "buffer_size": 20
+        "buffer_size": 1000
       },
       "send_back_raw_request": true,
       "send_back_raw_response": true,
@@ -34,6 +38,7 @@
           "models": [
             "codestral-latest",
             "devstral-2512",
+            "labs-devstral-small-2512",
             "ministral-14b-latest",
             "mistral-large-latest"
           ],
@@ -61,11 +66,11 @@
       },
       "network_config": {
         "base_url": "https://opencode.ai/zen",
-        "default_request_timeout_in_seconds": 30
+        "default_request_timeout_in_seconds": 120
       },
       "concurrency_and_buffer_size": {
-        "concurrency": 3,
-        "buffer_size": 30
+        "concurrency": 1,
+        "buffer_size": 1000
       },
       "send_back_raw_request": true,
       "send_back_raw_response": true,
@@ -76,6 +81,7 @@
           "models": [
             "big-pickle",
             "glm-4.7-free",
+            "gpt-5-nano",
             "grok-code",
             "minimax-m2.1-free"
           ],
