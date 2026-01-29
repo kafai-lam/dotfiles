@@ -1,0 +1,105 @@
+name: home
+services:
+  bifrost:
+    image: maximhq/bifrost
+    container_name: bifrost
+    restart: always
+    labels:
+      - dev.orbstack.domains=bifrost.orb.local
+    volumes:
+      - ./bifrost:/app/data
+    environment:
+      - MISTRAL_API_KEY
+      - OPENCODE_ZEN_API_KEY
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:8080 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  glance:
+    image: glanceapp/glance
+    container_name: glance
+    restart: always
+    labels:
+      - dev.orbstack.domains=glance.orb.local
+    volumes:
+      - ./glance/config:/app/config
+      - ./glance/assets:/app/assets
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:8080 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  opengist:
+    image: ghcr.io/thomiceli/opengist
+    container_name: opengist
+    restart: always
+    labels:
+      - dev.orbstack.domains=opengist.orb.local
+    volumes:
+      - ./opengist:/opengist
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 6157"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  miniflux:
+    image: miniflux/miniflux
+    container_name: miniflux
+    restart: always
+    labels:
+      - dev.orbstack.domains=miniflux.orb.local
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgres://postgres:changeme@postgres:5432/miniflux?sslmode=disable
+      - RUN_MIGRATIONS=1
+      # - CREATE_ADMIN=1
+      # - ADMIN_USERNAME=
+      # - ADMIN_PASSWORD=
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:8080 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  postgres:
+    image: postgres:17-alpine
+    container_name: postgres
+    restart: always
+    labels:
+      - dev.orbstack.domains=
+    environment:
+      - POSTGRES_PASSWORD=changeme
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      start_period: 30s
+
+  pgweb:
+    image: sosedoff/pgweb
+    container_name: pgweb
+    restart: always
+    labels:
+      - dev.orbstack.domains=pgweb.orb.local
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - PGWEB_DATABASE_URL=postgres://postgres:changeme@postgres:5432/postgres?sslmode=disable
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8081 >/dev/null"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
