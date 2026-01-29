@@ -11,6 +11,7 @@ mkdir -p -- "$COMPDIR"
 (( $+commands[neon] )) && { (neon completion > "$COMPDIR/_neon") 2>/dev/null || true; }
 (( $+commands[neonctl] )) && { (neonctl completion > "$COMPDIR/_neonctl") 2>/dev/null || true; }
 (( $+commands[opencode] )) && { (opencode completion > "$COMPDIR/_opencode") 2>/dev/null || true; }
+(( $+commands[ruff] )) && { (ruff generate-shell-completion zsh > "$COMPDIR/_ruff") 2>/dev/null || true; }
 (( $+commands[sesh] )) && { (sesh completion zsh > "$COMPDIR/_sesh") 2>/dev/null || true; }
 (( $+commands[sops] )) && { (sops completion zsh > "$COMPDIR/_sops") 2>/dev/null || true; }
 (( $+commands[talosctl] )) && { (talosctl completion zsh > "$COMPDIR/_talosctl") 2>/dev/null || true; }
