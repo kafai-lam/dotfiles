@@ -10,7 +10,15 @@
     },
     {
       "model": "mistral/devstral-2512",
-      "model_display_name": "Bifrost: Devstral",
+      "model_display_name": "Bifrost: Devstral 2",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
+      "model": "mistral/labs-devstral-small-2512",
+      "model_display_name": "Bifrost: Devstral Small 2",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -26,7 +34,7 @@
     },
     {
       "model": "mistral/mistral-large-latest",
-      "model_display_name": "Bifrost: Mistral Large",
+      "model_display_name": "Bifrost: Mistral Large 3",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -41,36 +49,12 @@
       "max_tokens": 256000
     },
     {
-      "model": "opencode/glm-4.7-free",
-      "model_display_name": "Bifrost: GLM 4.7",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
-      "api_key": "dummy",
-      "max_tokens": 256000
-    },
-    {
       "model": "opencode/gpt-5-nano",
       "model_display_name": "Bifrost: GPT 5 Nano",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
       "max_tokens": 400000
-    },
-    {
-      "model": "opencode/grok-code",
-      "model_display_name": "Bifrost: Grok Code",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
-      "api_key": "dummy",
-      "max_tokens": 256000
-    },
-    {
-      "model": "opencode/minimax-m2.1-free",
-      "model_display_name": "Bifrost: MiniMax M2.1",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
-      "api_key": "dummy",
-      "max_tokens": 256000
     }
   ]
 }

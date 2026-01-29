@@ -6,6 +6,10 @@
   model_name: mistral/devstral-2512
   api_base: http://bifrost.orb.local/openai
 
+- model_id: mistral/labs-devstral-small-2512
+  model_name: mistral/labs-devstral-small-2512
+  api_base: http://bifrost.orb.local/openai
+
 - model_id: mistral/ministral-14b-latest
   model_name: mistral/ministral-14b-latest
   api_base: http://bifrost.orb.local/openai
@@ -18,18 +22,6 @@
   model_name: opencode/big-pickle
   api_base: http://bifrost.orb.local/openai
 
-- model_id: opencode/glm-4.7-free
-  model_name: opencode/glm-4.7-free
-  api_base: http://bifrost.orb.local/openai
-
 - model_id: opencode/gpt-5-nano
   model_name: opencode/gpt-5-nano
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: opencode/grok-code
-  model_name: opencode/grok-code
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: opencode/minimax-m2.1-free
-  model_name: opencode/minimax-m2.1-free
   api_base: http://bifrost.orb.local/openai

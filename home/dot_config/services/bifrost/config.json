@@ -78,13 +78,7 @@
         {
           "name": "Zen Free",
           "value": "env.OPENCODE_ZEN_API_KEY",
-          "models": [
-            "big-pickle",
-            "glm-4.7-free",
-            "gpt-5-nano",
-            "grok-code",
-            "minimax-m2.1-free"
-          ],
+          "models": ["big-pickle", "gpt-5-nano"],
           "weight": 1.0
         }
       ]

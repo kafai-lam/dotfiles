@@ -14,19 +14,25 @@
         },
         {
           "id": "mistral/devstral-2512",
-          "name": "Devstral",
+          "name": "Devstral 2",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "mistral/labs-devstral-small-2512",
+          "name": "Devstral Small 2",
           "context_window": 256000,
           "default_max_tokens": 256000
         },
         {
           "id": "mistral/ministral-14b-latest",
-          "name": "Ministral",
+          "name": "Ministral 14B",
           "context_window": 256000,
           "default_max_tokens": 256000
         },
         {
           "id": "mistral/mistral-large-latest",
-          "name": "Mistral Large",
+          "name": "Mistral Large 3",
           "context_window": 256000,
           "default_max_tokens": 256000
         },
@@ -37,28 +43,10 @@
           "default_max_tokens": 256000
         },
         {
-          "id": "opencode/glm-4.7-free",
-          "name": "GLM 4.7",
-          "context_window": 256000,
-          "default_max_tokens": 256000
-        },
-        {
           "id": "opencode/gpt-5-nano",
           "name": "GPT 5 Nano",
           "context_window": 400000,
           "default_max_tokens": 400000
-        },
-        {
-          "id": "opencode/grok-code",
-          "name": "Grok Code Fast 1",
-          "context_window": 256000,
-          "default_max_tokens": 256000
-        },
-        {
-          "id": "opencode/minimax-m2.1-free",
-          "name": "MiniMax M2.1",
-          "context_window": 256000,
-          "default_max_tokens": 256000
         }
       ]
     }
