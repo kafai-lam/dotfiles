@@ -1,4 +1,7 @@
-if (( ! $+commands[try] )); then return; fi
+if (( ! $+commands[try-rs] )); then return; fi
 
-eval "$(try init ~/Developer/tries)"
+export TRY_CONFIG_DIR="$XDG_CONFIG_HOME/try"
+export TRY_PATH="$HOME/Developer/tries"
+
+z4h source $TRY_CONFIG_DIR/try-rs.zsh
 
