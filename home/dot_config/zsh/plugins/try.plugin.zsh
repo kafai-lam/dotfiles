@@ -1,4 +1,4 @@
 if (( ! $+commands[try] )); then return; fi
 
-eval "$(try init ~/Tries)"
+eval "$(try init ~/Developer/tries)"
 
