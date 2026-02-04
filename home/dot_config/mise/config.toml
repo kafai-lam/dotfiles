@@ -13,3 +13,7 @@ idiomatic_version_file_enable_tools = ["python"]
 npm.package_manager = "bun"
 pipx.uvx = true
 python.uv_venv_auto = true
+
+[env]
+CFLAGS = "-I/opt/homebrew/opt/openssl@3/include"
+LDFLAGS = "-L/opt/homebrew/opt/openssl@3/lib -Wl,-no_warn_duplicate_libraries"
