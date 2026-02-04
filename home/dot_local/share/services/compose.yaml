@@ -1,0 +1,19 @@
+name: home
+services:
+  bifrost:
+    image: maximhq/bifrost
+    container_name: bifrost
+    restart: always
+    labels:
+      - dev.orbstack.domains=bifrost.orb.local
+    volumes:
+      - ./bifrost:/app/data
+    environment:
+      - MISTRAL_API_KEY
+      - OPENCODE_ZEN_API_KEY
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:8080 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 15s

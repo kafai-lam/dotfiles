@@ -1,32 +1,23 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "github",
+  "model": "kimi-k2.5-free",
+  "small_model": "bifrost/mistral/labs-devstral-small-2512",
+  "autoupdate": false,
   "provider": {
     "bifrost": {
       "name": "Bifrost",
       "npm": "@ai-sdk/openai-compatible",
       "options": {
-        "baseURL": "http://bifrost.orb.local/openai"
+        "baseURL": "http://bifrost.orb.local/openai",
       },
       "models": {
-        "opencode/grok-code": {
-          "name": "Grok Code"
-        },
-        "mistral/ministral-14b-latest": {
-          "name": "Ministral"
-        },
-        "mistral/mistral-large-latest": {
-          "name": "Mistral Large"
-        },
-        "mistral/codestral-latest": {
-          "name": "Codestral"
-        },
-        "mistral/devstral-2512": {
-          "name": "Devstral"
-        }
-      }
-    }
+        "mistral/codestral-latest": { "name": "Codestral" },
+        "mistral/devstral-2512": { "name": "Devstral 2" },
+        "mistral/labs-devstral-small-2512": { "name": "Devstral Small 2" },
+        "mistral/ministral-14b-latest": { "name": "Ministral" },
+        "mistral/mistral-large-latest": { "name": "Mistral Large 3" },
+      },
+    },
   },
-  "model": "bifrost/mistral/devstral-2512",
-  "autoupdate": false
 }

@@ -1,19 +1,39 @@
-- model_id: opencode/grok-code
-  model_name: opencode/grok-code
+- model_id: mistral/codestral-latest
+  model_name: mistral/codestral-latest
+  api_base: http://bifrost.orb.local/openai
+
+- model_id: mistral/devstral-2512
+  model_name: mistral/devstral-2512
+  api_base: http://bifrost.orb.local/openai
+
+- model_id: mistral/labs-devstral-small-2512
+  model_name: mistral/labs-devstral-small-2512
   api_base: http://bifrost.orb.local/openai
 
 - model_id: mistral/ministral-14b-latest
   model_name: mistral/ministral-14b-latest
   api_base: http://bifrost.orb.local/openai
 
-- model_id: mistral/codestral-latest
-  model_name: mistral/codestral-latest
-  api_base: http://bifrost.orb.local/openai
-
 - model_id: mistral/mistral-large-latest
   model_name: mistral/mistral-large-latest
   api_base: http://bifrost.orb.local/openai
 
-- model_id: mistral/devstral-2512
-  model_name: mistral/devstral-2512
+- model_id: opencode/big-pickle
+  model_name: opencode/big-pickle
+  api_base: http://bifrost.orb.local/openai
+
+- model_id: opencode/glm-4.7-free
+  model_name: opencode/glm-4.7-free
+  api_base: http://bifrost.orb.local/openai
+
+- model_id: opencode/gpt-5-nano
+  model_name: opencode/gpt-5-nano
+  api_base: http://bifrost.orb.local/openai
+
+- model_id: opencode/kimi-k2.5-free
+  model_name: opencode/kimi-k2.5-free
+  api_base: http://bifrost.orb.local/openai
+
+- model_id: opencode/minimax-m2.1-free
+  model_name: opencode/minimax-m2.1-free
   api_base: http://bifrost.orb.local/openai

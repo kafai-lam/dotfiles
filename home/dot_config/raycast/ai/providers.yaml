@@ -1,0 +1,155 @@
+providers:
+  - id: bifrost
+    name: Bifrost
+    base_url: https://bifrost.orb.local/openai
+    models:
+      - id: mistral/codestral-latest
+        name: Codestral
+        description: Code model from Mistral
+        context: 32768
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: mistral/devstral-2512
+        name: Devstral 2
+        description: Development model from Mistral
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: mistral/labs-devstral-small-2512
+        name: Devstral Small 2
+        description: Small development model from Mistral Labs
+        context: 128000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: mistral/ministral-14b-latest
+        name: Ministral 14B
+        description: 14B model from Mistral
+        context: 128000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: mistral/mistral-large-latest
+        name: Mistral Large
+        description: Large model from Mistral
+        context: 128000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: opencode/big-pickle
+        name: Big Pickle
+        description: Big Pickle from Opencode Zen
+        context: 200000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: opencode/gpt-5-nano
+        name: GPT-5 Nano
+        description: GPT-5 nano from Opencode Zen
+        context: 400000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: opencode/glm-4.7-free
+        name: GLM 4.7
+        description: GLM 4.7 from Opencode Zen
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: opencode/kimi-k2.5-free
+        name: Kimi K2.5
+        description: Kimi K2.5 from Opencode Zen
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: opencode/minimax-m2.1-free
+        name: MiniMax M2.1
+        description: MiniMax M2.1 from Opencode Zen
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false

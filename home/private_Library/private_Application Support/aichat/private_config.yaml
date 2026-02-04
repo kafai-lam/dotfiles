@@ -1,11 +1,16 @@
-model: Bifrost:mistral/devstral-2512
+model: Bifrost:mistral/mistral-large-latest
 clients:
   - type: openai-compatible
     name: Bifrost
     api_base: http://bifrost.orb.local/openai/v1
     models:
-      - name: opencode/grok-code
-      - name: mistral/ministral-14b-latest
       - name: mistral/codestral-latest
-      - name: mistral/mistral-large-latest
       - name: mistral/devstral-2512
+      - name: mistral/labs-devstral-small-2512
+      - name: mistral/ministral-14b-latest
+      - name: mistral/mistral-large-latest
+      - name: opencode/big-pickle
+      - name: opencode/glm-4.7-free
+      - name: opencode/gpt-5-nano
+      - name: opencode/kimi-k2.5-free
+      - name: opencode/minimax-m2.1-free
