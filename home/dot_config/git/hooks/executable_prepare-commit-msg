@@ -5,6 +5,7 @@ set -eo pipefail
 COMMIT_MSG_FILE=$1
 COMMIT_SOURCE=$2
 SHA1=$3
+RECENT_COMMIT_COUNT=5
 
 [[ "$COMMIT_SOURCE" == "template" ]] || exit 0
 
@@ -18,7 +19,6 @@ require() {
     die "missing dependency: $1"
   fi
 }
-
 require aichat
 require sed
 
@@ -30,14 +30,17 @@ Identify the primary purpose of the changes (e.g., new feature, bug fix, refacto
 Use provided instructions and extra context to guide your responses.
 
 Output requirements:
-- Output ONLY the commit message text (no quotes, no markdown).
-- Prefer a single subject line with no body for trivial change.
+- Limit the subject line to 50 characters
+- Wrap the body at 72 characters
+- Prefer a single subject line with no body for trivial change
+- For non-trivial changes, use the body to explain what and why, but not how
+- Output ONLY the commit message text (no quotes, no markdown)
 - Be concrete and specific to the diff; mention key modules/files when helpful
 EOF
 )
 
 
-recent_commits="$(git log -3 --pretty=format:'%B---' 2>/dev/null || true)"
+recent_commits="$(git log ---max-count=$RECENT_COMMIT_COUNT --pretty=format:'%B---' 2>/dev/null || true)"
 if [[ -z "$recent_commits" ]]; then
   recent_commits="(none)"
 fi
@@ -47,7 +50,7 @@ staged_diff="$(git diff --staged)"
 build_user_prompt() {
   cat <<EOF
 Current commit template as style guide:
-$(cat $COMMIT_MSG_FILE)
+$(sed -E 's/^# ?//' "$COMMIT_MSG_FILE")
 
 ---
 Git Staged diff:
