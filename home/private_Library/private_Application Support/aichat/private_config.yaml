@@ -1,4 +1,4 @@
-model: Bifrost:mistral/devstral-2512
+model: Bifrost:mistral/labs-devstral-small-2512
 clients:
   - type: openai-compatible
     name: Bifrost
