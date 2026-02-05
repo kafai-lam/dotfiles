@@ -4,7 +4,7 @@
       "Guid": "EDC9CC49-29A5-4B49-AFE6-396BC9CCA2D6",
       "Name": "default",
       "Description": "Default",
-      "Working Directory": "~/Developer",
+      "Working Directory": "~/Repositories",
       "Prompt Before Closing 2": false,
       "Selected Text Color": {
         "Red Component": 0,
@@ -139,7 +139,7 @@
         "Green Component": 0.9268307089805603
       },
       "BM Growl": true,
-      "AWDS Window Directory": "~/Developer",
+      "AWDS Window Directory": "~/Repositories",
       "Icon": 1,
       "Ansi 3 Color": {
         "Red Component": 1,
@@ -516,7 +516,7 @@
         "Alpha Component": 1,
         "Green Component": 1
       },
-      "AWDS Tab Directory": "~/Developer",
+      "AWDS Tab Directory": "~/Repositories",
       "AWDS Pane Option": "Recycle",
       "Command": "",
       "Terminal Type": "xterm-256color",
