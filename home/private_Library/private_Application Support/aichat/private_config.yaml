@@ -1,4 +1,4 @@
-model: Bifrost:mistral/mistral-large-latest
+model: Bifrost:mistral/devstral-2512
 clients:
   - type: openai-compatible
     name: Bifrost
@@ -9,6 +9,13 @@ clients:
       - name: mistral/labs-devstral-small-2512
       - name: mistral/ministral-14b-latest
       - name: mistral/mistral-large-latest
+      - name: nvidia/minimaxai/minimax-m2.1
+      - name: nvidia/moonshotai/kimi-k2.5
+      - name: nvidia/nvidia/nemotron-3-nano-30b-a3b
+      - name: nvidia/openai/gpt-oss-120b
+      - name: nvidia/openai/gpt-oss-20b
+      - name: nvidia/stepfun-ai/step-3.5-flash
+      - name: nvidia/z-ai/glm4.7
       - name: opencode/big-pickle
       - name: opencode/glm-4.7-free
       - name: opencode/gpt-5-nano

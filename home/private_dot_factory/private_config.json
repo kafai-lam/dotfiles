@@ -41,6 +41,62 @@
       "max_tokens": 256000
     },
     {
+      "model": "nvidia/minimaxai/minimax-m2.1",
+      "model_display_name": "Bifrost: MiniMax M2.1",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
+      "model": "nvidia/moonshotai/kimi-k2.5",
+      "model_display_name": "Bifrost: Kimi K2.5",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
+      "model": "nvidia/nvidia/nemotron-3-nano-30b-a3b",
+      "model_display_name": "Bifrost: Nemotron 3 Nano 30B A3B",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
+      "model": "nvidia/openai/gpt-oss-120b",
+      "model_display_name": "Bifrost: GPT-OSS 120B",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
+      "model": "nvidia/openai/gpt-oss-20b",
+      "model_display_name": "Bifrost: GPT-OSS 20B",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
+      "model": "nvidia/stepfun-ai/step-3.5-flash",
+      "model_display_name": "Bifrost: Step 3.5 Flash",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
+      "model": "nvidia/z-ai/glm4.7",
+      "model_display_name": "Bifrost: GLM 4.7",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
       "model": "opencode/big-pickle",
       "model_display_name": "Bifrost: Big Pickle",
       "provider": "generic-chat-completion-api",

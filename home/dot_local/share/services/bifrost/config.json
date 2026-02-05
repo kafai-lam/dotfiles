@@ -46,6 +46,51 @@
         }
       ]
     },
+    "nvidia": {
+      "custom_provider_config": {
+        "base_provider_type": "openai",
+        "allowed_requests": {
+          "list_models": true,
+          "text_completion": true,
+          "text_completion_stream": true,
+          "chat_completion": true,
+          "chat_completion_stream": true,
+          "responses": true,
+          "responses_stream": true,
+          "embedding": false,
+          "speech": false,
+          "speech_stream": false,
+          "transcription": false,
+          "transcription_stream": false
+        }
+      },
+      "network_config": {
+        "base_url": "https://integrate.api.nvidia.com",
+        "default_request_timeout_in_seconds": 120
+      },
+      "concurrency_and_buffer_size": {
+        "concurrency": 1,
+        "buffer_size": 1000
+      },
+      "send_back_raw_request": true,
+      "send_back_raw_response": true,
+      "keys": [
+        {
+          "name": "Nvidia Nim Free",
+          "value": "env.NVIDIA_NIM_API_KEY",
+          "models": [
+            "minimaxai/minimax-m2.1",
+            "moonshotai/kimi-k2.5",
+            "nvidia/nemotron-3-nano-30b-a3b",
+            "openai/gpt-oss-120b",
+            "openai/gpt-oss-20b",
+            "stepfun-ai/step-3.5-flash",
+            "z-ai/glm4.7"
+          ],
+          "weight": 1.0
+        }
+      ]
+    },
     "opencode": {
       "custom_provider_config": {
         "base_provider_type": "openai",

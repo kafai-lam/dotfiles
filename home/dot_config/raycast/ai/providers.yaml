@@ -78,6 +78,111 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
+      - id: nvidia/minimaxai/minimax-m2.1
+        name: MiniMax M2.1
+        description: MiniMax M2.1 from Nvidia NIM
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: nvidia/moonshotai/kimi-k2.5
+        name: Kimi K2.5
+        description: Kimi K2.5 from Nvidia NIM
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: nvidia/nvidia/nemotron-3-nano-30b-a3b
+        name: Nemotron 3 Nano 30B A3B
+        description: Nemotron 3 Nano 30B A3B from Nvidia NIM
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: nvidia/openai/gpt-oss-120b
+        name: GPT-OSS 120B
+        description: GPT-OSS 120B from Nvidia NIM
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: nvidia/openai/gpt-oss-20b
+        name: GPT-OSS 20B
+        description: GPT-OSS 20B from Nvidia NIM
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: nvidia/stepfun-ai/step-3.5-flash
+        name: Step 3.5 Flash
+        description: Step 3.5 Flash from Nvidia NIM
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: nvidia/z-ai/glm4.7
+        name: GLM 4.7
+        description: GLM 4.7 from Nvidia NIM
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
       - id: opencode/big-pickle
         name: Big Pickle
         description: Big Pickle from Opencode Zen

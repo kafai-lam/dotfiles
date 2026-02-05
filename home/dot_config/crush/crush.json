@@ -37,6 +37,48 @@
           "default_max_tokens": 256000
         },
         {
+          "id": "nvidia/minimaxai/minimax-m2.1",
+          "name": "MiniMax M2.1",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "nvidia/moonshotai/kimi-k2.5",
+          "name": "Kimi K2.5",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "nvidia/nvidia/nemotron-3-nano-30b-a3b",
+          "name": "Nemotron 3 Nano 30B A3B",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "nvidia/openai/gpt-oss-120b",
+          "name": "GPT-OSS 120B",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "nvidia/openai/gpt-oss-20b",
+          "name": "GPT-OSS 20B",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "nvidia/stepfun-ai/step-3.5-flash",
+          "name": "Step 3.5 Flash",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "nvidia/z-ai/glm4.7",
+          "name": "GLM 4.7",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
           "id": "opencode/big-pickle",
           "name": "Big Pickle",
           "context_window": 256000,
