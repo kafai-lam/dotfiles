@@ -1,4 +1,4 @@
-name: home
+name: homelab
 services:
   bifrost:
     image: maximhq/bifrost
