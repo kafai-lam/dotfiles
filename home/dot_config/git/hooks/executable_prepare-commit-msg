@@ -64,9 +64,9 @@ EOF
 
 generate_message() {
   if command -v gum >/dev/null 2>&1; then
-    build_user_prompt | gum spin --title "generating commit message..." -- aichat -S --prompt "$system_prompt"
+    build_user_prompt | gum spin --title "generating commit message..." -- aichat --no-stream --prompt "$system_prompt"
   else
-    build_user_prompt | aichat -S --prompt "$system_prompt"
+    build_user_prompt | aichat --no-stream --prompt "$system_prompt"
   fi
 }
 

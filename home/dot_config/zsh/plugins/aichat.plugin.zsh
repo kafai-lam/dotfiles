@@ -11,7 +11,7 @@ _aichat_zsh() {
   zle redisplay
 
   local _out
-  _out=$(gum spin --title "convert..." -- aichat -e "$_old")
+  _out=$(gum spin --title "convert..." -- aichat --execute "$_old")
 
   BUFFER=$_out
   zle end-of-line
