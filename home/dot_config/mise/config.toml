@@ -5,7 +5,6 @@ node = "lts"
 python = "3.12"
 rust = "stable"
 uv = "latest"
-"cargo:try-rs" = "latest"
 "npm:@qwen-code/qwen-code" = "latest"
 
 [settings]
