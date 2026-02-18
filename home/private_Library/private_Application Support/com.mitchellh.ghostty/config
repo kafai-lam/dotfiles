@@ -4,12 +4,16 @@
 # Additionally, each config option is also explained in detail
 # on Ghostty's website, at https://ghostty.org/docs/config.
 
+font-family = FiraCode Nerd Font Mono
+font-family = Menlo
+font-size = 12
+theme = GitHub Dark Default
+
+cursor-color = white
 cursor-style-blink = false
 focus-follows-mouse = true
-font-family = FiraCode Nerd Font Mono
-macos-option-as-alt = true
 quit-after-last-window-closed = true
-shell-integration-features = no-cursor,sudo,title
-theme = GitHub Dark Dimmed
-cursor-color = white
-font-size = 12
+shell-integration-features = no-cursor,sudo,title,ssh-terminfo,ssh-env
+
+macos-option-as-alt = true
+macos-titlebar-style = tabs
