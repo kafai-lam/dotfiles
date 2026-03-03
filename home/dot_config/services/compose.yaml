@@ -1,7 +1,7 @@
 name: homelab
 services:
   bifrost:
-    image: maximhq/bifrost
+    image: maximhq/bifrost:v1.3.63
     container_name: bifrost
     restart: always
     labels:
@@ -13,7 +13,8 @@ services:
       - OPENCODE_API_KEY
       - NVIDIA_API_KEY
     healthcheck:
-      test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:8080 || exit 1"]
+      test:
+        ["CMD-SHELL", "wget -q --spider http://127.0.0.1:8080/health || exit 1"]
       interval: 30s
       timeout: 5s
       retries: 5
