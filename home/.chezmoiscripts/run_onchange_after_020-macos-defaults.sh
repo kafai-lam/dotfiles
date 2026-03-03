@@ -18,10 +18,10 @@ defaults write com.apple.finder QuitMenuItem -bool true
 defaults write com.apple.finder ShowPathbar -bool true
 
 # Screenshot settings
-mkdir -p ~/Desktop/Screenshots
+mkdir -p ~/Pictures/Screenshots
 defaults write com.apple.screencapture "include-date" -bool "true"
 defaults write com.apple.screencapture disable-shadow -bool true
-defaults write com.apple.screencapture location -string "$HOME/Desktop/Screenshots"
+defaults write com.apple.screencapture location -string "$HOME/Pictures/Screenshots"
 defaults write com.apple.screencapture type -string "png"
 
 # Dock Preferences
