@@ -17,6 +17,7 @@ mkdir -p -- "$COMPDIR"
 (( $+commands[talosctl] )) && { (talosctl completion zsh > "$COMPDIR/_talosctl") 2>/dev/null || true; }
 (( $+commands[uv] )) && { (uv generate-shell-completion zsh > "$COMPDIR/_uv") 2>/dev/null || true; }
 (( $+commands[uvx] )) && { (uvx --generate-shell-completion zsh > "$COMPDIR/_uvx") 2>/dev/null || true; }
+(( $+commands[zb] )) && { (zb completion zsh > "$COMPDIR/_zb") 2>/dev/null || true; }
 
 if (( $+commands[ollama] )); then
   curl -sS https://gist.githubusercontent.com/obeone/9313811fd61a7cbb843e0001a4434c58/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh > "$COMPDIR/_ollama" 2>/dev/null || true
