@@ -76,16 +76,17 @@
       "send_back_raw_response": true,
       "keys": [
         {
-          "name": "Nvidia Nim Free",
-          "value": "env.NVIDIA_NIM_API_KEY",
+          "name": "Nvidia Nim",
+          "value": "env.NVIDIA_API_KEY",
           "models": [
-            "minimaxai/minimax-m2.1",
+            "minimaxai/minimax-m2.5",
             "moonshotai/kimi-k2.5",
             "nvidia/nemotron-3-nano-30b-a3b",
             "openai/gpt-oss-120b",
             "openai/gpt-oss-20b",
+            "qwen/qwen3.5-397b-a17b",
             "stepfun-ai/step-3.5-flash",
-            "z-ai/glm4.7"
+            "z-ai/glm5"
           ],
           "weight": 1.0
         }
@@ -121,15 +122,9 @@
       "send_back_raw_response": true,
       "keys": [
         {
-          "name": "Zen Free",
-          "value": "env.OPENCODE_ZEN_API_KEY",
-          "models": [
-            "big-pickle",
-            "glm-4.7-free",
-            "gpt-5-nano",
-            "kimi-k2.5-free",
-            "minimax-m2.1-free"
-          ],
+          "name": "Zen",
+          "value": "env.OPENCODE_API_KEY",
+          "models": ["big-pickle", "gpt-5-nano", "minimax-m2.5-free"],
           "weight": 1.0
         }
       ]

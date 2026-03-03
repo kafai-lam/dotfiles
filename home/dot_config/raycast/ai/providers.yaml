@@ -1,7 +1,7 @@
 providers:
   - id: bifrost
     name: Bifrost
-    base_url: https://bifrost.orb.local/openai
+    base_url: http://bifrost.orb.local/openai
     models:
       - id: mistral/codestral-latest
         name: Codestral
@@ -78,9 +78,9 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
-      - id: nvidia/minimaxai/minimax-m2.1
-        name: MiniMax M2.1
-        description: MiniMax M2.1 from Nvidia NIM
+      - id: nvidia/minimaxai/minimax-m2.5
+        name: MiniMax M2.5
+        description: MiniMax M2.5 from Nvidia NIM
         context: 256000
         abilities:
           temperature:
@@ -168,9 +168,24 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
-      - id: nvidia/z-ai/glm4.7
-        name: GLM 4.7
-        description: GLM 4.7 from Nvidia NIM
+      - id: nvidia/qwen/qwen3.5-397b-a17b
+        name: Qwen 3.5 397B A17B
+        description: Qwen 3.5 397B A17B from Nvidia NIM
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: nvidia/z-ai/glm5
+        name: GLM 5
+        description: GLM 5 from Nvidia NIM
         context: 256000
         abilities:
           temperature:
@@ -213,39 +228,9 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
-      - id: opencode/glm-4.7-free
-        name: GLM 4.7
-        description: GLM 4.7 from Opencode Zen
-        context: 256000
-        abilities:
-          temperature:
-            supported: true
-          vision:
-            supported: false
-          system_message:
-            supported: true
-          tools:
-            supported: true
-          reasoning_effort:
-            supported: false
-      - id: opencode/kimi-k2.5-free
-        name: Kimi K2.5
-        description: Kimi K2.5 from Opencode Zen
-        context: 256000
-        abilities:
-          temperature:
-            supported: true
-          vision:
-            supported: false
-          system_message:
-            supported: true
-          tools:
-            supported: true
-          reasoning_effort:
-            supported: false
-      - id: opencode/minimax-m2.1-free
-        name: MiniMax M2.1
-        description: MiniMax M2.1 from Opencode Zen
+      - id: opencode/minimax-m2.5-free
+        name: MiniMax M2.5
+        description: MiniMax M2.5 from Opencode Zen
         context: 256000
         abilities:
           temperature:

@@ -37,8 +37,8 @@
           "default_max_tokens": 256000
         },
         {
-          "id": "nvidia/minimaxai/minimax-m2.1",
-          "name": "MiniMax M2.1",
+          "id": "nvidia/minimaxai/minimax-m2.5",
+          "name": "MiniMax M2.5",
           "context_window": 256000,
           "default_max_tokens": 256000
         },
@@ -73,8 +73,14 @@
           "default_max_tokens": 256000
         },
         {
-          "id": "nvidia/z-ai/glm4.7",
-          "name": "GLM 4.7",
+          "id": "nvidia/qwen/qwen3.5-397b-a17b",
+          "name": "Qwen 3.5 397B A17B",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "nvidia/z-ai/glm5",
+          "name": "GLM 5",
           "context_window": 256000,
           "default_max_tokens": 256000
         },
@@ -91,20 +97,8 @@
           "default_max_tokens": 400000
         },
         {
-          "id": "opencode/glm-4.7-free",
-          "name": "GLM 4.7",
-          "context_window": 256000,
-          "default_max_tokens": 256000
-        },
-        {
-          "id": "opencode/kimi-k2.5-free",
-          "name": "Kimi K2.5",
-          "context_window": 256000,
-          "default_max_tokens": 256000
-        },
-        {
-          "id": "opencode/minimax-m2.1-free",
-          "name": "MiniMax M2.1",
+          "id": "opencode/minimax-m2.5-free",
+          "name": "MiniMax M2.5",
           "context_window": 256000,
           "default_max_tokens": 256000
         }

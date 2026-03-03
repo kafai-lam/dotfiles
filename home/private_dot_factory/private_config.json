@@ -41,8 +41,8 @@
       "max_tokens": 256000
     },
     {
-      "model": "nvidia/minimaxai/minimax-m2.1",
-      "model_display_name": "Bifrost: MiniMax M2.1",
+      "model": "nvidia/minimaxai/minimax-m2.5",
+      "model_display_name": "Bifrost: MiniMax M2.5",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -89,8 +89,16 @@
       "max_tokens": 256000
     },
     {
-      "model": "nvidia/z-ai/glm4.7",
-      "model_display_name": "Bifrost: GLM 4.7",
+      "model": "nvidia/qwen/qwen3.5-397b-a17b",
+      "model_display_name": "Bifrost: Qwen 3.5 397B A17B",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
+      "model": "nvidia/z-ai/glm5",
+      "model_display_name": "Bifrost: GLM 5",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -105,14 +113,6 @@
       "max_tokens": 256000
     },
     {
-      "model": "opencode/glm-4.7-free",
-      "model_display_name": "Bifrost: GLM 4.7",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
-      "api_key": "dummy",
-      "max_tokens": 256000
-    },
-    {
       "model": "opencode/gpt-5-nano",
       "model_display_name": "Bifrost: GPT 5 Nano",
       "provider": "generic-chat-completion-api",
@@ -121,16 +121,8 @@
       "max_tokens": 400000
     },
     {
-      "model": "opencode/kimi-k2.5-free",
-      "model_display_name": "Bifrost: Kimi K2.5",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
-      "api_key": "dummy",
-      "max_tokens": 256000
-    },
-    {
-      "model": "opencode/minimax-m2.1-free",
-      "model_display_name": "Bifrost: MiniMax M2.1",
+      "model": "opencode/minimax-m2.5-free",
+      "model_display_name": "Bifrost: MiniMax M2.5 (Zen)",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
