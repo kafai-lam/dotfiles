@@ -1,0 +1,18 @@
+[tools]
+chezmoi = "latest"
+
+[tasks.sync]
+description = "Sync All"
+depends = "sync:*"
+
+[tasks."sync:gh"]
+description = "Sync Github Extensions"
+run = "gh extension upgrade --all"
+
+[tasks."sync:docker"]
+description = "Sync Docker Images"
+run = [
+  "orbctl start",
+  "docker compose --project-name homelab --file ~/.config/services/compose.yaml pull",
+  "docker compose --project-name homelab --file ~/.config/services/compose.yaml up --detach --force-recreate"
+]
