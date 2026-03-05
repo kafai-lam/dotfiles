@@ -7,6 +7,7 @@ alias config="$EDITOR $XDG_CONFIG_HOME"
 (( $+commands[nvim] )) && alias vim="nvim"
 (( $+commands[terraform] )) && alias tf="terraform"
 (( $+commands[yazi] )) && alias y="yazi"
+(( $+commands[try-rs] )) && alias try="try-rs"
 
 if (( $+commands[bat] )); then
   alias cat="bat"
