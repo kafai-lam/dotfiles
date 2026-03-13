@@ -15,11 +15,9 @@ elif (( $+commands[batcat] )); then
   alias cat="batcat"
 fi
 
-if (( $+commands[chezmoi] )); then
-  alias ch="chezmoi"
-  alias chcd="cd $(chezmoi source-path)"
-  alias ched="$EDITOR $(chezmoi source-path)"
-fi
+alias ch="chezmoi"
+alias chcd="cd $XDG_DATA_HOME/chezmoi"
+alias ched="$EDITOR $XDG_DATA_HOME/chezmoi"
 
 # Define functions and completions.
 md() {

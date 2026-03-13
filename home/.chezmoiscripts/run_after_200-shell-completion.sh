@@ -4,6 +4,7 @@
 COMPDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/completions"
 mkdir -p -- "$COMPDIR"
 
+(( $+commands[chezmoi] )) && { (chezmoi completion zsh > "$COMPDIR/_chezmoi") 2>/dev/null || true; }
 (( $+commands[claude-squad] )) && { (claude-squad completion zsh > "$COMPDIR/_claude-squad") 2>/dev/null || true; }
 (( $+commands[codex] )) && { (codex completion zsh > "$COMPDIR/_codex") 2>/dev/null || true; }
 (( $+commands[gitsnip] )) && { (gitsnip completion zsh > "$COMPDIR/_gitsnip") 2>/dev/null || true; }
