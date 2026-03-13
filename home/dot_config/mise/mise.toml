@@ -1,5 +1,6 @@
 [tools]
 bun = "latest"
+chezmoi = "latest"
 node = "lts"
 python = "3.12"
 rust = "stable"
