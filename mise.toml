@@ -1,0 +1,18 @@
+[tools]
+chezmoi = "latest"
+
+[tasks.pull]
+description = "Pull All"
+depends = "pull:*"
+
+[tasks."pull:ghext"]
+description = "Pull Github Extensions"
+run = "gh extension upgrade --all"
+
+[tasks."pull:docker"]
+description = "Pull Docker Images"
+run = [
+  "orbctl start",
+  "docker compose --project-name homelab --file ~/.config/services/compose.yaml pull",
+  "docker compose --project-name homelab --file ~/.config/services/compose.yaml up --detach --force-recreate"
+]

@@ -22,4 +22,3 @@ mkdir -p -- "$COMPDIR"
 if (( $+commands[ollama] )); then
   curl -sS https://gist.githubusercontent.com/obeone/9313811fd61a7cbb843e0001a4434c58/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh > "$COMPDIR/_ollama" 2>/dev/null || true
 fi
-
