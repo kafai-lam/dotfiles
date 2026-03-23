@@ -39,7 +39,7 @@
             "codestral-latest",
             "devstral-2512",
             "labs-devstral-small-2512",
-            "ministral-14b-latest",
+            "mistral-small-2603",
             "mistral-large-latest"
           ],
           "weight": 1.0
@@ -81,9 +81,8 @@
           "models": [
             "minimaxai/minimax-m2.5",
             "moonshotai/kimi-k2.5",
-            "nvidia/nemotron-3-nano-30b-a3b",
+            "nvidia/nemotron-3-super-120b-a12b",
             "openai/gpt-oss-120b",
-            "openai/gpt-oss-20b",
             "qwen/qwen3.5-397b-a17b",
             "stepfun-ai/step-3.5-flash",
             "z-ai/glm5"
@@ -124,7 +123,16 @@
         {
           "name": "Zen",
           "value": "env.OPENCODE_API_KEY",
-          "models": ["big-pickle", "gpt-5-nano", "minimax-m2.5-free"],
+          "models": [
+            "big-pickle",
+            "gpt-5-nano",
+            "minimax-m2.5-free",
+            "mimo-v2-pro-free",
+            "mimo-v2-omni-free",
+            "mimo-v2-flash-free",
+            "trinity-large-preview-free",
+            "nemotron-3-super-free"
+          ],
           "weight": 1.0
         }
       ]

@@ -25,8 +25,8 @@
       "max_tokens": 256000
     },
     {
-      "model": "mistral/ministral-14b-latest",
-      "model_display_name": "Bifrost: Ministral",
+      "model": "mistral/mistral-small-2603",
+      "model_display_name": "Bifrost: Mistral Small 4",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -57,24 +57,16 @@
       "max_tokens": 256000
     },
     {
-      "model": "nvidia/nvidia/nemotron-3-nano-30b-a3b",
-      "model_display_name": "Bifrost: Nemotron 3 Nano 30B A3B",
+      "model": "nvidia/nvidia/nemotron-3-super-120b-a12b",
+      "model_display_name": "Bifrost: Nemotron 3 Super 120B A12B",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
-      "max_tokens": 256000
+      "max_tokens": 1000000
     },
     {
       "model": "nvidia/openai/gpt-oss-120b",
       "model_display_name": "Bifrost: GPT-OSS 120B",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
-      "api_key": "dummy",
-      "max_tokens": 256000
-    },
-    {
-      "model": "nvidia/openai/gpt-oss-20b",
-      "model_display_name": "Bifrost: GPT-OSS 20B",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -127,6 +119,46 @@
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
       "max_tokens": 256000
+    },
+    {
+      "model": "opencode/mimo-v2-pro-free",
+      "model_display_name": "Bifrost: MiMo V2 Pro",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
+      "model": "opencode/mimo-v2-omni-free",
+      "model_display_name": "Bifrost: MiMo V2 Omni",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
+      "model": "opencode/mimo-v2-flash-free",
+      "model_display_name": "Bifrost: MiMo V2 Flash",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
+      "model": "opencode/trinity-large-preview-free",
+      "model_display_name": "Bifrost: Trinity Large Preview",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 512000
+    },
+    {
+      "model": "opencode/nemotron-3-super-free",
+      "model_display_name": "Bifrost: Nemotron 3 Super",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 1000000
     }
   ]
 }

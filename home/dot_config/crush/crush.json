@@ -25,8 +25,8 @@
           "default_max_tokens": 256000
         },
         {
-          "id": "mistral/ministral-14b-latest",
-          "name": "Ministral 14B",
+          "id": "mistral/mistral-small-2603",
+          "name": "Mistral Small 4",
           "context_window": 256000,
           "default_max_tokens": 256000
         },
@@ -49,20 +49,14 @@
           "default_max_tokens": 256000
         },
         {
-          "id": "nvidia/nvidia/nemotron-3-nano-30b-a3b",
-          "name": "Nemotron 3 Nano 30B A3B",
-          "context_window": 256000,
-          "default_max_tokens": 256000
+          "id": "nvidia/nvidia/nemotron-3-super-120b-a12b",
+          "name": "Nemotron 3 Super 120B A12B",
+          "context_window": 1000000,
+          "default_max_tokens": 1000000
         },
         {
           "id": "nvidia/openai/gpt-oss-120b",
           "name": "GPT-OSS 120B",
-          "context_window": 256000,
-          "default_max_tokens": 256000
-        },
-        {
-          "id": "nvidia/openai/gpt-oss-20b",
-          "name": "GPT-OSS 20B",
           "context_window": 256000,
           "default_max_tokens": 256000
         },
@@ -101,6 +95,36 @@
           "name": "MiniMax M2.5",
           "context_window": 256000,
           "default_max_tokens": 256000
+        },
+        {
+          "id": "opencode/mimo-v2-pro-free",
+          "name": "MiMo V2 Pro",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "opencode/mimo-v2-omni-free",
+          "name": "MiMo V2 Omni",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "opencode/mimo-v2-flash-free",
+          "name": "MiMo V2 Flash",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
+          "id": "opencode/trinity-large-preview-free",
+          "name": "Trinity Large Preview",
+          "context_window": 512000,
+          "default_max_tokens": 512000
+        },
+        {
+          "id": "opencode/nemotron-3-super-free",
+          "name": "Nemotron 3 Super",
+          "context_window": 1000000,
+          "default_max_tokens": 1000000
         }
       ]
     }

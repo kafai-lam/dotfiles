@@ -48,10 +48,10 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
-      - id: mistral/ministral-14b-latest
-        name: Ministral 14B
-        description: 14B model from Mistral
-        context: 128000
+      - id: mistral/mistral-small-2603
+        name: Mistral Small 4
+        description: Small model from Mistral
+        context: 256000
         abilities:
           temperature:
             supported: true
@@ -108,10 +108,10 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
-      - id: nvidia/nvidia/nemotron-3-nano-30b-a3b
-        name: Nemotron 3 Nano 30B A3B
-        description: Nemotron 3 Nano 30B A3B from Nvidia NIM
-        context: 256000
+      - id: nvidia/nvidia/nemotron-3-super-120b-a12b
+        name: Nemotron 3 Super 120B A12B
+        description: Nemotron 3 Super 120B A12B from Nvidia NIM
+        context: 1000000
         abilities:
           temperature:
             supported: true
@@ -126,21 +126,6 @@ providers:
       - id: nvidia/openai/gpt-oss-120b
         name: GPT-OSS 120B
         description: GPT-OSS 120B from Nvidia NIM
-        context: 256000
-        abilities:
-          temperature:
-            supported: true
-          vision:
-            supported: false
-          system_message:
-            supported: true
-          tools:
-            supported: true
-          reasoning_effort:
-            supported: false
-      - id: nvidia/openai/gpt-oss-20b
-        name: GPT-OSS 20B
-        description: GPT-OSS 20B from Nvidia NIM
         context: 256000
         abilities:
           temperature:
@@ -232,6 +217,81 @@ providers:
         name: MiniMax M2.5
         description: MiniMax M2.5 from Opencode Zen
         context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: opencode/mimo-v2-pro-free
+        name: MiMo V2 Pro
+        description: MiMo V2 Pro from Opencode Zen
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: opencode/mimo-v2-omni-free
+        name: MiMo V2 Omni
+        description: MiMo V2 Omni from Opencode Zen
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: opencode/mimo-v2-flash-free
+        name: MiMo V2 Flash
+        description: MiMo V2 Flash from Opencode Zen
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: opencode/trinity-large-preview-free
+        name: Trinity Large Preview
+        description: Trinity Large Preview from Opencode Zen
+        context: 512000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: opencode/nemotron-3-super-free
+        name: Nemotron 3 Super
+        description: Nemotron 3 Super from Opencode Zen
+        context: 1000000
         abilities:
           temperature:
             supported: true

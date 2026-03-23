@@ -10,8 +10,8 @@
   model_name: mistral/labs-devstral-small-2512
   api_base: http://bifrost.orb.local/openai
 
-- model_id: mistral/ministral-14b-latest
-  model_name: mistral/ministral-14b-latest
+- model_id: mistral/mistral-small-2603
+  model_name: mistral/mistral-small-2603
   api_base: http://bifrost.orb.local/openai
 
 - model_id: mistral/mistral-large-latest
@@ -26,16 +26,12 @@
   model_name: nvidia/moonshotai/kimi-k2.5
   api_base: http://bifrost.orb.local/openai
 
-- model_id: nvidia/nvidia/nemotron-3-nano-30b-a3b
-  model_name: nvidia/nvidia/nemotron-3-nano-30b-a3b
+- model_id: nvidia/nvidia/nemotron-3-super-120b-a12b
+  model_name: nvidia/nvidia/nemotron-3-super-120b-a12b
   api_base: http://bifrost.orb.local/openai
 
 - model_id: nvidia/openai/gpt-oss-120b
   model_name: nvidia/openai/gpt-oss-120b
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: nvidia/openai/gpt-oss-20b
-  model_name: nvidia/openai/gpt-oss-20b
   api_base: http://bifrost.orb.local/openai
 
 - model_id: nvidia/stepfun-ai/step-3.5-flash
@@ -60,4 +56,24 @@
 
 - model_id: opencode/minimax-m2.5-free
   model_name: opencode/minimax-m2.5-free
+  api_base: http://bifrost.orb.local/openai
+
+- model_id: opencode/mimo-v2-pro-free
+  model_name: opencode/mimo-v2-pro-free
+  api_base: http://bifrost.orb.local/openai
+
+- model_id: opencode/mimo-v2-omni-free
+  model_name: opencode/mimo-v2-omni-free
+  api_base: http://bifrost.orb.local/openai
+
+- model_id: opencode/mimo-v2-flash-free
+  model_name: opencode/mimo-v2-flash-free
+  api_base: http://bifrost.orb.local/openai
+
+- model_id: opencode/trinity-large-preview-free
+  model_name: opencode/trinity-large-preview-free
+  api_base: http://bifrost.orb.local/openai
+
+- model_id: opencode/nemotron-3-super-free
+  model_name: opencode/nemotron-3-super-free
   api_base: http://bifrost.orb.local/openai
