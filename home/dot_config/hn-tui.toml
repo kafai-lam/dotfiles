@@ -1,0 +1,42 @@
+[theme.palette]
+background = "#22272e"
+foreground = "#adbac7"
+selection_background = "#373e47"
+selection_foreground = "#cdd9e5"
+black = "#545d68"
+blue = "#539bf5"
+cyan = "#39c5cf"
+green = "#57ab5a"
+magenta = "#b083f0"
+red = "#f47067"
+white = "#909dab"
+yellow = "#c69026"
+light_black = "#636e7b"
+light_white = "#cdd9e5"
+light_red = "#ff938a"
+light_magenta = "#dcbdfb"
+light_green = "#6bc46d"
+light_cyan = "#56d4dd"
+light_blue = "#6cb6ff"
+light_yellow = "#daaa3f"
+
+[theme.component_style]
+title_bar = { front = "#cdd9e5", back = "#2d333b", effect = "bold" }
+matched_highlight = { front = "#fbe090", back = "#966600" }
+metadata = { front = "#768390" }
+username = { front = "#539bf5", effect = "bold" }
+loading_bar = { front = "light white", back = "blue" }
+header = { front = "light white", effect = "bold" }
+quote = { front = "#768390", effect = "italic" }
+italic = { effect = "italic" }
+bold = { effect = "bold" }
+single_code_block = { front = "#adbac7", back = "#2d333b" }
+multiline_code_block = { front = "#909dab", back = "#1c2128" }
+link = { front = "#539bf5" }
+link_id = { front = "#fbe090", back = "#593600" }
+current_story_tag = { front = "light white", effect = "bold" }
+ask_hn = { front = "#f47067", effect = "bold" }
+tell_hn = { front = "#c69026", effect = "bold" }
+show_hn = { front = "#539bf5", effect = "bold" }
+launch_hn = { front = "#57ab5a", effect = "bold" }
+
