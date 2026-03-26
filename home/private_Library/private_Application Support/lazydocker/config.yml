@@ -10,4 +10,4 @@ customCommands:
       command: "docker exec -it {{ .Container.ID }} /bin/bash"
     - name: mise
       attach: true
-      command: 'docker exec -it {{ .Container.ID }} /bin/bash -c "mise en -s /bin/bash"'
+      command: 'docker exec -it {{ .Container.ID }} mise en --shell bash'
