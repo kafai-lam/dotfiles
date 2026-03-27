@@ -1,7 +1,7 @@
 [tools]
 bun = "latest"
 chezmoi = "latest"
-node = "lts"
+node = "24"
 python = "3.12"
 rust = "stable"
 uv = "latest"
