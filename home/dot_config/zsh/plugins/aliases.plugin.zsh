@@ -18,6 +18,7 @@ fi
 alias ch="chezmoi"
 alias chcd="cd $XDG_DATA_HOME/chezmoi"
 alias ched="$EDITOR $XDG_DATA_HOME/chezmoi"
+alias chup="chezmoi update"
 
 # Define functions and completions.
 md() {
