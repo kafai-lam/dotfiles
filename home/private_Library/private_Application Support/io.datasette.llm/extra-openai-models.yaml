@@ -46,32 +46,8 @@
   model_name: nvidia/z-ai/glm5
   api_base: http://bifrost.orb.local/openai
 
-- model_id: opencode/big-pickle
-  model_name: opencode/big-pickle
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: opencode/gpt-5-nano
-  model_name: opencode/gpt-5-nano
-  api_base: http://bifrost.orb.local/openai
-
 - model_id: opencode/minimax-m2.5-free
   model_name: opencode/minimax-m2.5-free
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: opencode/mimo-v2-pro-free
-  model_name: opencode/mimo-v2-pro-free
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: opencode/mimo-v2-omni-free
-  model_name: opencode/mimo-v2-omni-free
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: opencode/mimo-v2-flash-free
-  model_name: opencode/mimo-v2-flash-free
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: opencode/trinity-large-preview-free
-  model_name: opencode/trinity-large-preview-free
   api_base: http://bifrost.orb.local/openai
 
 - model_id: opencode/nemotron-3-super-free

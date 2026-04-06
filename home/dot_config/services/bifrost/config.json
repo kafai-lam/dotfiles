@@ -124,13 +124,7 @@
           "name": "Zen",
           "value": "env.OPENCODE_API_KEY",
           "models": [
-            "big-pickle",
-            "gpt-5-nano",
             "minimax-m2.5-free",
-            "mimo-v2-pro-free",
-            "mimo-v2-omni-free",
-            "mimo-v2-flash-free",
-            "trinity-large-preview-free",
             "nemotron-3-super-free"
           ],
           "weight": 1.0

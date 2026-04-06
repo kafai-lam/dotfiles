@@ -79,46 +79,10 @@
           "default_max_tokens": 256000
         },
         {
-          "id": "opencode/big-pickle",
-          "name": "Big Pickle",
-          "context_window": 256000,
-          "default_max_tokens": 256000
-        },
-        {
-          "id": "opencode/gpt-5-nano",
-          "name": "GPT 5 Nano",
-          "context_window": 400000,
-          "default_max_tokens": 400000
-        },
-        {
           "id": "opencode/minimax-m2.5-free",
           "name": "MiniMax M2.5",
           "context_window": 256000,
           "default_max_tokens": 256000
-        },
-        {
-          "id": "opencode/mimo-v2-pro-free",
-          "name": "MiMo V2 Pro",
-          "context_window": 256000,
-          "default_max_tokens": 256000
-        },
-        {
-          "id": "opencode/mimo-v2-omni-free",
-          "name": "MiMo V2 Omni",
-          "context_window": 256000,
-          "default_max_tokens": 256000
-        },
-        {
-          "id": "opencode/mimo-v2-flash-free",
-          "name": "MiMo V2 Flash",
-          "context_window": 256000,
-          "default_max_tokens": 256000
-        },
-        {
-          "id": "opencode/trinity-large-preview-free",
-          "name": "Trinity Large Preview",
-          "context_window": 512000,
-          "default_max_tokens": 512000
         },
         {
           "id": "opencode/nemotron-3-super-free",
