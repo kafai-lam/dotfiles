@@ -1,4 +1,4 @@
-#compdef odoo odoo-bin
+#compdef odoo odoo
 
 typeset -ga _odoo_cli_commands=(
   'cloc:Count lines of code per modules'
@@ -6,14 +6,16 @@ typeset -ga _odoo_cli_commands=(
   'deploy:Deploy a module on an Odoo instance'
   'genproxytoken:Generate and (re)set proxy access token in config file'
   'help:Display the list of available commands'
+  'i18n:Import, export, setup languages and internationalization files'
+  'module:Manage modules, install demo data'
   'neutralize:Neutralize a production database for testing'
   'obfuscate:Obfuscate data in a given odoo database'
-  'populate:Inject fake data inside a database for testing'
+  'populate:Populate database data for testing/demo purposes'
   'scaffold:Generates an Odoo module skeleton.'
   'server:Start the odoo server (default command)'
   'shell:Start odoo in an interactive shell'
   'start:Quickly start the odoo server with default options'
-  'tsconfig:Generates tsconfig files for javascript code'
+  'upgrade_code:Rewrite source code using upgrade scripts'
 )
 
 typeset -ga _odoo_scaffold_templates=(
@@ -25,35 +27,41 @@ typeset -ga _odoo_scaffold_templates=(
 typeset -ga _odoo_server_options=(
   '(-h --help)'{-h,--help}'[Show help text]'
   '--version[Show Odoo version]'
-  '(-d --database)'{-d,--database}'[Specify database(s) to use]:database:_files'
+  '(-d --database)'{-d,--database}'[Specify database(s) to use]:database:'
   '(-i --init)'{-i,--init}'[Modules to install]:modules:'
   '(-u --update)'{-u,--update}'[Modules to update]:modules:'
+  '--reinit[Modules to reinitialize]:modules:'
+  '--with-demo[Install demo data in new databases]'
+  '--without-demo[Disable demo data in new databases]:bool:(0 1 true false yes no)'
+  '--skip-auto-install[Skip auto-install modules]'
+  '(-P --import-partial)'{-P,--import-partial}'[Store import progress in file]:state file:_files'
   '--addons-path[Directories to scan for modules]:directories:_files -/'
   '--upgrade-path[Additional upgrade path]:path:_files -/'
+  '--pre-upgrade-scripts[Upgrade scripts to run before loading modules]:path:_files -/'
   '--load[Server-wide modules to load]:modules:'
   '(-c --config)'{-c,--config}'[Path to alternate config file]:config file:_files'
   '(-D --data-dir)'{-D,--data-dir}'[Directory to store Odoo data]:directory:_files -/'
   '(-s --save)'{-s,--save}'[Save server configuration]'
-  '--without-demo[Disable demo data loading]:modules:'
   '--pidfile[Path to store server pid]:pidfile:_files'
-  '--stop-after-init[Stop server after initialization]'
-  '--geoip-city-db[Path to GeoIP City database]:file:_files'
-  '--geoip-country-db[Path to GeoIP Country database]:file:_files'
   '--test-enable[Run tests after module installation]'
   '--test-file[Run a python test file]:file:_files -g "*.py"'
-  '--test-tags[Filter which tests to execute]:tags:'
+  '(-t --test-tags)'{-t,--test-tags}'[Filter which tests to execute]:tags:'
   '--screenshots[Directory to write test screenshots]:directory:_files -/'
   '--screencasts[Directory to write test screencasts]:directory:_files -/'
   '(-r --db_user)'{-r,--db_user}'[Database username]:username:'
   '(-w --db_password)'{-w,--db_password}'[Database password]:password:'
   '--db_host[Database host]:hostname:_hosts'
+  '--db_replica_host[Replica database host]:hostname:_hosts'
   '--db_port[Database port]:port:'
+  '--db_replica_port[Replica database port]:port:'
   '--db-filter[Hide databases not matching filter]:filter:'
   '--db-template[Template for new databases]:template:'
   '--pg_path[Path to PostgreSQL binaries]:path:_files -/'
   '--no-database-list[Suppress database listing]'
   '--db_sslmode[PostgreSQL SSL mode]:mode:(disable allow prefer require verify-ca verify-full)'
-  '--unaccent[Enable unaccent extension for new databases]'
+  '--db_app_name[Application name used for database connections]:name:'
+  '--db_maxconn[Maximum database connections]:count:'
+  '--db_maxconn_gevent[Maximum gevent database connections]:count:'
   '--email-from[Email address for FROM field]:email:'
   '--from-filter[Email address or domain for SMTP filter]:filter:'
   '--smtp[SMTP server address]:server:_hosts'
@@ -64,12 +72,8 @@ typeset -ga _odoo_server_options=(
   '--smtp-ssl-certificate-filename[Path to SSL certificate]:file:_files'
   '--smtp-ssl-private-key-filename[Path to SSL private key]:file:_files'
   '--load-language[Languages to load]:languages:'
-  '(-l --language)'{-l,--language}'[Language for translation file]:language:'
-  '--i18n-export[Export translations to file]:file:_files'
-  '--i18n-import[Import translations from file]:file:_files'
   '--i18n-overwrite[Overwrite existing translations]'
-  '--modules[Specify modules to export]:modules:'
-  '--dev[Enable developer features]:features:_values -s , features all xml reload qweb "(i)p(u)db" werkzeug'
+  '--dev[Enable developer features]:features:_values -s , features all access qweb reload replica werkzeug xml'
   '--no-http[Do not start HTTP workers]'
   '--http-interface[HTTP server interface]:interface:_ip_addresses'
   '(-p --http-port)'{-p,--http-port}'[HTTP server port]:port:'
@@ -79,11 +83,29 @@ typeset -ga _odoo_server_options=(
   '--logfile[Log to file instead of stderr]:file:_files'
   '--syslog[Log to syslog]'
   '--log-db[Log to database]:database:'
+  '--log-db-level[Logging database level]:level:(debug info warning error critical)'
   '--log-handler[Configure a log handler]:spec:'
   '--log-web[Enable DEBUG logging of HTTP requests]'
   '--log-sql[Enable DEBUG logging of SQL queries]'
-  '--log-level[Set logging level]:level:(critical error warn debug debug_sql debug_rpc debug_rpc_answer)'
+  '--log-level[Set logging level]:level:(critical error warn info debug debug_sql debug_rpc debug_rpc_answer test runbot notset)'
   '--workers[Number of workers to use]:count:'
+  '--limit-memory-soft[Soft memory limit per worker in bytes]:bytes:'
+  '--limit-memory-soft-gevent[Soft memory limit per gevent worker in bytes]:bytes:'
+  '--limit-memory-hard[Hard memory limit per worker in bytes]:bytes:'
+  '--limit-memory-hard-gevent[Hard memory limit per gevent worker in bytes]:bytes:'
+  '--limit-time-cpu[CPU time limit per request in seconds]:seconds:'
+  '--limit-time-real[Real time limit per request in seconds]:seconds:'
+  '--limit-time-real-cron[Real time limit per cron in seconds]:seconds:'
+  '--limit-request[Maximum requests per worker]:count:'
+  '--stop-after-init[Stop server after initialization]'
+  '--osv-memory-count-limit[Max records kept in osv_memory tables]:count:'
+  '--transient-age-limit[Transient model retention in hours]:hours:'
+  '--max-cron-threads[Max concurrent cron worker threads]:count:'
+  '--limit-time-worker-cron[Max cron worker lifetime in seconds]:seconds:'
+  '--unaccent[Enable unaccent extension for new databases]'
+  '--geoip-city-db[Path to GeoIP city database]:file:_files'
+  '--geoip-db[Path to GeoIP city database (alias)]:file:_files'
+  '--geoip-country-db[Path to GeoIP country database]:file:_files'
 )
 
 _odoo_complete_server_like() {
@@ -95,23 +117,19 @@ _odoo_complete_server_like() {
 _odoo_complete_start() {
   local curcontext="$curcontext" state line
   typeset -A opt_args
-  local -a start_opts=(
-    '--path[Directory containing project modules]:directory:_files -/'
-    '(-d --database)'{-d,--database}'[Database name to use]:database:'
-  )
   _arguments -C \
-    ${start_opts[@]} \
-    ${_odoo_server_options[@]}
+    '(-h --help)'{-h,--help}'[Show help text]' \
+    '--path[Directory containing project modules]:directory:_files -/' \
+    '(-d --database)'{-d,--database}'[Database name to use]:database:'
 }
 
 _odoo_complete_populate() {
   local curcontext="$curcontext" state line
   typeset -A opt_args
   local -a populate_opts=(
-    '--size[Population size to generate]:size:(small medium large)'
-    '--models[Comma separated model names or patterns]:models:'
-    '--profile[Profile record population]'
-    '--rollback[Rollback instead of committing data]'
+    '--factors[Comma-separated factors per model]:factors:'
+    '--models[Comma-separated model names]:models:'
+    '--sep[Single character separator for char/text fields]:separator:'
   )
   _arguments -C \
     ${populate_opts[@]} \
@@ -133,7 +151,7 @@ _odoo_complete_obfuscate() {
     '--pwd[Password used to cypher/uncypher data]:password:'
     '--fields[List of table.column entries to (un)obfuscate]:fields:'
     '--exclude[List of table.column entries to exclude]:fields:'
-    '--file[File containing the list of table.column entries]:file:_files'
+    '--file[File containing table.column entries]:file:_files'
     '--unobfuscate[Run in unobfuscation mode]'
     '--allfields[Attempt to (un)obfuscate every eligible field]'
     '--vacuum[Vacuum tables after unobfuscating]'
@@ -193,13 +211,6 @@ _odoo_complete_cloc() {
     '(-v --verbose)'{-v,--verbose}'[Increase verbosity]'
 }
 
-_odoo_complete_tsconfig() {
-  local curcontext="$curcontext" state line
-  typeset -A opt_args
-  _arguments -C \
-    '--addons-path[Comma separated addon paths]:paths:_files -/'
-}
-
 _odoo_complete_genproxytoken() {
   local curcontext="$curcontext" state line
   typeset -A opt_args
@@ -231,6 +242,7 @@ _odoo_complete_db() {
   case $state in
     db_cmd)
       local -a db_commands=(
+        'init:Create and initialize a database'
         'load:Load a dump file'
         'dump:Create a dump with filestore'
         'duplicate:Duplicate a database including filestore'
@@ -242,6 +254,9 @@ _odoo_complete_db() {
     db_args)
       local cmd=${line[1]}
       case $cmd in
+        init)
+          _odoo_db_init
+          ;;
         load)
           _odoo_db_load
           ;;
@@ -260,6 +275,19 @@ _odoo_complete_db() {
       esac
       ;;
   esac
+}
+
+_odoo_db_init() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '--with-demo[Install demo data in the new database]' \
+    '--force[Delete target database if it exists]' \
+    '--language[Default language]:language:' \
+    '--username[Admin username]:username:' \
+    '--password[Admin password]:password:' \
+    '--country[Country code to set on the main company]:country:' \
+    '1:database name:_message "database name"'
 }
 
 _odoo_db_load() {
@@ -284,6 +312,8 @@ _odoo_db_dump() {
   local curcontext="$curcontext" state line
   typeset -A opt_args
   _arguments -C \
+    '--format[Dump format]:format:(zip dump)' \
+    '--no-filestore[Do not include filestore in zip dumps]' \
     '1:database name:_message "database name"' \
     '2::dump path:_files'
 }
@@ -312,6 +342,188 @@ _odoo_db_drop() {
   typeset -A opt_args
   _arguments -C \
     '1:database name:_message "database name"'
+}
+
+_odoo_complete_i18n() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  _arguments -C \
+    '1:i18n command:->i18n_cmd' \
+    '*:: :->i18n_args' && return
+
+  case $state in
+    i18n_cmd)
+      local -a i18n_commands=(
+        'import:Import i18n files'
+        'export:Export i18n files'
+        'loadlang:Load languages'
+      )
+      _describe -t odoo-i18n-commands 'i18n commands' i18n_commands
+      ;;
+    i18n_args)
+      local cmd=${line[1]}
+      case $cmd in
+        import)
+          _odoo_i18n_import
+          ;;
+        export)
+          _odoo_i18n_export
+          ;;
+        loadlang)
+          _odoo_i18n_loadlang
+          ;;
+      esac
+      ;;
+  esac
+}
+
+_odoo_i18n_import() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help text]' \
+    '(-c --config)'{-c,--config}'[Specific configuration file]:config file:_files' \
+    '(-d --database)'{-d,--database}'[Database name]:database:' \
+    '(-w --overwrite)'{-w,--overwrite}'[Overwrite existing terms]' \
+    '(-l --language)'{-l,--language}'[Language code]:language:' \
+    '1:file to import:_files -g "*.(po|csv)"' \
+    '*::additional files:_files -g "*.(po|csv)"'
+}
+
+_odoo_i18n_export() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help text]' \
+    '(-c --config)'{-c,--config}'[Specific configuration file]:config file:_files' \
+    '(-d --database)'{-d,--database}'[Database name]:database:' \
+    '(-l --languages)'{-l,--languages}'[Language codes (use pot for template)]:language:' \
+    '(-o --output)'{-o,--output}'[Output file]:file:_files' \
+    '1:module name:_message "module name"' \
+    '*::additional modules:_message "module name"'
+}
+
+_odoo_i18n_loadlang() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help text]' \
+    '(-c --config)'{-c,--config}'[Specific configuration file]:config file:_files' \
+    '(-d --database)'{-d,--database}'[Database name]:database:' \
+    '(-l --languages)'{-l,--languages}'[Language codes to install]:language:' \
+    '*::more language codes:language:'
+}
+
+_odoo_complete_module() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  _arguments -C \
+    '1:module command:->module_cmd' \
+    '*:: :->module_args' && return
+
+  case $state in
+    module_cmd)
+      local -a module_commands=(
+        'install:Install modules'
+        'upgrade:Upgrade modules'
+        'uninstall:Uninstall modules'
+        'force-demo:Install demo data (force)'
+      )
+      _describe -t odoo-module-commands 'module commands' module_commands
+      ;;
+    module_args)
+      local cmd=${line[1]}
+      case $cmd in
+        install)
+          _odoo_module_install
+          ;;
+        upgrade)
+          _odoo_module_upgrade
+          ;;
+        uninstall)
+          _odoo_module_uninstall
+          ;;
+        force-demo)
+          _odoo_module_force_demo
+          ;;
+      esac
+      ;;
+  esac
+}
+
+_odoo_module_common_opts() {
+  local -a opts=(
+    '(-h --help)'{-h,--help}'[Show help text]'
+    '(-c --config)'{-c,--config}'[Specific configuration file]:config file:_files'
+    '(-d --database)'{-d,--database}'[Database name]:database:'
+    '(-D --data-dir)'{-D,--data-dir}'[Directory to store Odoo data]:directory:_files -/'
+  )
+  reply=("${opts[@]}")
+}
+
+_odoo_module_install() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  local -a common_opts
+  _odoo_module_common_opts
+  common_opts=("${reply[@]}")
+  _arguments -C \
+    ${common_opts[@]} \
+    '1:module name or zip path:_message "module name or path"' \
+    '*::additional modules:_message "module name or path"'
+}
+
+_odoo_module_upgrade() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  local -a common_opts
+  _odoo_module_common_opts
+  common_opts=("${reply[@]}")
+  _arguments -C \
+    ${common_opts[@]} \
+    '--outdated[Upgrade only modules with newer on-disk version]' \
+    '1:module name:_message "module name"' \
+    '*::additional modules:_message "module name"'
+}
+
+_odoo_module_uninstall() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  local -a common_opts
+  _odoo_module_common_opts
+  common_opts=("${reply[@]}")
+  _arguments -C \
+    ${common_opts[@]} \
+    '1:module name:_message "module name"' \
+    '*::additional modules:_message "module name"'
+}
+
+_odoo_module_force_demo() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  local -a common_opts
+  _odoo_module_common_opts
+  common_opts=("${reply[@]}")
+  _arguments -C ${common_opts[@]}
+}
+
+_odoo_complete_upgrade_code() {
+  local curcontext="$curcontext" state line
+  typeset -A opt_args
+  _arguments -C \
+    '(-h --help)'{-h,--help}'[Show help text]' \
+    '--script[Run a single upgrade script by name]:script name:' \
+    '--from[Run scripts from this version (inclusive)]:version:' \
+    '--to[Run scripts until this version (inclusive)]:version:' \
+    '--glob[Glob of files to rewrite]:glob pattern:' \
+    '--dry-run[List files that would be rewritten]' \
+    '--addons-path[Additional addons paths]:directories:_files -/'
+}
+
+_odoo_complete_help() {
+  _describe -t odoo-commands 'odoo commands' _odoo_cli_commands
 }
 
 _odoo() {
@@ -360,13 +572,20 @@ _odoo() {
         cloc)
           _odoo_complete_cloc
           ;;
-        tsconfig)
-          _odoo_complete_tsconfig
-          ;;
         genproxytoken)
           _odoo_complete_genproxytoken
           ;;
+        i18n)
+          _odoo_complete_i18n
+          ;;
+        module)
+          _odoo_complete_module
+          ;;
+        upgrade_code)
+          _odoo_complete_upgrade_code
+          ;;
         help)
+          _odoo_complete_help
           ;;
         *)
           _odoo_complete_server_like
