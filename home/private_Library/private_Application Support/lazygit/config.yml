@@ -72,7 +72,7 @@ customCommands:
   - description: "Add empty commit"
     # key: "E"
     context: "commits"
-    command: "git commit --allow-empty -m '{{.Form.Message}}'"
+    command: "git commit --allow-empty --message '{{.Form.Message}}'"
     loadingText: "Committing empty commit..."
     prompts:
       - type: "input"
@@ -238,19 +238,7 @@ customCommands:
     command: "git-town continue"
     loadingText: "Continuing"
     output: log
-  # Generate Commit Message with LLM
-  - description: "Generate Commit Message with additional context"
-    key: "<c-k>"
-    context: "files"
-    loadingText: "Generating ..."
-    prompts:
-      - type: "input"
-        title: "Extra Context"
-        key: "Extra"
-        initialValue: ""
-    command: "llm git commit {{ if .Form.Extra }}--extra-context '{{ .Form.Extra }}'{{ end }}"
-    output: terminal
-  - description: "Prepare Commit Message by LLM"
+  - description: "Commit with --no-edit, prepare message by LLM"
     key: "<c-l>"
     context: "files"
     loadingText: "Generating ..."
@@ -259,5 +247,5 @@ customCommands:
     key: "<c-j>"
     context: "files"
     loadingText: "Running..."
-    command: "pre-commit"
+    command: "prek"
     output: terminal
