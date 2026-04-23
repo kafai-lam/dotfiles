@@ -12,3 +12,6 @@ services:
       - MISTRAL_API_KEY
       - OPENCODE_API_KEY
       - NVIDIA_API_KEY
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
