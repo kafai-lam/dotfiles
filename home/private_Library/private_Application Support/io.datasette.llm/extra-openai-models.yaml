@@ -18,34 +18,6 @@
   model_name: mistral/mistral-large-latest
   api_base: http://bifrost.orb.local/openai
 
-- model_id: nvidia/minimaxai/minimax-m2.5
-  model_name: nvidia/minimaxai/minimax-m2.5
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: nvidia/moonshotai/kimi-k2.5
-  model_name: nvidia/moonshotai/kimi-k2.5
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: nvidia/nvidia/nemotron-3-super-120b-a12b
-  model_name: nvidia/nvidia/nemotron-3-super-120b-a12b
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: nvidia/openai/gpt-oss-120b
-  model_name: nvidia/openai/gpt-oss-120b
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: nvidia/stepfun-ai/step-3.5-flash
-  model_name: nvidia/stepfun-ai/step-3.5-flash
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: nvidia/qwen/qwen3.5-397b-a17b
-  model_name: nvidia/qwen/qwen3.5-397b-a17b
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: nvidia/z-ai/glm5
-  model_name: nvidia/z-ai/glm5
-  api_base: http://bifrost.orb.local/openai
-
 - model_id: opencode/hy3-preview-free
   model_name: opencode/hy3-preview-free
   api_base: http://bifrost.orb.local/openai
