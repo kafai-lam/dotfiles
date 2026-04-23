@@ -40,7 +40,7 @@ EOF
 )
 
 
-recent_commits="$(git log ---max-count=$RECENT_COMMIT_COUNT --pretty=format:'%B---' 2>/dev/null || true)"
+recent_commits="$(git log --max-count=$RECENT_COMMIT_COUNT --pretty=format:'%B---' 2>/dev/null || true)"
 if [[ -z "$recent_commits" ]]; then
   recent_commits="(none)"
 fi
