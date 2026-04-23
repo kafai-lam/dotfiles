@@ -124,6 +124,7 @@
           "name": "Zen",
           "value": "env.OPENCODE_API_KEY",
           "models": [
+            "hy3-preview-free",
             "minimax-m2.5-free",
             "nemotron-3-super-free"
           ],

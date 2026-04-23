@@ -97,6 +97,14 @@
       "max_tokens": 256000
     },
     {
+      "model": "opencode/hy3-preview-free",
+      "model_display_name": "Bifrost: Hy3 Preview",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
       "model": "opencode/minimax-m2.5-free",
       "model_display_name": "Bifrost: MiniMax M2.5 (Zen)",
       "provider": "generic-chat-completion-api",

@@ -46,6 +46,10 @@
   model_name: nvidia/z-ai/glm5
   api_base: http://bifrost.orb.local/openai
 
+- model_id: opencode/hy3-preview-free
+  model_name: opencode/hy3-preview-free
+  api_base: http://bifrost.orb.local/openai
+
 - model_id: opencode/minimax-m2.5-free
   model_name: opencode/minimax-m2.5-free
   api_base: http://bifrost.orb.local/openai

@@ -16,5 +16,6 @@ clients:
       - name: nvidia/stepfun-ai/step-3.5-flash
       - name: nvidia/qwen/qwen3.5-397b-a17b
       - name: nvidia/z-ai/glm5
+      - name: opencode/hy3-preview-free
       - name: opencode/minimax-m2.5-free
       - name: opencode/nemotron-3-super-free

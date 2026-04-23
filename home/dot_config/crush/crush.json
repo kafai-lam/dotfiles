@@ -79,6 +79,12 @@
           "default_max_tokens": 256000
         },
         {
+          "id": "opencode/hy3-preview-free",
+          "name": "Hy3 Preview",
+          "context_window": 256000,
+          "default_max_tokens": 256000
+        },
+        {
           "id": "opencode/minimax-m2.5-free",
           "name": "MiniMax M2.5",
           "context_window": 256000,

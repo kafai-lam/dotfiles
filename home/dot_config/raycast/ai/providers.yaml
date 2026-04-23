@@ -183,6 +183,21 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
+      - id: opencode/hy3-preview-free
+        name: Hy3 Preview
+        description: Hy3 Preview from Opencode Zen
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
       - id: opencode/minimax-m2.5-free
         name: MiniMax M2.5
         description: MiniMax M2.5 from Opencode Zen
