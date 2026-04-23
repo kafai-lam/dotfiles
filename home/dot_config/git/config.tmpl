@@ -37,6 +37,10 @@ conflictstyle = zdiff3
 [mergetool "code"]
 cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 
+[hook "llm-prepare-msg"]
+event = prepare-commit-msg
+command = ~/.config/git/hooks/prepare-commit-msg
+
 [interactive]
 diffFilter = delta --color-only --diff-so-fancy
 
