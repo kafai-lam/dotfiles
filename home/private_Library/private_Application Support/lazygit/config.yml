@@ -97,7 +97,7 @@ customCommands:
           command: "git branch --remote --list '{{.Form.Remote}}/*' --format='%(refname:short)' | sed 's/{{.Form.Remote}}\\///'"
   - description: "Push a specific commit (and any preceding)"
     # key: "P"
-    command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
+    command: "git push --force-with-lease {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
     context: "commits"
     loadingText: "Pushing commit..."
     output: log
