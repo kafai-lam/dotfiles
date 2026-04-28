@@ -3,8 +3,6 @@
 #
 # {Description}
 #
-# {Footer}
-#
 # # Type (Required)
 # - feat: New feature addition
 # - fix: Bug fix that resolves an issue
@@ -35,10 +33,7 @@
 # - Avoid direct references to file names or specific line numbers
 # - Always consider any provided user context
 # - Avoid filler words
-#
-# # Footer (Optional)
-# - Including footer only if the branch mentions specific issue numbers
-# - Add them in the format: `Closes #123`, `Fixes #746` etc.
+# - Including optional footer only if the branch mentions specific issue numbers
 #
 # # Breaking Changes (Optional)
 # - Add to footer Only if breaking changes were introduced

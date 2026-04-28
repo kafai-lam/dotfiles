@@ -30,11 +30,11 @@ Identify the primary purpose of the changes (e.g., new feature, bug fix, refacto
 Use provided instructions and extra context to guide your responses.
 
 Output requirements:
+- Wrap the entire commit message in a <commit-message> block
 - Limit the subject line to 50 characters
 - Wrap the body at 72 characters
 - Prefer a single subject line with no body for trivial change
 - For non-trivial changes, use the body to explain what and why, but not how
-- Output ONLY the commit message text (no quotes, no markdown)
 - Be concrete and specific to the diff; mention key modules/files when helpful
 EOF
 )
@@ -49,16 +49,17 @@ staged_diff="$(git diff --staged)"
 
 build_user_prompt() {
   cat <<EOF
-Current commit template as style guide:
+<style-guide>
 $(sed -E 's/^# ?//' "$COMMIT_MSG_FILE")
+</style-guide>
 
----
-Git Staged diff:
+<git-diff>
 $staged_diff
+</git-diff>
 
----
-Recent commit messages as example:
+<history>
 $recent_commits
+</history>
 EOF
 }
 
@@ -73,7 +74,11 @@ generate_message() {
 sanitize_message() {
   local msg
   msg="$(cat)"
-  printf "%s" "$msg" | sed -E 's/[[:space:]]+$//'
+  if printf "%s" "$msg" | grep -qE '<commit-message>'; then
+    printf "%s" "$msg" | sed -n '/<commit-message>/,/<\/commit-message>/p' | sed '1d;$d'
+  else
+    printf "%s" "$msg"
+  fi
 }
 
 if ! generated_message="$(generate_message | sanitize_message)"; then
