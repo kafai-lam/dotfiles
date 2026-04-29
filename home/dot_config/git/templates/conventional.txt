@@ -40,28 +40,3 @@
 # - Mark with "!" after type/scope, e.g.
 #   feat(api)!: remove deprecated endpoints
 # - Include migration instructions in body/footer
-#
-# # Examples
-# ## Simple and trivial changes example
-# docs(readme): Add contribution guidelines
-#
-# ## When user context is empty or doesn't mention specific tickets/issues
-# feat(auth): Add social login via Google
-#
-# Implement OAuth2 integration for Google authentication
-#
-# ## When Changes introduce breaking changes
-# chore!: drop support for Node 6
-#
-# BREAKING CHANGE: use JavaScript features not available in Node 6.
-#
-# ## When user context mentions specific tickets/issues
-# fix(web): Prevent racing of requests
-#
-# Introduce a request id and a reference to latest request. Dismiss
-# incoming responses other than from latest request.
-#
-# Remove timeouts which were used to mitigate the racing issue but are
-# obsolete now.
-#
-# Fixes #328

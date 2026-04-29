@@ -42,22 +42,3 @@
 # - Add to footer Only if breaking changes were introduced
 # - Mark with "!" after type/scope, e.ge. `feat(api)!: remove deprecated endpoints`
 # - Include migration instructions in body/footer
-#
-# # Examples
-# ## Simple and trivial changes example
-# [FIX] account: Remove frenglish
-#
-# ## When user context is empty or doesn't mention specific tickets/issues
-# [REF] models: Use `parent_path` to implement parent_store
-#
-# This replaces the former modified preorder tree traversal (MPTT) with
-# the fields `parent_left`/`parent_right`
-#
-# ## When user context mentions specific tickets/issues
-# [FIX] website: Fixes look of input-group-btn
-#
-# Bootstrap's CSS depends on the input-group-btn element being the
-# first/last child of its parent. This was not the case because of the
-# invisible and useless alert.
-#
-# Fixes #328
