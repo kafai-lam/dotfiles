@@ -1,0 +1,8 @@
+[tools]
+copier = "latest"
+oxlint = "latest"
+prek = "latest"
+pre-commit = "latest"
+rust = "stable"
+ty = "latest"
+tombi = "latest"
