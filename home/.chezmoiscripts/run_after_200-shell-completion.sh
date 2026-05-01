@@ -4,6 +4,7 @@
 COMPDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/completions"
 mkdir -p -- "$COMPDIR"
 
+(( $+commands[aoe] )) && { (aoe completion zsh > "$COMPDIR/_aoe") 2>/dev/null || true; }
 (( $+commands[chezmoi] )) && { (chezmoi completion zsh > "$COMPDIR/_chezmoi") 2>/dev/null || true; }
 (( $+commands[claude-squad] )) && { (claude-squad completion zsh > "$COMPDIR/_claude-squad") 2>/dev/null || true; }
 (( $+commands[codex] )) && { (codex completion zsh > "$COMPDIR/_codex") 2>/dev/null || true; }
@@ -20,6 +21,7 @@ mkdir -p -- "$COMPDIR"
 (( $+commands[uv] )) && { (uv generate-shell-completion zsh > "$COMPDIR/_uv") 2>/dev/null || true; }
 (( $+commands[uvx] )) && { (uvx --generate-shell-completion zsh > "$COMPDIR/_uvx") 2>/dev/null || true; }
 (( $+commands[zb] )) && { (zb completion zsh > "$COMPDIR/_zb") 2>/dev/null || true; }
+
 
 if (( $+commands[ollama] )); then
   curl -sS https://gist.githubusercontent.com/obeone/9313811fd61a7cbb843e0001a4434c58/raw/5a6a44efc6a07b6f937dbc596d9d7385b297dda8/_ollama.zsh > "$COMPDIR/_ollama" 2>/dev/null || true
