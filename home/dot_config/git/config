@@ -1,7 +1,7 @@
 [user]
-email = {{ .git.email }}
-name = {{ .git.username }}
-signingkey = {{ .git.signingkey }}
+email = lamkafai1997@gmail.com
+name = Fai
+signingkey = ~/.ssh/id_ed25519.pub
 
 [core]
 pager = delta --diff-so-fancy
@@ -10,8 +10,15 @@ excludesFile = ~/.config/git/ignore
 [init]
 defaultBranch = main
 
+[gpg]
+format = ssh
+
 [commit]
 gpgsign = true
+
+[tag]
+gpgSign = true
+
 
 [rebase]
 autoStash = true

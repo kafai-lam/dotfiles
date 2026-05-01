@@ -24,7 +24,6 @@ require sed
 
 system_prompt=$(
   cat <<'EOF'
-You are a git assistant for writing git commit message.
 Your goal is to analyze the changes and create an appropriate commit message based on the provided git diff input following the specified style and best practices.
 Identify the primary purpose of the changes (e.g., new feature, bug fix, refactoring).
 Use provided instructions and extra context to guide your responses.
