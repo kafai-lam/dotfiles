@@ -1,18 +1,30 @@
 [tools]
 chezmoi = "latest"
 
-[tasks.pull]
-description = "Pull All"
-depends = "pull:*"
+[tasks.bump]
+description = "Upgrade All"
+depends = "bump:*"
 
-[tasks."pull:ghext"]
-description = "Pull Github Extensions"
+[tasks."bump:gh"]
+description = "Sync Github Extensions"
 run = "gh extension upgrade --all"
 
-[tasks."pull:docker"]
-description = "Pull Docker Images"
+[tasks."bump:docker"]
+description = "Sync Docker Images"
 run = [
   "orbctl start",
   "docker compose --project-name homelab --file ~/.config/services/compose.yaml pull",
   "docker compose --project-name homelab --file ~/.config/services/compose.yaml up --detach --force-recreate"
 ]
+
+[tasks."bump:brew-formula"]
+description = "Homebrew Formula Upgrade"
+run = "brew upgrade"
+
+[tasks."bump:brew-cask"]
+description = "Homebrew Cask Upgrade"
+run = "brew upgrade --cask --greedy-auto-updates"
+
+[tasks."bump:mise"]
+description = "Mise Packages upgrade"
+run = "mise upgrade"
