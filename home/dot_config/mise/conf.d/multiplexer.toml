@@ -1,0 +1,9 @@
+[tools]
+# "github:andyrewlee/amux" = "latest" # Too Complicate, claude-squad
+# "github:frayo44/agent-view" = "latest" # claude-squad
+# "github:gaurav-gosain/tuios" = "latest" # tmux/zellij
+# "github:ogulcancelik/herdr" = "latest" # thin layout on top tmux
+# "github:raine/workmux" = "latest" # Too Complicate, claude-squad
+# "npm:@randomlabs/slate" = "latest"
+# "npm:dmux" = "latest"  # claude-squad
+"github:njbrake/agent-of-empires" = { version = "latest", bin = "aoe" }
