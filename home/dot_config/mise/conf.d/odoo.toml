@@ -1,0 +1,4 @@
+[tools]
+# "github:Desdaemon/odoo-lsp" = "latest"  # not working
+# "pipx:git+https://github.com/OCA/maintainer-tools.git" = "f9b919b"
+"pipx:oca-port" = "latest"
