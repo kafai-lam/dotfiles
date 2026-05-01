@@ -29,3 +29,7 @@ dotenv-source() {
   dotenv_file="${1:-.env}"
   [[ -f $dotenv_file ]] && set -a && source $dotenv_file && set +a
 }
+
+zode() {
+  code $(zoxide query "$1")
+}

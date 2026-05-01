@@ -1,0 +1,7 @@
+#compdef manifestoo
+
+_manifestoo_completion() {
+  eval $(env _TYPER_COMPLETE_ARGS="${words[1,$CURRENT]}" _MANIFESTOO_COMPLETE=complete_zsh manifestoo)
+}
+
+compdef _manifestoo_completion manifestoo

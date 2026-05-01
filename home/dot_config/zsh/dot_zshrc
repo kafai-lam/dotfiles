@@ -79,7 +79,6 @@ path+=(
 )
 fpath+=(
   $ZDOTDIR/completions
-  $ZDOTDIR/functions
 )
 
 # Export environment variables.

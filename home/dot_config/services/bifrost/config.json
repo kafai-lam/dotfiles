@@ -2,7 +2,6 @@
   "$schema": "https://www.getbifrost.ai/schema",
   "client": {
     "drop_excess_requests": false,
-    "enable_governance": false,
     "enable_logging": true,
     "allowed_origins": ["http://bifrost.orb.local", "https://bifrost.orb.local"]
   },
