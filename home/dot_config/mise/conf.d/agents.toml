@@ -1,0 +1,24 @@
+[tools]
+# "github:boxlite-ai/boxrun" = "latest" # not working
+# "github:pigmej/aisanity" = "latest"
+# "github:Uri2001/codex-sessions" = "latest"
+# "npm:ccmanager" = "latest"
+# jules = "latest"
+"github:badlogic/pi-mono" = "latest"
+"github:can1357/oh-my-pi" = "latest"
+"github:just-every/code" = { version = "latest", bin = "every-code" }
+"github:mr-kelly/freecode" = "latest"
+"github:rtk-ai/rtk" = "latest"  # Token reducer
+"npm:@fission-ai/openspec" = "latest"
+"npm:@github/copilot" = "latest"
+"npm:@loongphy/codex-auth" = "latest"
+"npm:context-mode" = "latest"
+"npm:vibe-kanban" = "latest"
+"pipx:git+https://github.com/antoniorodr/memo.git" = { version = "latest", uvx_args = "--python 3.13" }
+"pipx:git+https://github.com/github/spec-kit.git" = "latest"
+"pipx:mistral-vibe" = "latest"
+"pipx:skill-seekers" = "latest"
+amp = "latest"
+claude-squad = "latest"
+gemini-cli = "latest"
+qwen = "latest"
