@@ -1,0 +1,5 @@
+[tools]
+# "github:sammcj/gollama" = "latest"
+"github:alexsJones/llmfit" = "latest"
+"github:arimxyer/models" = "latest"
+"pipx:llm" = "latest"
