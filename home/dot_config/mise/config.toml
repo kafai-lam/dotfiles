@@ -1,5 +1,6 @@
 [tools]
 bun = "latest"
+cargo-binstall = "latest"
 chezmoi = "latest"
 node = "24"
 python = "3.12"
