@@ -1,0 +1,4 @@
+[tools]
+# "github:Adembc/lazyssh" = "latest"
+# "github:lfaoro/ssm" = "latest" # ssh manager
+# "github:erickochen/purple" = "latest"  # sshManager
