@@ -3,21 +3,6 @@ providers:
     name: Bifrost
     base_url: http://bifrost.orb.local/openai
     models:
-      - id: mistral/codestral-latest
-        name: Codestral
-        description: Code model from Mistral
-        context: 32768
-        abilities:
-          temperature:
-            supported: true
-          vision:
-            supported: false
-          system_message:
-            supported: true
-          tools:
-            supported: true
-          reasoning_effort:
-            supported: false
       - id: mistral/devstral-2512
         name: Devstral 2
         description: Development model from Mistral
@@ -36,12 +21,27 @@ providers:
       - id: mistral/labs-devstral-small-2512
         name: Devstral Small 2
         description: Small development model from Mistral Labs
-        context: 128000
+        context: 256000
         abilities:
           temperature:
             supported: true
           vision:
             supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: mistral/mistral-medium-3.5
+        name: Mistral Medium 3.5
+        description: Frontier-class multimodal model from Mistral
+        context: 256000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
           system_message:
             supported: true
           tools:
@@ -63,55 +63,10 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
-      - id: mistral/mistral-large-latest
-        name: Mistral Large
-        description: Large model from Mistral
-        context: 128000
-        abilities:
-          temperature:
-            supported: true
-          vision:
-            supported: true
-          system_message:
-            supported: true
-          tools:
-            supported: true
-          reasoning_effort:
-            supported: false
-      - id: opencode/hy3-preview-free
-        name: Hy3 Preview
-        description: Hy3 Preview from Opencode Zen
-        context: 256000
-        abilities:
-          temperature:
-            supported: true
-          vision:
-            supported: false
-          system_message:
-            supported: true
-          tools:
-            supported: true
-          reasoning_effort:
-            supported: false
       - id: opencode/minimax-m2.5-free
         name: MiniMax M2.5
         description: MiniMax M2.5 from Opencode Zen
-        context: 256000
-        abilities:
-          temperature:
-            supported: true
-          vision:
-            supported: false
-          system_message:
-            supported: true
-          tools:
-            supported: true
-          reasoning_effort:
-            supported: false
-      - id: opencode/nemotron-3-super-free
-        name: Nemotron 3 Super
-        description: Nemotron 3 Super from Opencode Zen
-        context: 1000000
+        context: 204800
         abilities:
           temperature:
             supported: true

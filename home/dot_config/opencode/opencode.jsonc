@@ -12,11 +12,10 @@
         "baseURL": "http://bifrost.orb.local/openai",
       },
       "models": {
-        "mistral/codestral-latest": { "name": "Codestral" },
-        "mistral/devstral-2512": { "name": "Devstral 2" },
+        "mistral/devstral-2512": { "name": "Devstral 2"},
         "mistral/labs-devstral-small-2512": { "name": "Devstral Small 2" },
-        "mistral/mistral-small-2603": { "name": "Mistral Small 4" },
-        "mistral/mistral-large-latest": { "name": "Mistral Large 3" },
+        "mistral/mistral-medium-3.5": { "name": "Mistral Medium 3.5" },
+        "mistral/mistral-small-2603": { "name": "Mistral Small 4" }
       },
     },
   },

@@ -1,14 +1,6 @@
 {
   "custom_models": [
     {
-      "model": "mistral/codestral-latest",
-      "model_display_name": "Bifrost: Codestral",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
-      "api_key": "dummy",
-      "max_tokens": 128000
-    },
-    {
       "model": "mistral/devstral-2512",
       "model_display_name": "Bifrost: Devstral 2",
       "provider": "generic-chat-completion-api",
@@ -25,24 +17,16 @@
       "max_tokens": 256000
     },
     {
+      "model": "mistral/mistral-medium-3.5",
+      "model_display_name": "Bifrost: Mistral Medium 3.5",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://bifrost.orb.local/openai",
+      "api_key": "dummy",
+      "max_tokens": 256000
+    },
+    {
       "model": "mistral/mistral-small-2603",
       "model_display_name": "Bifrost: Mistral Small 4",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
-      "api_key": "dummy",
-      "max_tokens": 256000
-    },
-    {
-      "model": "mistral/mistral-large-latest",
-      "model_display_name": "Bifrost: Mistral Large 3",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
-      "api_key": "dummy",
-      "max_tokens": 256000
-    },
-    {
-      "model": "opencode/hy3-preview-free",
-      "model_display_name": "Bifrost: Hy3 Preview",
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
@@ -54,15 +38,7 @@
       "provider": "generic-chat-completion-api",
       "base_url": "http://bifrost.orb.local/openai",
       "api_key": "dummy",
-      "max_tokens": 256000
-    },
-    {
-      "model": "opencode/nemotron-3-super-free",
-      "model_display_name": "Bifrost: Nemotron 3 Super",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
-      "api_key": "dummy",
-      "max_tokens": 1000000
+      "max_tokens": 131072
     }
   ]
 }
