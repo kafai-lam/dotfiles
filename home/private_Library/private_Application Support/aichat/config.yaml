@@ -1,14 +1,11 @@
-model: Bifrost:mistral/devstral-2512
+model: Bifrost:mistral/labs-devstral-small-2512
 clients:
   - type: openai-compatible
     name: Bifrost
     api_base: http://bifrost.orb.local/openai/v1
     models:
-      - name: mistral/codestral-latest
       - name: mistral/devstral-2512
       - name: mistral/labs-devstral-small-2512
       - name: mistral/mistral-small-2603
-      - name: mistral/mistral-large-latest
-      - name: opencode/hy3-preview-free
+      - name: mistral/mistral-medium-3.5
       - name: opencode/minimax-m2.5-free
-      - name: opencode/nemotron-3-super-free

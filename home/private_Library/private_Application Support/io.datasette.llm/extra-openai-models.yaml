@@ -1,7 +1,3 @@
-- model_id: mistral/codestral-latest
-  model_name: mistral/codestral-latest
-  api_base: http://bifrost.orb.local/openai
-
 - model_id: mistral/devstral-2512
   model_name: mistral/devstral-2512
   api_base: http://bifrost.orb.local/openai
@@ -10,22 +6,14 @@
   model_name: mistral/labs-devstral-small-2512
   api_base: http://bifrost.orb.local/openai
 
+- model_id: mistral/mistral-medium-3.5
+  model_name: mistral/mistral-medium-3.5
+  api_base: http://bifrost.orb.local/openai
+
 - model_id: mistral/mistral-small-2603
   model_name: mistral/mistral-small-2603
   api_base: http://bifrost.orb.local/openai
 
-- model_id: mistral/mistral-large-latest
-  model_name: mistral/mistral-large-latest
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: opencode/hy3-preview-free
-  model_name: opencode/hy3-preview-free
-  api_base: http://bifrost.orb.local/openai
-
 - model_id: opencode/minimax-m2.5-free
   model_name: opencode/minimax-m2.5-free
-  api_base: http://bifrost.orb.local/openai
-
-- model_id: opencode/nemotron-3-super-free
-  model_name: opencode/nemotron-3-super-free
   api_base: http://bifrost.orb.local/openai
