@@ -1,0 +1,204 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# HazelNet Config for macOS
+# Managed via chezmoi
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[general]
+log_level = "info"
+debounce_seconds = 2
+polling_interval_secs = 5
+notifications_enabled = true
+theme = "catppuccin-mocha"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Watch Folders
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[[watch]]
+path = "~/Downloads"
+recursive = false
+
+[[watch]]
+path = "~/Desktop"
+recursive = false
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Rules - Documents
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[[rule]]
+name = "Move PDFs to Documents"
+enabled = true
+
+[rule.condition]
+extension = "pdf"
+
+[rule.action]
+type = "move"
+destination = "~/Documents/PDFs"
+create_destination = true
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Rules - Images & Screenshots
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[[rule]]
+name = "Move Screenshots to Screenshots folder"
+enabled = true
+stop_processing = true
+
+[rule.condition]
+name_matches = "Screenshot*.png"
+
+[rule.action]
+type = "move"
+destination = "~/Pictures/Screenshots"
+create_destination = true
+
+[[rule]]
+name = "Move Screen Capture images"
+enabled = true
+stop_processing = true
+
+[rule.condition]
+name_matches = "Screen Shot*.png"
+
+[rule.action]
+type = "move"
+destination = "~/Pictures/Screenshots"
+create_destination = true
+
+[[rule]]
+name = "Move photos to Pictures"
+enabled = true
+
+[rule.condition]
+extensions = ["jpg", "jpeg", "png", "gif", "heic", "webp", "bmp", "tiff"]
+
+[rule.action]
+type = "move"
+destination = "~/Pictures"
+create_destination = true
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Rules - Archives
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[[rule]]
+name = "Move Archives to Archives folder"
+enabled = true
+
+[rule.condition]
+extensions = ["zip", "tar", "gz", "dmg", "pkg", "7z", "rar"]
+
+[rule.action]
+type = "move"
+destination = "~/Downloads/Archives"
+create_destination = true
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Rules - Code & Developer
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[[rule]]
+name = "Move code files to Developer"
+enabled = true
+
+[rule.condition]
+extensions = ["swift", "py", "js", "ts", "go", "rs", "rb", "sh", "zsh", "bash"]
+
+[rule.action]
+type = "move"
+destination = "~/Developer"
+create_destination = true
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Rules - Videos
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[[rule]]
+name = "Move videos to Movies"
+enabled = true
+
+[rule.condition]
+extensions = ["mp4", "mov", "avi", "mkv", "webm", "m4v"]
+
+[rule.action]
+type = "move"
+destination = "~/Movies"
+create_destination = true
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Rules - Audio
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[[rule]]
+name = "Move audio to Music"
+enabled = true
+
+[rule.condition]
+extensions = ["mp3", "wav", "aac", "flac", "m4a", "ogg"]
+
+[rule.action]
+type = "move"
+destination = "~/Music"
+create_destination = true
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Rules - Cleanup (Old temp files)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[[rule]]
+name = "Delete old temp files"
+enabled = true
+
+[rule.condition]
+age_days_greater_than = 30
+extensions = ["tmp", "log", "bak"]
+
+[rule.action]
+type = "trash"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Rules - Clean up DMGs after mounting
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[[rule]]
+name = "Remove old DMG files"
+enabled = true
+stop_processing = false
+
+[rule.condition]
+extension = "dmg"
+age_days_greater_than = 7
+
+[rule.action]
+type = "trash"
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Rules - Spreadsheets & Documents
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[[rule]]
+name = "Move spreadsheets to Documents"
+enabled = true
+
+[rule.condition]
+extensions = ["xlsx", "xls", "csv", "numbers"]
+
+[rule.action]
+type = "move"
+destination = "~/Documents/Spreadsheets"
+create_destination = true
+
+[[rule]]
+name = "Move presentations to Documents"
+enabled = true
+
+[rule.condition]
+extensions = ["pptx", "ppt", "key"]
+
+[rule.action]
+type = "move"
+destination = "~/Documents/Presentations"
+create_destination = true
