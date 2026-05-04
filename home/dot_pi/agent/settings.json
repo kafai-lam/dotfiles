@@ -1,0 +1,13 @@
+{
+  "lastChangelogVersion": "0.71.1",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.4-mini",
+  "defaultThinkingLevel": "medium",
+  "enabledModels": [
+    "openai-codex/gpt-5.5",
+    "openai-codex/gpt-5.4-mini",
+    "opencode/minimax-m2.5-free",
+    "mistral/mistral-medium-3.5",
+    "mistral/devstral-2512"
+  ]
+}
