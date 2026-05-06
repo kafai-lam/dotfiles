@@ -19,7 +19,7 @@ run = [
 
 [tasks."bump:brew-formula"]
 description = "Homebrew Formula Upgrade"
-run = "brew upgrade"
+run = "brew bundle install --global --upgrade"
 
 [tasks."bump:brew-cask"]
 description = "Homebrew Cask Upgrade"
