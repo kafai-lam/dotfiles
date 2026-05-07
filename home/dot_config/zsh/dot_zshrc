@@ -89,7 +89,7 @@ export SAVEHIST=1000000000
 export EGET_BIN=$HOME/bin
 export GOKU_EDN_CONFIG_FILE="$XDG_CONFIG_HOME/karabiner/karabiner.edn"
 
-if (( $+commands[code] )); then
+if [[ ${TERM_PROGRAM:-} == vscode ]] && (( $+commands[code] )); then
   export EDITOR="code --wait"
   export VISUAL="code --wait"
 elif (( $+commands[nvim] )); then

@@ -1,3 +1,4 @@
+alias edit="$EDITOR"
 alias zshrc="$EDITOR $ZDOTDIR/.zshrc"
 alias config="$EDITOR $XDG_CONFIG_HOME"
 
