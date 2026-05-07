@@ -12,7 +12,7 @@ experimental = true
 idiomatic_version_file_enable_tools = ["python"]
 npm.package_manager = "bun"
 pipx.uvx = true
-python.uv_venv_auto = "source"
+python.uv_venv_auto = "create|source"
 
 [env]
 CFLAGS = "-I/opt/homebrew/opt/openssl@3/include"
