@@ -1,0 +1,72 @@
+default_profile = ""
+
+[theme]
+name = ""
+color_mode = "truecolor"
+idle_decay_minutes = 0
+
+[claude]
+
+[updates]
+check_enabled = false
+auto_update = false
+check_interval_hours = 24
+notify_in_cli = true
+
+[worktree]
+enabled = false
+path_template = "../{repo-name}-worktrees/{branch}"
+bare_repo_path_template = "./{branch}"
+auto_cleanup = true
+show_branch_in_tui = true
+delete_branch_on_cleanup = false
+workspace_path_template = "../{branch}-workspace-{session-id}"
+
+[sandbox]
+enabled_by_default = false
+default_image = "ghcr.io/njbrake/aoe-sandbox:latest"
+extra_volumes = []
+environment = [
+    "TERM",
+    "COLORTERM",
+    "FORCE_COLOR",
+    "NO_COLOR",
+]
+auto_cleanup = true
+default_terminal_mode = "host"
+volume_ignores = []
+mount_ssh = false
+container_runtime = "docker"
+
+[tmux]
+status_bar = "auto"
+mouse = "auto"
+clipboard = "auto"
+
+[session]
+default_tool = "codex"
+yolo_mode_default = false
+agent_status_hooks = false
+strict_hotkeys = false
+
+[diff]
+context_lines = 3
+
+[hooks]
+
+[sound]
+enabled = false
+mode = "random"
+
+[app_state]
+has_seen_welcome = true
+last_seen_version = "1.5.2"
+has_seen_custom_instruction_warning = false
+has_acknowledged_agent_hooks = false
+group_by = "project"
+
+[web]
+notifications_enabled = true
+notify_on_waiting = true
+notify_on_idle = false
+notify_on_error = true
