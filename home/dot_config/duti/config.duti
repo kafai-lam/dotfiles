@@ -1,7 +1,5 @@
 com.microsoft.VSCode .js all
 com.microsoft.VSCode .json all
-com.microsoft.VSCode .jsonl all
-com.microsoft.VSCode .jsx all
 com.microsoft.VSCode .md all
 com.microsoft.VSCode .py all
 com.microsoft.VSCode .toml all
@@ -11,5 +9,4 @@ com.microsoft.VSCode .txt all
 com.microsoft.VSCode .xml all
 com.microsoft.VSCode .yaml all
 com.microsoft.VSCode .yml all
-ai.perplexity.comet .pdf all
-
+com.apple.Preview .pdf all
