@@ -1,62 +1,106 @@
-# Fai's Dotfiles
+# Dotfiles
 
-These are my personal dotfiles for macOS, managed by [chezmoi](https://chezmoi.io). They are highly opinionated and tailored to my workflow as a developer.
+Personal macOS dotfiles managed by [chezmoi](https://chezmoi.io). This repo is
+opinionated and tuned for my development workflow.
 
-## 🚨 Caveat: macOS Only 🚨
+## 🚨 macOS Only
 
-These dotfiles are designed exclusively for **macOS**. They are not tested on Linux or Windows and will likely not work correctly on those platforms.
+These dotfiles are designed for macOS. They are not tested on Linux or Windows.
 
 ## Installation
 
-To use these dotfiles, you'll need `git` and `curl` installed. Then, run the following command:
+You need `git` and `curl`. On a new machine, run:
 
 ```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply kafai-lam -b $HOME/.local/bin
 ```
 
-This command will:
-
-1. Download and install `chezmoi` to `$HOME/.local/bin`.
-2. Initialize `chezmoi` with this repository.
-3. Apply the dotfiles to your home directory.
+This installs `chezmoi` to `$HOME/.local/bin`, initializes this repository, and
+applies the managed files into your home directory.
 
 ## Updating Dotfiles
 
-To keep the dotfiles in this repository synchronized with the local machine's configuration, use the following commands:
+For normal source-first changes:
 
-- `chezmoi add <file>`: Add a new file to be managed by chezmoi.
-- `chezmoi re-add`: Re-add files to capture their latest changes.
-- `brew-dump`: Update the `Brewfile` with the latest installed packages.
-- `chezmoi apply`: Apply the changes from the repository to the local machine.
-- `chezmoi update`: Pull the latest changes from the remote repository and apply them.
+1. Edit files under `home/`.
+2. Preview what would change:
+
+   ```sh
+   chezmoi status
+   chezmoi diff
+   chezmoi apply --dry-run --verbose
+   ```
+
+3. Apply when you are ready:
+
+   ```sh
+   chezmoi apply
+   ```
+
+Important: editing a file under this repository changes the source state only.
+The live file in `$HOME` does not change until `chezmoi apply` runs.
+
+For target-first changes, edit files directly in `$HOME`, then capture them
+back into the source state:
+
+```sh
+chezmoi add ~/.config/example/config.toml
+chezmoi re-add
+```
+
+To pull the latest repo changes and apply them:
+
+```sh
+chezmoi update
+```
+
+## Local Helpers
+
+These helpers are conveniences layered on top of the core chezmoi workflow:
+
+- `brew-dump`: regenerates `$XDG_CONFIG_HOME/homebrew/Brewfile` from installed
+  Homebrew packages, excluding entries listed in `Brewfile.local` when present.
+- `chup`: shell alias for `chezmoi update`.
+- Raycast `dotfiles_update`: runs the local update flow from Raycast.
 
 ## Automated Setup
 
-After the initial setup, `chezmoi` will automatically run a series of scripts to configure the system. This includes:
+Applying or updating these dotfiles can run scripts from `home/.chezmoiscripts/`.
+At a high level, they configure:
 
-- **Homebrew**: Installs a wide range of command-line tools and GUI applications listed in the `Brewfile`.
-- **mise**: Installs and configures specific versions of programming languages and tools like Node.js, Python, and Rust.
+- macOS architecture checks and defaults.
+- Homebrew setup, package installation, and cask upgrades.
+- `mise` tool installation and upgrades.
+- shell completions.
+- default app associations with `duti`.
+- yazi plugins.
 
-## ✨ Highlights ✨
+Review `home/.chezmoiscripts/` before running `chezmoi apply` on a new or
+important machine.
 
-This setup is built around a few key tools that provide a modern and efficient command-line experience.
+## Maintenance Tasks
 
-### [chezmoi](https://chezmoi.io)
+The root `mise.toml` pins `chezmoi` and defines maintenance tasks:
 
-`chezmoi` is the backbone of this setup, allowing for easy management and version control of dotfiles across different machines.
+```sh
+mise install
+mise run bump
+mise run bump:gh
+mise run bump:docker
+```
 
-### [zsh4humans](https://github.com/romkatv/zsh4humans)
+- `mise install` installs the tools declared in `mise.toml`.
+- `mise run bump` runs all bump tasks.
+- `mise run bump:gh` upgrades GitHub CLI extensions.
+- `mise run bump:docker` starts OrbStack and rebuilds/recreates local Docker
+  services from `~/.config/services/compose.yaml`.
 
-Provides a fast, sensible, and pre-configured Zsh environment. It offers a great out-of-the-box experience with smart defaults for completions, history, and more, while still being highly customizable.
+These tasks mutate local tools or services. Review them before running.
 
-### [Homebrew](https://brew.sh)
+## Highlights
 
-All essential command-line tools and desktop applications are managed via a `Brewfile`. This makes setting up a new machine a breeze. Simply run `brew bundle install --global` to install everything.
-
-### [mise](https://mise.jdx.dev/)
-
-Forget `nvm`, `pyenv`, or `asdf`. `mise` is a next-generation, polyglot version manager that can handle them all. It's used here to manage versions for Node.js, Python, Rust, and other development tools, configured via a single `.toml` file.
-
-### [AstroNvim](https://docs.astronvim.com/)
-
-The Neovim configuration is based on AstroNvim, a modern and elegant Neovim configuration featuring a beautiful UI and a set of carefully curated plugins. It provides a feature-rich, IDE-like experience that is both extensible and fast.
+- [chezmoi](https://chezmoi.io): dotfile source/target management.
+- [Homebrew](https://brew.sh): command-line tools and desktop apps via a
+  Brewfile.
+- [mise](https://mise.jdx.dev/): language and developer-tool version management.
+- [AstroNvim](https://docs.astronvim.com/): Neovim configuration base.
