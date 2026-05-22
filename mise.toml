@@ -16,15 +16,3 @@ run = [
   "docker compose --project-name homelab --file ~/.config/services/compose.yaml pull",
   "docker compose --project-name homelab --file ~/.config/services/compose.yaml up --detach --force-recreate"
 ]
-
-[tasks."bump:brew-formula"]
-description = "Homebrew Formula Upgrade"
-run = "brew upgrade"
-
-[tasks."bump:brew-cask"]
-description = "Homebrew Cask Upgrade"
-run = "brew upgrade --cask --greedy-auto-updates"
-
-[tasks."bump:mise"]
-description = "Mise Packages upgrade"
-run = "mise upgrade"
