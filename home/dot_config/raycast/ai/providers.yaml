@@ -1,9 +1,9 @@
 providers:
   - id: bifrost
     name: Bifrost
-    base_url: http://bifrost.orb.local/openai
+    base_url: http://localhost:8080/openai
     models:
-      - id: mistral/devstral-2512
+      - id: devstral-2512
         name: Devstral 2
         description: Development model from Mistral
         context: 256000
@@ -18,22 +18,7 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
-      - id: mistral/labs-devstral-small-2512
-        name: Devstral Small 2
-        description: Small development model from Mistral Labs
-        context: 256000
-        abilities:
-          temperature:
-            supported: true
-          vision:
-            supported: false
-          system_message:
-            supported: true
-          tools:
-            supported: true
-          reasoning_effort:
-            supported: false
-      - id: mistral/mistral-medium-3.5
+      - id: mistral-medium-3.5
         name: Mistral Medium 3.5
         description: Frontier-class multimodal model from Mistral
         context: 256000
@@ -48,7 +33,7 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
-      - id: mistral/mistral-small-2603
+      - id: mistral-small-latest
         name: Mistral Small 4
         description: Small model from Mistral
         context: 256000
@@ -63,7 +48,7 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
-      - id: opencode/minimax-m2.5-free
+      - id: minimax-m2.5-free
         name: MiniMax M2.5
         description: MiniMax M2.5 from Opencode Zen
         context: 204800

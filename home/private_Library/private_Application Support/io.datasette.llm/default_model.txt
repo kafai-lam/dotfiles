@@ -1,1 +1,1 @@
-mistral/devstral-2512
+devstral-2512

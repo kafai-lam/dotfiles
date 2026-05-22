@@ -1,42 +1,34 @@
 {
   "custom_models": [
     {
-      "model": "mistral/devstral-2512",
-      "model_display_name": "Bifrost: Devstral 2",
+      "model": "devstral-2512",
+      "model_display_name": "Devstral 2",
       "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
+      "base_url": "http://localhost:8080/openai",
       "api_key": "dummy",
       "max_tokens": 256000
     },
     {
-      "model": "mistral/labs-devstral-small-2512",
-      "model_display_name": "Bifrost: Devstral Small 2",
+      "model": "mistral-medium-3.5",
+      "model_display_name": "Mistral Medium 3.5",
       "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
+      "base_url": "http://localhost:8080/openai",
       "api_key": "dummy",
       "max_tokens": 256000
     },
     {
-      "model": "mistral/mistral-medium-3.5",
-      "model_display_name": "Bifrost: Mistral Medium 3.5",
+      "model": "mistral-small-latest",
+      "model_display_name": "Mistral Small 4",
       "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
+      "base_url": "http://localhost:8080/openai",
       "api_key": "dummy",
       "max_tokens": 256000
     },
     {
-      "model": "mistral/mistral-small-2603",
-      "model_display_name": "Bifrost: Mistral Small 4",
+      "model": "minimax-m2.5-free",
+      "model_display_name": "MiniMax M2.5 (Zen)",
       "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
-      "api_key": "dummy",
-      "max_tokens": 256000
-    },
-    {
-      "model": "opencode/minimax-m2.5-free",
-      "model_display_name": "Bifrost: MiniMax M2.5 (Zen)",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://bifrost.orb.local/openai",
+      "base_url": "http://localhost:8080/openai",
       "api_key": "dummy",
       "max_tokens": 131072
     }

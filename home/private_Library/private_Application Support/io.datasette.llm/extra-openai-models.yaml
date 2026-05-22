@@ -1,19 +1,27 @@
-- model_id: mistral/devstral-2512
-  model_name: mistral/devstral-2512
-  api_base: http://bifrost.orb.local/openai
+- model_id: gpt-5.5
+  model_name: gpt-5.5
+  api_base: http://localhost:8080/openai
 
-- model_id: mistral/labs-devstral-small-2512
-  model_name: mistral/labs-devstral-small-2512
-  api_base: http://bifrost.orb.local/openai
+- model_id: gpt-5.4
+  model_name: gpt-5.4
+  api_base: http://localhost:8080/openai
 
-- model_id: mistral/mistral-medium-3.5
-  model_name: mistral/mistral-medium-3.5
-  api_base: http://bifrost.orb.local/openai
+- model_id: gpt-5.4-mini
+  model_name: gpt-5.4-mini
+  api_base: http://localhost:8080/openai
 
-- model_id: mistral/mistral-small-2603
-  model_name: mistral/mistral-small-2603
-  api_base: http://bifrost.orb.local/openai
+- model_id: devstral-2512
+  model_name: devstral-2512
+  api_base: http://localhost:8080/openai
 
-- model_id: opencode/minimax-m2.5-free
-  model_name: opencode/minimax-m2.5-free
-  api_base: http://bifrost.orb.local/openai
+- model_id: mistral-medium-3.5
+  model_name: mistral-medium-3.5
+  api_base: http://localhost:8080/openai
+
+- model_id: mistral-small-latest
+  model_name: mistral-small-latest
+  api_base: http://localhost:8080/openai
+
+- model_id: minimax-m2.5-free
+  model_name: minimax-m2.5-free
+  api_base: http://localhost:8080/openai
