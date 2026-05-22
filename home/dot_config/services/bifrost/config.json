@@ -1,15 +1,16 @@
 {
   "$schema": "https://www.getbifrost.ai/schema",
   "client": {
+    "allowed_headers": ["*"],
+    "allowed_origins": ["*"],
     "drop_excess_requests": false,
-    "enable_logging": true,
-    "allowed_origins": ["http://bifrost.orb.local", "https://bifrost.orb.local"]
+    "enable_logging": true
   },
   "config_store": {
     "enabled": true,
     "type": "sqlite",
     "config": {
-      "path": "/app/data/config.db"
+      "path": "/tmp/config.db"
     }
   },
   "logs_store": {
@@ -20,10 +21,47 @@
     }
   },
   "providers": {
-    "mistral": {
+    "anthropic": {
       "network_config": {
-        "default_request_timeout_in_seconds": 120
+        "base_url": "http://cli-proxy-api:8317"
       },
+      "send_back_raw_request": true,
+      "send_back_raw_response": true,
+      "keys": [
+        {
+          "name": "ANTHROPIC_API_KEY_auto_detected",
+          "value": "env.ANTHROPIC_API_KEY",
+          "models": [
+            "claude-opus-4-6-thinking",
+            "claude-sonnet-4-6"
+          ],
+          "weight": 1
+        }
+      ]
+    },
+    "openai": {
+      "network_config": {
+        "base_url": "http://cli-proxy-api:8317"
+      },
+      "send_back_raw_request": true,
+      "send_back_raw_response": true,
+      "keys": [
+        {
+          "name": "OPENAI_API_KEY_auto_detected",
+          "value": "env.OPENAI_API_KEY",
+          "models": [
+            "codex-auto-review",
+            "gpt-5.3-codex",
+            "gpt-5.4-mini",
+            "gpt-5.4",
+            "gpt-5.5",
+            "gpt-image-2"
+          ],
+          "weight": 1
+        }
+      ]
+    },
+    "mistral": {
       "concurrency_and_buffer_size": {
         "concurrency": 1,
         "buffer_size": 1000
@@ -32,14 +70,12 @@
       "send_back_raw_response": true,
       "keys": [
         {
-          "name": "Mistral Free",
+          "name": "MISTRAL_API_KEY_auto_detected",
           "value": "env.MISTRAL_API_KEY",
           "models": [
-            "codestral-latest",
             "devstral-2512",
-            "labs-devstral-small-2512",
-            "mistral-small-2603",
-            "mistral-large-latest"
+            "mistral-small-latest",
+            "mistral-medium-3.5"
           ],
           "weight": 1.0
         }
@@ -56,31 +92,26 @@
           "chat_completion_stream": true,
           "responses": true,
           "responses_stream": true,
-          "embedding": false,
-          "speech": false,
-          "speech_stream": false,
-          "transcription": false,
-          "transcription_stream": false
+          "embedding": true,
+          "speech": true,
+          "speech_stream": true,
+          "transcription": true,
+          "transcription_stream": true
         }
       },
       "network_config": {
-        "base_url": "https://opencode.ai/zen",
-        "default_request_timeout_in_seconds": 120
-      },
-      "concurrency_and_buffer_size": {
-        "concurrency": 1,
-        "buffer_size": 1000
+        "base_url": "https://opencode.ai/zen"
       },
       "send_back_raw_request": true,
       "send_back_raw_response": true,
       "keys": [
         {
-          "name": "Zen",
+          "name": "OPENCODE_API_KEY_auto_detected",
           "value": "env.OPENCODE_API_KEY",
           "models": [
-            "hy3-preview-free",
+            "deepseek-v4-flash-free",
             "minimax-m2.5-free",
-            "nemotron-3-super-free"
+            "qwen3.6-plus-free"
           ],
           "weight": 1.0
         }

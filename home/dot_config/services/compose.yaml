@@ -1,16 +1,32 @@
 name: homelab
 services:
   bifrost:
-    image: maximhq/bifrost
     container_name: bifrost
+    image: maximhq/bifrost
     restart: always
-    labels:
-      - dev.orbstack.domains=bifrost.orb.local
     volumes:
       - ./bifrost:/app/data
+    ports:
+      - "8080:8080"
     environment:
+      - ANTHROPIC_API_KEY=sk-ant-dummy
       - MISTRAL_API_KEY
+      - OPENAI_API_KEY=sk-dummy
       - OPENCODE_API_KEY
+      - CONTEXT_MODE_DATA_DIR=/context-mode-data
+      - CONTEXT_MODE_PROJECT_DIR=/app/data
+      - TMPDIR=/opt/bunx-cache
     dns:
       - 1.1.1.1
       - 8.8.8.8
+    depends_on:
+      - cli-proxy-api
+
+  cli-proxy-api:
+    container_name: cli-proxy-api
+    image: eceasy/cli-proxy-api
+    restart: always
+    volumes:
+      - ./cli-proxy-api/config.yaml:/CLIProxyAPI/config.yaml
+      - ./cli-proxy-api/auths:/root/.cli-proxy-api
+      - ./cli-proxy-api/logs:/CLIProxyAPI/logs
