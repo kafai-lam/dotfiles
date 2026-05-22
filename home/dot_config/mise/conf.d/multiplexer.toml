@@ -7,3 +7,4 @@
 # "npm:@randomlabs/slate" = "latest"
 # "npm:dmux" = "latest"  # claude-squad
 "github:njbrake/agent-of-empires" = { version = "latest", bin = "aoe" }
+claude-squad = "latest"

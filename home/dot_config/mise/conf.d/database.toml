@@ -1,9 +1,10 @@
 [tools]
 # "github:achristmascarl/rainfrog" = "latest"
-# "github:jorgerojas26/lazysql" = "latest"
 # "github:neilotoole/sq" = "latest"  # jq-style data wrangler
 "github:derekwisong/datui" = "latest"  # Data viewer
 "github:hymkor/csvi" = "latest"  # CSV Editor
+"github:jorgerojas26/lazysql" = "latest"
+"github:riii111/sabiql" = "latest"
 "npm:neonctl" = "latest"
 "pipx:harlequin" = { version = "latest", extras = "postgres,s3" }
 "pipx:pgcli" = "latest"
