@@ -1,6 +1,4 @@
 [tools]
-# "github:piqoni/hn-text" = "latest" # hackernews_tui
-# "pipx:rich-cli" = "latest" # gum
 "aqua:erikjuhani/basalt" = "latest"
 "github:aome510/hackernews-TUI" = "latest"
 "github:ricardodantas/hazelnut" = "latest"

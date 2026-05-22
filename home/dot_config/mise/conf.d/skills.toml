@@ -1,7 +1,4 @@
 [tools]
-# "github:boxlite-ai/boxrun" = "latest" # not working
-# "github:pigmej/aisanity" = "latest"
-# "npm:ccmanager" = "latest"
 "github:rtk-ai/rtk" = "latest"  # Token reducer
 "npm:@ccusage/codex" = "latest"
 "npm:@fission-ai/openspec" = "latest"

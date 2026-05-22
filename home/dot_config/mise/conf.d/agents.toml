@@ -6,6 +6,7 @@
 "github:mr-kelly/freecode" = "latest"
 "npm:@github/copilot" = "latest"
 "npm:command-code" = "latest"
+"pipx:llm" = "latest"
 "pipx:mistral-vibe" = "latest"
 amp = "latest"
 claude = "latest"

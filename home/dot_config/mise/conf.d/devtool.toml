@@ -1,7 +1,8 @@
 [tools]
+actionlint = "latest"
 copier = "latest"
 oxlint = "latest"
-prek = "latest"
 pre-commit = "latest"
-ty = "latest"
+prek = "latest"
 tombi = "latest"
+ty = "latest"

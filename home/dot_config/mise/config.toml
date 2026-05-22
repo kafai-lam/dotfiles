@@ -1,6 +1,5 @@
 [tools]
 bun = "latest"
-cargo-binstall = "latest"
 chezmoi = "latest"
 fnox = "latest"
 node = "24"
