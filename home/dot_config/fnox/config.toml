@@ -1,0 +1,11 @@
+default_provider = "keychain"
+
+[providers.keychain]
+type = "keychain"
+service = "fnox"
+
+[secrets]
+MISTRAL_API_KEY = { provider = "keychain", value = "MISTRAL_API_KEY" }
+NVIDIA_API_KEY = { provider = "keychain", value = "NVIDIA_API_KEY" }
+OPENCODE_API_KEY = { provider = "keychain", value = "OPENCODE_API_KEY" }
+UV_PUBLISH_TOKEN = { provider = "keychain", value = "UV_PUBLISH_TOKEN" }

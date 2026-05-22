@@ -2,18 +2,24 @@
 bun = "latest"
 cargo-binstall = "latest"
 chezmoi = "latest"
+fnox = "latest"
 node = "24"
 python = "3.12"
 rust = "stable"
 uv = "latest"
 
 [settings]
+env_cache = true
 experimental = true
 idiomatic_version_file_enable_tools = ["python"]
 npm.package_manager = "bun"
 pipx.uvx = true
 python.uv_venv_auto = "create|source"
 
+[plugins]
+fnox-env = "https://github.com/jdx/mise-env-fnox"
+
 [env]
+_.fnox-env = { tools = true }
 CFLAGS = "-I/opt/homebrew/opt/openssl@3/include"
 LDFLAGS = "-L/opt/homebrew/opt/openssl@3/lib -Wl,-no_warn_duplicate_libraries"
