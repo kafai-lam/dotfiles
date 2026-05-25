@@ -1,5 +1,32 @@
 name: homelab
 services:
+  searxng:
+    container_name: searxng
+    image: docker.io/searxng/searxng:latest
+    restart: always
+    ports:
+      - "8888:8080"
+    volumes:
+      - ./searxng:/etc/searxng
+      - ./searxng/cache:/var/cache/searxng
+    environment:
+      # Required locally; keep the real value out of chezmoi.
+      - SEARXNG_SECRET=dummy
+      # - SEARXNG_BASE_URL=http://localhost:8888/
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+    depends_on:
+      - searxng-valkey
+
+  searxng-valkey:
+    container_name: searxng-valkey
+    image: docker.io/valkey/valkey:9-alpine
+    command: valkey-server --save 30 1 --loglevel warning
+    restart: always
+    volumes:
+      - ./searxng-valkey:/data
+
   bifrost:
     container_name: bifrost
     image: maximhq/bifrost
@@ -13,9 +40,6 @@ services:
       - MISTRAL_API_KEY
       - OPENAI_API_KEY=sk-dummy
       - OPENCODE_API_KEY
-      - CONTEXT_MODE_DATA_DIR=/context-mode-data
-      - CONTEXT_MODE_PROJECT_DIR=/app/data
-      - TMPDIR=/opt/bunx-cache
     dns:
       - 1.1.1.1
       - 8.8.8.8
