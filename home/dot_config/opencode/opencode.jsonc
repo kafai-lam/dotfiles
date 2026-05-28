@@ -13,7 +13,7 @@
       },
       "models": {
         "deepseek-v4-flash-free": { "name": "DeepSeek V4 Flash" },
-        "devstral-2512": { "name": "Devstral 2"},
+        "devstral-2512": { "name": "Devstral 2" },
         "mistral-small-latest": { "name": "Mistral Small 4" },
         "mistral-medium-3.5": { "name": "Mistral Medium 3.5" },
       },

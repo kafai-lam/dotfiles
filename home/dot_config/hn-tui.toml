@@ -39,4 +39,3 @@ ask_hn = { front = "#f47067", effect = "bold" }
 tell_hn = { front = "#c69026", effect = "bold" }
 show_hn = { front = "#539bf5", effect = "bold" }
 launch_hn = { front = "#57ab5a", effect = "bold" }
-

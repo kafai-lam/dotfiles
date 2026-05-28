@@ -11,6 +11,5 @@ search:
     - json
     - rss
 
-
 valkey:
   url: valkey://searxng-valkey:6379/0
