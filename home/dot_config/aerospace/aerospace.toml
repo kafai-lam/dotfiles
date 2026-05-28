@@ -143,3 +143,13 @@ alt-shift-h = ["join-with left", "mode main"]
 alt-shift-j = ["join-with down", "mode main"]
 alt-shift-k = ["join-with up", "mode main"]
 alt-shift-l = ["join-with right", "mode main"]
+
+[workspace-to-monitor-force-assignment]
+1 = ["pixio", "secondary", "built-in"]
+2 = ["pixio", "secondary", "built-in"]
+3 = ["pixio", "secondary", "built-in"]
+4 = ["pixio", "secondary", "built-in"]
+5 = "built-in"
+6 = "built-in"
+7 = "built-in"
+8 = ["msi", "bulit-in"]
