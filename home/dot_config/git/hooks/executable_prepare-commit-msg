@@ -6,6 +6,9 @@ COMMIT_MSG_FILE=$1
 COMMIT_SOURCE=$2
 SHA1=$3
 RECENT_COMMIT_COUNT=5
+DIRECT_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_DIRECT_DIFF_TOKEN_LIMIT:-6000}
+GROUP_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_GROUP_DIFF_TOKEN_LIMIT:-9000}
+TTOK_MODEL=${PREPARE_COMMIT_MSG_TTOK_MODEL:-}
 
 [[ "$COMMIT_SOURCE" == "template" ]] || exit 0
 
@@ -19,7 +22,6 @@ require() {
     die "missing dependency: $1"
   fi
 }
-require llm
 require sed
 
 system_prompt=$(
@@ -31,10 +33,23 @@ Use provided instructions and extra context to guide your responses.
 Output requirements:
 - Wrap the entire commit message in a <commit-message> block
 - Limit the subject line to 50 characters
-- Wrap the body at 72 characters
+- Wrap the body at 64 characters
 - Prefer a single subject line with no body for trivial change
 - For non-trivial changes, use the body to explain what and why, but not how
 - Be concrete and specific to the diff; mention key modules/files when helpful
+EOF
+)
+
+summary_system_prompt=$(
+  cat <<'EOF'
+Your goal is to summarize one group of staged git changes so another model call can write a commit message from multiple summaries.
+
+Output requirements:
+- Wrap the entire summary in a <change-summary> block
+- Identify the main purpose of this group
+- Mention important files/modules when helpful
+- Focus on what changed and why it matters, not line-by-line details
+- Note user-visible behavior, configuration, migration, or risk when present
 EOF
 )
 
@@ -45,11 +60,72 @@ if [[ -z "$recent_commits" ]]; then
 fi
 
 staged_diff="$(git diff --staged)"
+style_guide="$(sed -E 's/^# ?//' "$COMMIT_MSG_FILE")"
+
+count_tokens() {
+  if [[ -n "$TTOK_MODEL" ]]; then
+    run_ttok --model "$TTOK_MODEL" 2>/dev/null || printf "0\n"
+  else
+    run_ttok 2>/dev/null || printf "0\n"
+  fi
+}
+
+truncate_tokens() {
+  local limit=$1
+  if [[ -n "$TTOK_MODEL" ]]; then
+    run_ttok --model "$TTOK_MODEL" --truncate "$limit" 2>/dev/null || cat
+  else
+    run_ttok --truncate "$limit" 2>/dev/null || cat
+  fi
+}
+
+run_ttok() {
+  if command -v ttok >/dev/null 2>&1; then
+    ttok "$@" 2>/dev/null
+  elif command -v mise >/dev/null 2>&1; then
+    mise exec pipx:ttok -- ttok "$@" 2>/dev/null
+  else
+    return 127
+  fi
+}
+
+run_gum() {
+  if command -v gum >/dev/null 2>&1; then
+    gum "$@"
+  elif [[ -x /opt/homebrew/bin/gum ]]; then
+    /opt/homebrew/bin/gum "$@"
+  elif command -v mise >/dev/null 2>&1; then
+    mise exec -- gum "$@"
+  else
+    return 127
+  fi
+}
+
+run_llm() {
+  local title=$1
+  local prompt=$2
+  local system=$3
+  local -a llm_command
+
+  if command -v llm >/dev/null 2>&1; then
+    llm_command=(llm)
+  elif command -v mise >/dev/null 2>&1; then
+    llm_command=(mise exec pipx:llm -- llm)
+  else
+    return 127
+  fi
+
+  if run_gum --version >/dev/null 2>&1; then
+    printf "%s" "$prompt" | run_gum spin --title "$title" -- "${llm_command[@]}" --no-stream --system "$system"
+  else
+    printf "%s" "$prompt" | "${llm_command[@]}" --no-stream --system "$system"
+  fi
+}
 
 build_user_prompt() {
   cat <<EOF
 <style-guide>
-$(sed -E 's/^# ?//' "$COMMIT_MSG_FILE")
+$style_guide
 </style-guide>
 
 <git-diff>
@@ -63,11 +139,7 @@ EOF
 }
 
 generate_message() {
-  if command -v gum >/dev/null 2>&1; then
-    build_user_prompt | gum spin --title "generating commit message..." -- llm --no-stream --system "$system_prompt"
-  else
-    build_user_prompt | llm --no-stream --system "$system_prompt"
-  fi
+  run_llm "generating commit message..." "$(build_user_prompt)" "$system_prompt"
 }
 
 sanitize_message() {
@@ -79,6 +151,170 @@ sanitize_message() {
     printf "%s" "$msg"
   fi
 }
+
+sanitize_summary() {
+  local msg
+  msg="$(cat)"
+  if printf "%s" "$msg" | grep -qE '<change-summary>'; then
+    printf "%s" "$msg" | sed -n '/<change-summary>/,/<\/change-summary>/p' | sed '1d;$d'
+  else
+    printf "%s" "$msg"
+  fi
+}
+
+build_summary_prompt() {
+  local files=$1
+  local diff=$2
+  local note=$3
+
+  cat <<EOF
+<group-files>
+$files
+</group-files>
+
+<note>
+$note
+</note>
+
+<git-diff-group>
+$diff
+</git-diff-group>
+EOF
+}
+
+summarize_group() {
+  local group_number=$1
+  local files=$2
+  local diff=$3
+  local note=$4
+  local prompt
+
+  prompt="$(build_summary_prompt "$files" "$diff" "$note")"
+  run_llm "summarizing commit diff group $group_number..." "$prompt" "$summary_system_prompt" | sanitize_summary
+}
+
+build_grouped_final_prompt() {
+  local summaries=$1
+  local diff_stat
+  local changed_files
+
+  diff_stat="$(git diff --staged --stat)"
+  changed_files="$(git diff --staged --name-status)"
+
+  cat <<EOF
+<style-guide>
+$style_guide
+</style-guide>
+
+<change-summaries>
+$summaries
+</change-summaries>
+
+<diff-stat>
+$diff_stat
+</diff-stat>
+
+<changed-files>
+$changed_files
+</changed-files>
+
+<history>
+$recent_commits
+</history>
+EOF
+}
+
+append_group_summary() {
+  local summaries=$1
+  local group_number=$2
+  local files=$3
+  local summary=$4
+
+  cat <<EOF
+$summaries
+
+<group-summary>
+Group: $group_number
+Files:
+$files
+
+Summary:
+$summary
+</group-summary>
+EOF
+}
+
+generate_grouped_message() {
+  local summaries=""
+  local current_files=""
+  local current_diff=""
+  local group_number=1
+  local file
+  local file_diff
+  local candidate_diff
+  local token_count
+  local summary
+  local final_prompt
+
+  while IFS= read -r file; do
+    [[ -n "$file" ]] || continue
+    file_diff="$(git diff --staged -- "$file")"
+    [[ -n "$file_diff" ]] || continue
+
+    if [[ -z "$current_diff" ]]; then
+      candidate_diff="$file_diff"
+    else
+      candidate_diff="$current_diff
+
+$file_diff"
+    fi
+
+    token_count="$(printf "%s" "$candidate_diff" | count_tokens)"
+    if (( token_count > GROUP_DIFF_TOKEN_LIMIT )) && [[ -n "$current_diff" ]]; then
+      summary="$(summarize_group "$group_number" "$current_files" "$current_diff" "Full staged diffs for this file group.")"
+      summaries="$(append_group_summary "$summaries" "$group_number" "$current_files" "$summary")"
+      group_number=$((group_number + 1))
+      current_files=""
+      current_diff=""
+      candidate_diff="$file_diff"
+      token_count="$(printf "%s" "$candidate_diff" | count_tokens)"
+    fi
+
+    if (( token_count > GROUP_DIFF_TOKEN_LIMIT )); then
+      file_diff="$(printf "%s" "$file_diff" | truncate_tokens "$GROUP_DIFF_TOKEN_LIMIT")"
+      summary="$(summarize_group "$group_number" "$file" "$file_diff" "This single file diff exceeded the group token limit and was truncated.")"
+      summaries="$(append_group_summary "$summaries" "$group_number" "$file" "$summary")"
+      group_number=$((group_number + 1))
+      current_files=""
+      current_diff=""
+      continue
+    fi
+
+    if [[ -z "$current_files" ]]; then
+      current_files="$file"
+      current_diff="$file_diff"
+    else
+      current_files="$current_files
+$file"
+      current_diff="$candidate_diff"
+    fi
+  done < <(git diff --staged --name-only)
+
+  if [[ -n "$current_diff" ]]; then
+    summary="$(summarize_group "$group_number" "$current_files" "$current_diff" "Full staged diffs for this file group.")"
+    summaries="$(append_group_summary "$summaries" "$group_number" "$current_files" "$summary")"
+  fi
+
+  final_prompt="$(build_grouped_final_prompt "$summaries")"
+  run_llm "generating commit message from summaries..." "$final_prompt" "$system_prompt"
+}
+
+staged_diff_tokens="$(printf "%s" "$staged_diff" | count_tokens)"
+if (( staged_diff_tokens > DIRECT_DIFF_TOKEN_LIMIT )); then
+  generate_message() {
+    generate_grouped_message
+  }
+fi
 
 if ! generated_message="$(generate_message | sanitize_message)"; then
   die "failed to generate message (is llm configured?)"
