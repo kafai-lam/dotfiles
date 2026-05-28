@@ -1,6 +1,14 @@
 {
   "custom_models": [
     {
+      "model": "deepseek-v4-flash-free",
+      "model_display_name": "DeepSeek V4 Flash",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://localhost:8080/openai",
+      "api_key": "dummy",
+      "max_tokens": 128000
+    },
+    {
       "model": "devstral-2512",
       "model_display_name": "Devstral 2",
       "provider": "generic-chat-completion-api",
@@ -23,14 +31,6 @@
       "base_url": "http://localhost:8080/openai",
       "api_key": "dummy",
       "max_tokens": 256000
-    },
-    {
-      "model": "minimax-m2.5-free",
-      "model_display_name": "MiniMax M2.5 (Zen)",
-      "provider": "generic-chat-completion-api",
-      "base_url": "http://localhost:8080/openai",
-      "api_key": "dummy",
-      "max_tokens": 131072
     }
   ]
 }

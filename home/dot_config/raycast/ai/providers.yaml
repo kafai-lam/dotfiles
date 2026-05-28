@@ -5,7 +5,6 @@ providers:
     models:
       - id: devstral-2512
         name: Devstral 2
-        description: Development model from Mistral
         context: 256000
         abilities:
           temperature:
@@ -20,7 +19,6 @@ providers:
             supported: false
       - id: mistral-medium-3.5
         name: Mistral Medium 3.5
-        description: Frontier-class multimodal model from Mistral
         context: 256000
         abilities:
           temperature:
@@ -35,7 +33,6 @@ providers:
             supported: false
       - id: mistral-small-latest
         name: Mistral Small 4
-        description: Small model from Mistral
         context: 256000
         abilities:
           temperature:
@@ -48,10 +45,10 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
-      - id: minimax-m2.5-free
-        name: MiniMax M2.5
-        description: MiniMax M2.5 from Opencode Zen
-        context: 204800
+      - id: deepseek-v4-flash-free
+        name: DeepSeek V4 Flash Free
+        description: DeepSeek V4 Flash from Opencode Zen
+        context: 200000
         abilities:
           temperature:
             supported: true

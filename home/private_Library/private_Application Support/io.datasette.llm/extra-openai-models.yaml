@@ -10,6 +10,10 @@
   model_name: gpt-5.4-mini
   api_base: http://localhost:8080/openai
 
+- model_id: deepseek-v4-flash-free
+  model_name: deepseek-v4-flash-free
+  api_base: http://localhost:8080/openai
+
 - model_id: devstral-2512
   model_name: devstral-2512
   api_base: http://localhost:8080/openai
@@ -20,8 +24,4 @@
 
 - model_id: mistral-small-latest
   model_name: mistral-small-latest
-  api_base: http://localhost:8080/openai
-
-- model_id: minimax-m2.5-free
-  model_name: minimax-m2.5-free
   api_base: http://localhost:8080/openai

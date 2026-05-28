@@ -109,9 +109,7 @@
           "name": "OPENCODE_API_KEY_auto_detected",
           "value": "env.OPENCODE_API_KEY",
           "models": [
-            "deepseek-v4-flash-free",
-            "minimax-m2.5-free",
-            "qwen3.6-plus-free"
+            "deepseek-v4-flash-free"
           ],
           "weight": 1.0
         }
