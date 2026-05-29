@@ -8,6 +8,7 @@ font-family = FiraCode Nerd Font Mono
 font-family = Menlo
 font-size = 12
 theme = GitHub Dark Default
+unfocused-split-opacity = 0.7
 
 cursor-color = white
 cursor-style-blink = false
