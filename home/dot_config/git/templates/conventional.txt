@@ -26,14 +26,14 @@
 # - Do not end with a period
 #
 # # Description (Optional)
-# - Can be skipped if changes are small and trival
+# - Can be skipped if changes are small and trivial
 # - Separate from the header with a blank line
 # - Wrap lines in the body at 72 characters or less
 # - Explain what changed and why these changes were necessary.
 # - Avoid direct references to file names or specific line numbers
 # - Always consider any provided user context
 # - Avoid filler words
-# - Including optional footer only if the branch mentions specific issue numbers
+# - Include footer ONLY when user mentions specific issue numbers
 #
 # # Breaking Changes (Optional)
 # - Add to footer Only if breaking changes were introduced
