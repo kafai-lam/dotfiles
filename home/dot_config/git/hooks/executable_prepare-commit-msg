@@ -145,8 +145,8 @@ generate_message() {
 sanitize_message() {
   local msg
   msg="$(cat)"
-  if printf "%s" "$msg" | grep -qE '<commit-message>'; then
-    printf "%s" "$msg" | sed -n '/<commit-message>/,/<\/commit-message>/p' | sed '1d;$d'
+  if grep -qE '<commit-message>' <<< "$msg"; then
+    sed -n '/<commit-message>/,/<\/commit-message>/p' <<< "$msg" | sed '1d;$d'
   else
     printf "%s" "$msg"
   fi
@@ -155,8 +155,8 @@ sanitize_message() {
 sanitize_summary() {
   local msg
   msg="$(cat)"
-  if printf "%s" "$msg" | grep -qE '<change-summary>'; then
-    printf "%s" "$msg" | sed -n '/<change-summary>/,/<\/change-summary>/p' | sed '1d;$d'
+  if grep -qE '<change-summary>' <<< "$msg"; then
+    sed -n '/<change-summary>/,/<\/change-summary>/p' <<< "$msg" | sed '1d;$d'
   else
     printf "%s" "$msg"
   fi
@@ -269,7 +269,7 @@ generate_grouped_message() {
 $file_diff"
     fi
 
-    token_count="$(printf "%s" "$candidate_diff" | count_tokens)"
+    token_count="$(count_tokens <<< "$candidate_diff")"
     if (( token_count > GROUP_DIFF_TOKEN_LIMIT )) && [[ -n "$current_diff" ]]; then
       summary="$(summarize_group "$group_number" "$current_files" "$current_diff" "Full staged diffs for this file group.")"
       summaries="$(append_group_summary "$summaries" "$group_number" "$current_files" "$summary")"
@@ -277,11 +277,11 @@ $file_diff"
       current_files=""
       current_diff=""
       candidate_diff="$file_diff"
-      token_count="$(printf "%s" "$candidate_diff" | count_tokens)"
+      token_count="$(count_tokens <<< "$candidate_diff")"
     fi
 
     if (( token_count > GROUP_DIFF_TOKEN_LIMIT )); then
-      file_diff="$(printf "%s" "$file_diff" | truncate_tokens "$GROUP_DIFF_TOKEN_LIMIT")"
+      file_diff="$(truncate_tokens "$GROUP_DIFF_TOKEN_LIMIT" <<< "$file_diff")"
       summary="$(summarize_group "$group_number" "$file" "$file_diff" "This single file diff exceeded the group token limit and was truncated.")"
       summaries="$(append_group_summary "$summaries" "$group_number" "$file" "$summary")"
       group_number=$((group_number + 1))
@@ -309,7 +309,7 @@ $file"
   run_llm "generating commit message from summaries..." "$final_prompt" "$system_prompt"
 }
 
-staged_diff_tokens="$(printf "%s" "$staged_diff" | count_tokens)"
+staged_diff_tokens="$(count_tokens <<< "$staged_diff")"
 if (( staged_diff_tokens > DIRECT_DIFF_TOKEN_LIMIT )); then
   generate_message() {
     generate_grouped_message
