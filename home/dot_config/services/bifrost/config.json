@@ -21,24 +21,6 @@
     }
   },
   "providers": {
-    "anthropic": {
-      "network_config": {
-        "base_url": "http://cli-proxy-api:8317"
-      },
-      "send_back_raw_request": true,
-      "send_back_raw_response": true,
-      "keys": [
-        {
-          "name": "ANTHROPIC_API_KEY_auto_detected",
-          "value": "env.ANTHROPIC_API_KEY",
-          "models": [
-            "claude-opus-4-6-thinking",
-            "claude-sonnet-4-6"
-          ],
-          "weight": 1
-        }
-      ]
-    },
     "openai": {
       "network_config": {
         "base_url": "http://cli-proxy-api:8317"
