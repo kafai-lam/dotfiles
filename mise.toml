@@ -15,7 +15,6 @@ run = "gh extension upgrade --all"
 [tasks."bump:docker"]
 description = "Sync Docker Images"
 run = [
-  "orbctl start",
   "docker compose --file ~/.config/services/compose.yaml pull",
   "docker compose --file ~/.config/services/compose.yaml up --detach --force-recreate"
 ]
