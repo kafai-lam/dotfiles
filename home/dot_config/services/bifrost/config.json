@@ -23,6 +23,7 @@
   "providers": {
     "openai": {
       "network_config": {
+        "allow_private_network": true,
         "base_url": "http://cli-proxy-api:8317"
       },
       "send_back_raw_request": true,

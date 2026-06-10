@@ -50,6 +50,8 @@ services:
     container_name: cli-proxy-api
     image: eceasy/cli-proxy-api
     restart: always
+    ports:
+      - "8317:8317"
     volumes:
       - ./cli-proxy-api/config.yaml:/CLIProxyAPI/config.yaml
       - ./cli-proxy-api/auths:/root/.cli-proxy-api
