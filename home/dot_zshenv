@@ -1,15 +1,2 @@
 ZDOTDIR=~/.config/zsh
 source -- "$ZDOTDIR"/.zshenv
-
-if [[ -o no_interactive ]]; then
-  if command -v mise >/dev/null 2>&1; then
-    typeset -U path
-    path=(
-      "$HOME/.local/share/mise/shims"
-      "$HOME/.local/bin"
-      $path
-    )
-    export PATH
-  fi
-  return
-fi

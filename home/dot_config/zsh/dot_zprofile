@@ -1,0 +1,8 @@
+if [[ -o no_interactive ]]; then
+  typeset -U path
+  path=(
+    "$HOME/.local/bin"
+    "$HOME/.local/share/mise/shims"
+    $path
+  )
+fi
