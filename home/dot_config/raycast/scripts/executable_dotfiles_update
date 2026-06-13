@@ -15,19 +15,24 @@
 
 : ${HOMEBREW_BUNDLE_FILE_GLOBAL:=$HOME/.config/homebrew/Brewfile}
 
-brew-dump () {
-    if [[ -f $HOMEBREW_BUNDLE_FILE_GLOBAL.local ]]
-    then
-        brew bundle dump --no-vscode --no-restart --file=- | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} -E "$(brew leaves | xargs printf '%s|')tap|cask" | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} -Fvx -f $HOMEBREW_BUNDLE_FILE_GLOBAL.local > $HOMEBREW_BUNDLE_FILE_GLOBAL
-    else
-        brew bundle dump --no-vscode --no-restart --file=- | grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn} -E "$(brew leaves | xargs printf '%s|')tap|cask" > $HOMEBREW_BUNDLE_FILE_GLOBAL
-    fi
+function brew-dump() {
+  if [[ -f $HOMEBREW_BUNDLE_FILE_GLOBAL.local ]]; then
+    brew bundle dump --no-vscode --no-restart --no-describe --file=- \
+    | grep -E "$(brew leaves | xargs printf '%s|')tap|cask" \
+    | grep -Fvx -f $HOMEBREW_BUNDLE_FILE_GLOBAL.local \
+    > $HOMEBREW_BUNDLE_FILE_GLOBAL
+  else
+    brew bundle dump --no-vscode --no-restart --no-describe --file=- \
+    | grep -E "$(brew leaves | xargs printf '%s|')tap|cask" \
+    > $HOMEBREW_BUNDLE_FILE_GLOBAL
+  fi
 }
 
-update_dotfiles() {
-    echo "Updating Brewfile..."
-    brew-dump
-    echo "Running chezmoi re-add..."
+function update_dotfiles() {
+  echo "Updating Brewfile..."
+  brew-dump
+  echo "Running chezmoi re-add..."
+  chezmoi re-add
 }
 
 update_dotfiles
