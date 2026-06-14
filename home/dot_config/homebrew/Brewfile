@@ -58,9 +58,9 @@ brew "witr"
 brew "yazi"
 brew "yq"
 brew "zoxide"
-brew "jwbargsten/misc/defbro"
-brew "neurosnap/tap/zmx"
-cask "nikitabobko/tap/aerospace"
+brew "jwbargsten/misc/defbro", trusted: true
+brew "neurosnap/tap/zmx", trusted: true
+cask "nikitabobko/tap/aerospace", trusted: true
 cask "agentsview"
 cask "alt-tab"
 cask "antigravity"
