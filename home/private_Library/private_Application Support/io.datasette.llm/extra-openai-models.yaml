@@ -25,3 +25,15 @@
 - model_id: mistral-small-latest
   model_name: mistral-small-latest
   api_base: http://localhost:8080/openai
+
+- model_id: mimo-v2.5-free
+  model_name: mimo-v2.5-free
+  api_base: http://localhost:8080/openai
+
+- model_id: north-mini-code-free
+  model_name: north-mini-code-free
+  api_base: http://localhost:8080/openai
+
+- model_id: nemotron-3-ultra-free
+  model_name: nemotron-3-ultra-free
+  api_base: http://localhost:8080/openai

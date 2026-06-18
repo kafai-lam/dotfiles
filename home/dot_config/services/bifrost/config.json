@@ -92,7 +92,10 @@
           "name": "OPENCODE_API_KEY_auto_detected",
           "value": "env.OPENCODE_API_KEY",
           "models": [
-            "deepseek-v4-flash-free"
+            "deepseek-v4-flash-free",
+            "mimo-v2.5-free",
+            "north-mini-code-free",
+            "nemotron-3-ultra-free"
           ],
           "weight": 1.0
         }

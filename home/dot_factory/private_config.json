@@ -31,6 +31,30 @@
       "base_url": "http://localhost:8080/openai",
       "api_key": "dummy",
       "max_tokens": 256000
+    },
+    {
+      "model": "mimo-v2.5-free",
+      "model_display_name": "Mimo V2.5",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://localhost:8080/openai",
+      "api_key": "dummy",
+      "max_tokens": 128000
+    },
+    {
+      "model": "north-mini-code-free",
+      "model_display_name": "North Mini Code",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://localhost:8080/openai",
+      "api_key": "dummy",
+      "max_tokens": 128000
+    },
+    {
+      "model": "nemotron-3-ultra-free",
+      "model_display_name": "Nemotron 3 Ultra",
+      "provider": "generic-chat-completion-api",
+      "base_url": "http://localhost:8080/openai",
+      "api_key": "dummy",
+      "max_tokens": 128000
     }
   ]
 }

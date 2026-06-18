@@ -60,3 +60,48 @@ providers:
             supported: true
           reasoning_effort:
             supported: false
+      - id: mimo-v2.5-free
+        name: Mimo V2.5
+        description: Mimo V2.5 from Opencode Zen
+        context: 128000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: north-mini-code-free
+        name: North Mini Code
+        description: North Mini Code from Opencode Zen
+        context: 128000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: nemotron-3-ultra-free
+        name: Nemotron 3 Ultra
+        description: Nemotron 3 Ultra from Opencode Zen
+        context: 128000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: false
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
