@@ -43,6 +43,7 @@ brew "nginx"
 brew "nuls"
 brew "ollama"
 brew "pam-reattach"
+brew "paneru"
 brew "pkgconf"
 brew "poppler"
 brew "postgresql@18", link: true
