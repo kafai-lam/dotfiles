@@ -9,6 +9,7 @@ RECENT_COMMIT_COUNT=5
 DIRECT_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_DIRECT_DIFF_TOKEN_LIMIT:-6000}
 GROUP_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_GROUP_DIFF_TOKEN_LIMIT:-9000}
 TTOK_MODEL=${PREPARE_COMMIT_MSG_TTOK_MODEL:-}
+EXTRA_CONTEXT=${PREPARE_COMMIT_MSG_EXTRA_CONTEXT:-}
 
 [[ "$COMMIT_SOURCE" == "template" ]] || exit 0
 
@@ -28,12 +29,10 @@ system_prompt=$(
   cat <<'EOF'
 Your goal is to analyze the changes and create an appropriate commit message based on the provided git diff input following the specified style and best practices.
 Identify the primary purpose of the changes (e.g., new feature, bug fix, refactoring).
-Use provided instructions and extra context to guide your responses.
 
 Output requirements:
 - Wrap the entire commit message in a <commit-message> block
 - Limit the subject line to 50 characters
-- Wrap the body at 64 characters
 - Prefer a single subject line with no body for trivial change
 - For non-trivial changes, use the body to explain what and why, but not how
 - Be concrete and specific to the diff; mention key modules/files when helpful
@@ -61,6 +60,18 @@ fi
 
 staged_diff="$(git diff --staged)"
 style_guide="$(sed -E 's/^# ?//' "$COMMIT_MSG_FILE")"
+
+extra_context_section() {
+  if [[ -n "$EXTRA_CONTEXT" ]]; then
+    cat <<EOF
+Use following <extra-context> to understand the user's intent, but do not contradict the staged diff.
+<extra-context>
+$EXTRA_CONTEXT
+</extra-context>
+
+EOF
+  fi
+}
 
 count_tokens() {
   if [[ -n "$TTOK_MODEL" ]]; then
@@ -128,7 +139,7 @@ build_user_prompt() {
 $style_guide
 </style-guide>
 
-<git-diff>
+$(extra_context_section)<git-diff>
 $staged_diff
 </git-diff>
 
@@ -206,7 +217,7 @@ build_grouped_final_prompt() {
 $style_guide
 </style-guide>
 
-<change-summaries>
+$(extra_context_section)<change-summaries>
 $summaries
 </change-summaries>
 
