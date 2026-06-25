@@ -1,8 +1,11 @@
 [tools]
 "aqua:erikjuhani/basalt" = "latest"
 "github:aome510/hackernews-TUI" = "latest"
+"github:chmouel/lazyworktree" = "latest"
+"github:graykode/abtop" = "latest"
 "github:ramonvermeulen/whosthere" = "latest"
 "github:retlehs/quien" = "latest"
 "github:ricardodantas/hazelnut" = "latest"
 "github:textfuel/lazyjira" = "latest"
+"github:webstonehq/tuxedo" = "latest"
 superfile = "latest"
