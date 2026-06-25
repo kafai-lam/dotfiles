@@ -2,9 +2,8 @@
 "github:badlogic/pi-mono" = "latest"
 "github:can1357/oh-my-pi" = "latest"
 "github:just-every/code" = { version = "latest", bin = "every-code" }
-"github:Loongphy/codext" = "latest"
+"github:Loongphy/codext" = { version = "latest", bin = "codext" }
 "github:mr-kelly/freecode" = "latest"
-"npm:@ampcode/cli" = "latest"
 "npm:@github/copilot" = "latest"
 "npm:command-code" = "latest"
 "npm:droid" = "latest"
@@ -12,8 +11,13 @@
 "pipx:hermes-agent" = "latest"
 "pipx:llm" = "latest"
 "pipx:mistral-vibe" = "latest"
+antigravity-cli = "latest"
 claude = "latest"
 codex = "latest"
 jules = "latest"
 opencode = "latest"
 qwen = "latest"
+
+[env]
+OPENCODE_ENABLE_EXA = true
+LLM_CMD_MODEL = "gpt-5.4-mini"

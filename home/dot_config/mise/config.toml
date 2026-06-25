@@ -22,6 +22,4 @@ fnox-env = "https://github.com/jdx/mise-env-fnox"
 _.fnox-env = { tools = true }
 CFLAGS = "-I/opt/homebrew/opt/openssl@3/include"
 LDFLAGS = "-L/opt/homebrew/opt/openssl@3/lib -Wl,-no_warn_duplicate_libraries"
-OPENCODE_ENABLE_EXA = true
 HOMEBREW_NO_ENV_HINTS = true
-LLM_CMD_MODEL = "gpt-5.4-mini"

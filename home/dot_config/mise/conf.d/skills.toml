@@ -1,6 +1,5 @@
 [tools]
 "github:rtk-ai/rtk" = "latest"  # Token reducer
-"npm:@ccusage/codex" = "latest"
 "npm:@fission-ai/openspec" = "latest"
 "npm:@loongphy/codex-auth" = "latest"
 "npm:@tobilu/qmd" = "latest"  # Quick Markdown Search
@@ -11,4 +10,5 @@
 "npm:vibe-kanban" = "latest"
 "pipx:git+https://github.com/antoniorodr/memo.git" = { version = "latest", uvx_args = "--python 3.13" }
 "pipx:git+https://github.com/github/spec-kit.git" = "latest"
+"pipx:graphifyy" = "latest"  # Knowledge Graph
 "pipx:skill-seekers" = "latest"
