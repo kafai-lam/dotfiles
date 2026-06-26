@@ -1,3 +1,7 @@
+export CFLAGS="-I/opt/homebrew/opt/openssl@3/include"
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib -Wl,-no_warn_duplicate_libraries"
+export HOMEBREW_NO_ENV_HINTS=true
+
 if [[ -o no_interactive ]]; then
   typeset -U path
   path=(
