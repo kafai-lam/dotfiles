@@ -1,5 +1,15 @@
 name: homelab
 services:
+  hister:
+    image: ghcr.io/asciimoo/hister:latest
+    container_name: hister
+    user: '1000:1000'
+    restart: unless-stopped
+    volumes:
+      - ./hister:/hister/data
+    ports:
+      - 4433:4433
+
   searxng:
     container_name: searxng
     image: docker.io/searxng/searxng:latest
