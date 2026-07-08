@@ -1,0 +1,45 @@
+onboarding = false
+
+[ui]
+prompt_new_tab_name = false
+
+agent_panel_sort = "spaces"
+
+[ui.toast]
+delivery = "herdr"
+
+[ui.sound]
+enabled = false
+
+[keys]
+previous_workspace = "ctrl+["
+next_workspace = "ctrl+]"
+previous_agent = "ctrl+shift+["
+next_agent = "ctrl+shift+]"
+open_worktree = "prefix+shift+o"
+
+[[keys.command]]
+key = "prefix+u"
+type = "pane"
+command = "lazygit"
+description = "Lazygit"
+
+[[keys.command]]
+key = "prefix+y"
+type = "pane"
+command = "yazi"
+description = "Yazi"
+
+[[keys.command]]
+key = "prefix+i"
+type = "pane"
+command = "lazydocker"
+description = "Lazydocker"
+
+[theme]
+name = "tokyo-night"
+auto_switch = false
+
+[experimental]
+pane_history = true
+switch_ascii_input_source_in_prefix = true
