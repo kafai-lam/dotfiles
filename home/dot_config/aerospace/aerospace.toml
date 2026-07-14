@@ -152,4 +152,3 @@ alt-shift-l = ["join-with right", "mode main"]
 5 = "built-in"
 6 = "built-in"
 7 = "built-in"
-8 = ["msi", "bulit-in"]
