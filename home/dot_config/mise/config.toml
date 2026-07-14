@@ -1,17 +1,18 @@
 [tools]
+aube = "latest"
 bun = "latest"
 chezmoi = "latest"
 fnox = "latest"
 node = "24"
-python = "3.12"
+python = "3.13"
 rust = "latest"
 uv = "latest"
 
 [settings]
 env_cache = true
 experimental = true
-idiomatic_version_file_enable_tools = ["python"]
-npm.package_manager = "bun"
+idiomatic_version_file_enable_tools = ["node", "python"]
+npm.package_manager = "aube"
 pipx.uvx = true
 python.uv_venv_auto = "create|source"
 
