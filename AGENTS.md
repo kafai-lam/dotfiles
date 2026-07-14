@@ -1,56 +1,14 @@
-# Agent Instructions
+# AGENTS.md
 
-This is a personal macOS dotfiles repository managed by `chezmoi`.
+Personal macOS dotfiles managed with `chezmoi`.
 
-## Repository Model
+## Source-first workflow
 
-- `.chezmoiroot` contains `home`, so `home/` is the chezmoi source state.
-- Files under `home/` map into `$HOME` through chezmoi naming rules.
-- Root-level files such as `README.md`, `AGENTS.md`, and `mise.toml` are repo
-  documentation/tooling and are not applied into `$HOME`.
-- Editing this repository does not update live files in `$HOME` until
-  `chezmoi apply` runs.
+- Edit managed dotfiles in the chezmoi source state under `home/`, not directly in `$HOME`.
+- Treat applying source changes as a separate step and tell the user when it remains necessary.
+- Run mutating system or environment operations only on explicit request, including chezmoi application or updates, setup scripts, Homebrew, Docker, and mutating `mise` tasks.
 
-Common mappings examples:
+## Public guidance
 
-| Source path | Applied target |
-| --- | --- |
-| `home/dot_zshenv` | `~/.zshenv` |
-| `home/dot_config/zsh/dot_zshrc` | `~/.config/zsh/.zshrc` |
-| `home/private_Library/...` | `~/Library/...` with private permissions |
-| `home/dot_local/bin/executable_imgcat` | `~/.local/bin/imgcat` with executable permissions |
-| `home/.chezmoiscripts/run_after_*.sh` | scripts run by chezmoi during apply/update |
-| `home/.chezmoiexternal.toml` | external resources managed by chezmoi |
-
-## Working Rules
-
-- Start by checking `git status --short`; preserve unrelated user changes.
-- Prefer source-first edits under `home/` when changing managed dotfiles.
-- Use `chezmoi status`, `chezmoi diff`, and
-  `chezmoi apply --dry-run --verbose` to inspect effects.
-- Do not run `chezmoi apply`, `chezmoi update`, setup scripts, Homebrew, Docker,
-  or mutating `mise` tasks unless the user explicitly asks for that action.
-- Do not add plaintext tokens, passwords, private keys, API keys, or
-  machine-specific secrets unless explicitly instructed.
-
-## Development Notes
-
-- Keep docs public-safe: explain workflows and categories without exposing
-  sensitive local values.
-- Use concise Markdown and prefer commands that work from the repository root.
-- For README changes, keep human setup and maintenance guidance there.
-- For agent-specific behavior and safety rules, keep guidance in this file.
-- If a change should affect the live home directory, say clearly that applying
-  with chezmoi is a separate step.
-
-## Validation
-
-For managed dotfile changes under `home/`, inspect:
-
-```sh
-chezmoi status
-chezmoi diff
-chezmoi apply --dry-run --verbose
-```
-
-Only run real apply/update/package-manager commands after explicit user intent.
+- Update `README.md` if public facing behavoiur changes
+- Follow `docs/agents/git-commit-conventions.md` when creating a Git commit.
