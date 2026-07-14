@@ -1,0 +1,21 @@
+# Simple Git Commit
+Commit message should have following structure:
+
+{Subject}
+
+{Description}
+
+## Subject (Required)
+- Keep it under 50 characters if possible
+- Use imperative statements, e.g. "Fix broken Javadoc link"
+- Capitalize the first letter
+- Do not end with a period
+
+## Description (Optional)
+- Can be skipped if changes are small and trivial
+- Separate from the header with a blank line
+- Explain what changed and why these changes were necessary
+- Avoid direct references to file names or specific line numbers
+- Always consider any provided user context
+- Avoid filler words
+- Include footer ONLY when user mentions specific issue numbers

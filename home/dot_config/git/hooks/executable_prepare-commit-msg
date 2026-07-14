@@ -10,8 +10,27 @@ DIRECT_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_DIRECT_DIFF_TOKEN_LIMIT:-6000}
 GROUP_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_GROUP_DIFF_TOKEN_LIMIT:-9000}
 TTOK_MODEL=${PREPARE_COMMIT_MSG_TTOK_MODEL:-}
 EXTRA_CONTEXT=${PREPARE_COMMIT_MSG_EXTRA_CONTEXT:-}
+DEFAULT_COMMIT_CONVENTIONS=docs/agents/git-commit-conventions.md
+FALLBACK_COMMIT_CONVENTIONS=$HOME/.config/git/conventions/simple.md
 
-[[ "$COMMIT_SOURCE" == "template" ]] || exit 0
+[[ -z "$COMMIT_SOURCE" ]] || exit 0
+
+repo_root="$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
+convention_file=""
+if [[ -n "${GIT_COMMIT_CONVENTIONS:-}" ]]; then
+  case "$GIT_COMMIT_CONVENTIONS" in
+    /*) convention_file=$GIT_COMMIT_CONVENTIONS ;;
+    *) convention_file="$repo_root/$GIT_COMMIT_CONVENTIONS" ;;
+  esac
+  [[ -f "$convention_file" ]] || convention_file=""
+fi
+if [[ -z "$convention_file" && -f "$repo_root/$DEFAULT_COMMIT_CONVENTIONS" ]]; then
+  convention_file="$repo_root/$DEFAULT_COMMIT_CONVENTIONS"
+fi
+if [[ -z "$convention_file" && -f "$FALLBACK_COMMIT_CONVENTIONS" ]]; then
+  convention_file=$FALLBACK_COMMIT_CONVENTIONS
+fi
+[[ -n "$convention_file" ]] || exit 0
 
 die() {
   printf "prepare-commit-msg: %s\n" "$*" 2>&1
@@ -59,7 +78,8 @@ if [[ -z "$recent_commits" ]]; then
 fi
 
 staged_diff="$(git diff --staged)"
-style_guide="$(sed -E 's/^# ?//' "$COMMIT_MSG_FILE")"
+[[ -n "$staged_diff" ]] || exit 0
+style_guide="$(cat "$convention_file")"
 
 extra_context_section() {
   if [[ -n "$EXTRA_CONTEXT" ]]; then
