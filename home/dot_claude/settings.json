@@ -1,0 +1,24 @@
+{
+  "env": {
+    "ANTHROPIC_API_KEY": "sk-ant-dummy",
+    "ANTHROPIC_BASE_URL": "http://localhost:8317",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "gpt-5.6-sol",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "gpt-5.6-sol",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "gpt-5.6-terra",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "gpt-5.6-luna",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "gpt-5.6-terra",
+    "API_TIMEOUT_MS": "3000000",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK": "1",
+    "ENABLE_TOOL_SEARCH": "false"
+  },
+  "permissions": {
+    "defaultMode": "default"
+  },
+  "model": "sonnet",
+  "effortLevel": "medium",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "auto",
+  "verbose": true,
+  "showTurnDuration": true
+}
