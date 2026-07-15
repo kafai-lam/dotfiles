@@ -20,4 +20,4 @@ qwen = "latest"
 
 [env]
 OPENCODE_ENABLE_EXA = true
-LLM_CMD_MODEL = "gpt-5.4-mini"
+LLM_CMD_MODEL = "gpt-5.6-luna"
