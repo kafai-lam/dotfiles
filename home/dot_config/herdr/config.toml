@@ -5,6 +5,8 @@ prompt_new_tab_name = false
 
 agent_panel_sort = "spaces"
 
+show_agent_labels_on_pane_borders = true
+
 [ui.toast]
 delivery = "herdr"
 
@@ -14,8 +16,8 @@ enabled = false
 [keys]
 previous_workspace = "ctrl+["
 next_workspace = "ctrl+]"
-previous_agent = "ctrl+shift+["
-next_agent = "ctrl+shift+]"
+previous_agent = "ctrl+alt+["
+next_agent = "ctrl+alt+]"
 open_worktree = "prefix+shift+o"
 
 [[keys.command]]
@@ -37,7 +39,7 @@ command = "lazydocker"
 description = "Lazydocker"
 
 [theme]
-name = "tokyo-night"
+name = "catppuccin"
 auto_switch = false
 
 [experimental]
