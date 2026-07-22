@@ -66,12 +66,12 @@ brew "jwbargsten/misc/defbro", trusted: true
 brew "neurosnap/tap/zmx", trusted: true
 cask "nikitabobko/tap/aerospace", trusted: true
 cask "agentsview"
-cask "alt-tab"
 cask "antigravity"
 cask "beekeeper-studio"
+cask "bettercmdtab"
 cask "bruno"
+cask "chatgpt"
 cask "cmux"
-cask "codex-app"
 cask "comet"
 cask "font-fira-code-nerd-font"
 cask "ghostty"
