@@ -4,6 +4,7 @@
 "github:just-every/code" = { version = "latest", bin = "every-code" }
 "github:Loongphy/codext" = { version = "latest", bin = "codext" }
 "github:mr-kelly/freecode" = "latest"
+"github:yuanchuan/aivo" = "latest"
 "npm:@github/copilot" = "latest"
 "npm:command-code" = "latest"
 "npm:droid" = "latest"
