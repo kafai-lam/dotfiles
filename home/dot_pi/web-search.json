@@ -1,0 +1,4 @@
+{
+  "workflow": "summary-review",
+  "summaryModel": "bifrost/gpt-5.6-luna"
+}

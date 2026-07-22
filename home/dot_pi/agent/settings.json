@@ -1,0 +1,53 @@
+{
+  "lastChangelogVersion": "0.81.1",
+  "defaultProvider": "bifrost",
+  "defaultModel": "gpt-5.6-sol",
+  "defaultThinkingLevel": "medium",
+  "enabledModels": [
+    "openai-codex/gpt-5.6-sol",
+    "openai-codex/gpt-5.6-terra",
+    "openai-codex/gpt-5.6-luna",
+    "bifrost/gpt-5.6-sol",
+    "bifrost/gpt-5.6-terra",
+    "bifrost/gpt-5.6-luna",
+    "bifrost/mistral-medium-3.5",
+    "bifrost/devstral-2512",
+    "commandcode/deepseek/deepseek-v4-pro",
+    "commandcode/deepseek/deepseek-v4-flash",
+    "commandcode/zai-org/GLM-5.2",
+    "commandcode/zai-org/GLM-5.2-Fast",
+    "commandcode/MiniMaxAI/MiniMax-M3"
+  ],
+  "packages": [
+    {
+      "source": "npm:context-mode",
+      "skills": [
+        "-skills/ctx-doctor/SKILL.md",
+        "-skills/ctx-purge/SKILL.md",
+        "+skills/ctx-search/SKILL.md",
+        "-skills/ctx-stats/SKILL.md",
+        "-skills/ctx-upgrade/SKILL.md",
+        "-skills/ctx-insight/SKILL.md"
+      ]
+    },
+    "npm:@pi-kaush/pi-welcome-screen",
+    "npm:@tifan/pi-handoff",
+    "npm:pi-commandcode-provider",
+    "npm:pi-verbosity-control",
+    "npm:@zigai/pi-mention-skill",
+    {
+      "source": "npm:@eko24ive/pi-ask",
+      "skills": [
+        "-skills/ask-user/SKILL.md"
+      ]
+    },
+    "npm:@tintinweb/pi-subagents",
+    "npm:pi-web-access"
+  ],
+  "skills": [
+    "-skills/cua-driver/SKILL.md"
+  ],
+  "theme": "dark",
+  "defaultProjectTrust": "always",
+  "enableInstallTelemetry": false
+}

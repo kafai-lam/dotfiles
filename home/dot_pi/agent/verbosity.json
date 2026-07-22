@@ -1,0 +1,14 @@
+{
+    "showIndicator": true,
+    "models": {
+        "gpt-5.6-sol": "low",
+        "gpt-5.6-terra": "low",
+        "gpt-5.6-luna": "low",
+        "gpt-5.5": "low",
+        "gpt-5.4": "low",
+        "gpt-5.4-mini": "low",
+        "gpt-5.3-codex": "low",
+        "gpt-5.3-codex-spark": "low",
+        "codex-auto-review": "low"
+    }
+}
