@@ -28,7 +28,9 @@ _try_rs_get_tries_path() {
     local config_paths=("$HOME/.config/try-rs/config.toml" "$HOME/.try-rs/config.toml")
     for config_path in "${config_paths[@]}"; do
         if [[ -f "$config_path" ]]; then
-            local tries_path=$(grep -E '^\s*tries_path\s*=' "$config_path" 2>/dev/null | sed 's/.*=\s*"\?\([^"]*\)"\?.*/\1/' | sed "s|~|$HOME|" | tr -d '[:space:]')
+            local tries_path
+            tries_path=$(sed -nE 's/^[[:space:]]*tries_path[[:space:]]*=[[:space:]]*"([^"]*)"[[:space:]]*$/\1/p' "$config_path" | head -n 1)
+            tries_path="${tries_path/#\~/$HOME}"
             if [[ -n "$tries_path" ]]; then
                 echo "$tries_path"
                 return
