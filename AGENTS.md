@@ -11,4 +11,4 @@ Personal macOS dotfiles managed with `chezmoi`.
 ## Public guidance
 
 - Update `README.md` if public facing behavoiur changes
-- Follow `docs/agents/git-commit-conventions.md` when creating a Git commit.
+- Follow `docs/COMMIT_CONVENTIONS.md` when creating a Git commit.

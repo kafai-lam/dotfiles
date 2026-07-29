@@ -61,6 +61,10 @@ These helpers are conveniences layered on top of the core chezmoi workflow:
 - `brew-dump`: regenerates `$XDG_CONFIG_HOME/homebrew/Brewfile` from installed
   Homebrew packages, excluding entries listed in `Brewfile.local` when present.
 - `chup`: shell alias for `chezmoi update`.
+- The `prepare-commit-msg` hook generates commit messages using the first
+  `COMMIT_CONVENTIONS.md` found in the repository root, `docs/`, or `.github/`.
+  Set `GIT_COMMIT_CONVENTIONS` to override discovery; otherwise it falls back to
+  `~/.config/git/conventions/simple.md`.
 - Raycast `dotfiles_update`: runs the local update flow from Raycast.
 
 ## Automated Setup

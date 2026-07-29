@@ -10,7 +10,11 @@ DIRECT_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_DIRECT_DIFF_TOKEN_LIMIT:-6000}
 GROUP_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_GROUP_DIFF_TOKEN_LIMIT:-9000}
 TTOK_MODEL=${PREPARE_COMMIT_MSG_TTOK_MODEL:-}
 EXTRA_CONTEXT=${PREPARE_COMMIT_MSG_EXTRA_CONTEXT:-}
-DEFAULT_COMMIT_CONVENTIONS=docs/agents/git-commit-conventions.md
+COMMIT_CONVENTION_PATHS=(
+  COMMIT_CONVENTIONS.md
+  docs/COMMIT_CONVENTIONS.md
+  .github/COMMIT_CONVENTIONS.md
+)
 FALLBACK_COMMIT_CONVENTIONS=$HOME/.config/git/conventions/simple.md
 
 [[ -z "$COMMIT_SOURCE" ]] || exit 0
@@ -24,8 +28,13 @@ if [[ -n "${GIT_COMMIT_CONVENTIONS:-}" ]]; then
   esac
   [[ -f "$convention_file" ]] || convention_file=""
 fi
-if [[ -z "$convention_file" && -f "$repo_root/$DEFAULT_COMMIT_CONVENTIONS" ]]; then
-  convention_file="$repo_root/$DEFAULT_COMMIT_CONVENTIONS"
+if [[ -z "$convention_file" ]]; then
+  for candidate in "${COMMIT_CONVENTION_PATHS[@]}"; do
+    if [[ -f "$repo_root/$candidate" ]]; then
+      convention_file="$repo_root/$candidate"
+      break
+    fi
+  done
 fi
 if [[ -z "$convention_file" && -f "$FALLBACK_COMMIT_CONVENTIONS" ]]; then
   convention_file=$FALLBACK_COMMIT_CONVENTIONS
