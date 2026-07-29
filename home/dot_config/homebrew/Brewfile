@@ -1,3 +1,4 @@
+tap "akarachen/tap"
 tap "jwbargsten/misc"
 tap "neurosnap/tap"
 tap "nikitabobko/tap"
@@ -66,6 +67,7 @@ brew "jwbargsten/misc/defbro", trusted: true
 brew "neurosnap/tap/zmx", trusted: true
 cask "nikitabobko/tap/aerospace", trusted: true
 cask "agentsview"
+cask "akarachen/tap/aghub", trusted: true
 cask "antigravity"
 cask "beekeeper-studio"
 cask "bettercmdtab"
