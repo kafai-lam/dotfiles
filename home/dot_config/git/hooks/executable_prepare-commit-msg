@@ -9,7 +9,6 @@ RECENT_COMMIT_COUNT=5
 DIRECT_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_DIRECT_DIFF_TOKEN_LIMIT:-6000}
 GROUP_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_GROUP_DIFF_TOKEN_LIMIT:-9000}
 TTOK_MODEL=${PREPARE_COMMIT_MSG_TTOK_MODEL:-}
-EXTRA_CONTEXT=${PREPARE_COMMIT_MSG_EXTRA_CONTEXT:-}
 COMMIT_CONVENTION_PATHS=(
   COMMIT_CONVENTIONS.md
   docs/COMMIT_CONVENTIONS.md
@@ -90,18 +89,6 @@ staged_diff="$(git diff --staged)"
 [[ -n "$staged_diff" ]] || exit 0
 style_guide="$(cat "$convention_file")"
 
-extra_context_section() {
-  if [[ -n "$EXTRA_CONTEXT" ]]; then
-    cat <<EOF
-Use following <extra-context> to understand the user's intent, but do not contradict the staged diff.
-<extra-context>
-$EXTRA_CONTEXT
-</extra-context>
-
-EOF
-  fi
-}
-
 count_tokens() {
   if [[ -n "$TTOK_MODEL" ]]; then
     run_ttok --model "$TTOK_MODEL" 2>/dev/null || printf "0\n"
@@ -141,11 +128,27 @@ run_gum() {
   fi
 }
 
+llm_supports_system_prompt() {
+  local -a llm_command=("$@")
+  local default_model
+  local model_description
+
+  default_model="$("${llm_command[@]}" models default 2>/dev/null)" || return 1
+  [[ -n "$default_model" ]] || return 1
+  model_description="$("${llm_command[@]}" models list -m "$default_model" 2>/dev/null)" || return 1
+
+  case "$model_description" in
+    "OpenAI Chat:"*) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
 run_llm() {
   local title=$1
   local prompt=$2
   local system=$3
   local -a llm_command
+  local -a llm_args=(--no-stream)
 
   if command -v llm >/dev/null 2>&1; then
     llm_command=(llm)
@@ -155,10 +158,25 @@ run_llm() {
     return 127
   fi
 
-  if run_gum --version >/dev/null 2>&1; then
-    printf "%s" "$prompt" | run_gum spin --title "$title" -- "${llm_command[@]}" --no-stream --system "$system"
+  if llm_supports_system_prompt "${llm_command[@]}"; then
+    llm_args+=(--system "$system")
   else
-    printf "%s" "$prompt" | "${llm_command[@]}" --no-stream --system "$system"
+    # OpenAI completion models have no system-message channel. Keep the same
+    # instructions by including them in the prompt sent to the model.
+    prompt="$(cat <<EOF
+<system-instructions>
+$system
+</system-instructions>
+
+$prompt
+EOF
+)"
+  fi
+
+  if run_gum --version >/dev/null 2>&1; then
+    printf "%s" "$prompt" | run_gum spin --title "$title" -- "${llm_command[@]}" "${llm_args[@]}"
+  else
+    printf "%s" "$prompt" | "${llm_command[@]}" "${llm_args[@]}"
   fi
 }
 
@@ -168,7 +186,7 @@ build_user_prompt() {
 $style_guide
 </style-guide>
 
-$(extra_context_section)<git-diff>
+<git-diff>
 $staged_diff
 </git-diff>
 
@@ -186,7 +204,8 @@ sanitize_message() {
   local msg
   msg="$(cat)"
   if grep -qE '<commit-message>' <<< "$msg"; then
-    sed -n '/<commit-message>/,/<\/commit-message>/p' <<< "$msg" | sed '1d;$d'
+    sed -n '/<commit-message>/,/<\/commit-message>/p' <<< "$msg" |
+      sed -E '1s/.*<commit-message>//; $s#</commit-message>.*##'
   else
     printf "%s" "$msg"
   fi
@@ -196,7 +215,8 @@ sanitize_summary() {
   local msg
   msg="$(cat)"
   if grep -qE '<change-summary>' <<< "$msg"; then
-    sed -n '/<change-summary>/,/<\/change-summary>/p' <<< "$msg" | sed '1d;$d'
+    sed -n '/<change-summary>/,/<\/change-summary>/p' <<< "$msg" |
+      sed -E '1s/.*<change-summary>//; $s#</change-summary>.*##'
   else
     printf "%s" "$msg"
   fi
@@ -246,7 +266,7 @@ build_grouped_final_prompt() {
 $style_guide
 </style-guide>
 
-$(extra_context_section)<change-summaries>
+<change-summaries>
 $summaries
 </change-summaries>
 

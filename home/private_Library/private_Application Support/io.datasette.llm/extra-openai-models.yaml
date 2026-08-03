@@ -1,14 +1,26 @@
 - model_id: gpt-5.6-sol
   model_name: gpt-5.6-sol
   api_base: http://localhost:8080/openai
+  can_stream: true
+  supports_tools: true
+  vision: true
+  supports_schema: true
 
 - model_id: gpt-5.6-terra
   model_name: gpt-5.6-terra
   api_base: http://localhost:8080/openai
+  can_stream: true
+  supports_tools: true
+  vision: true
+  supports_schema: true
 
 - model_id: gpt-5.6-luna
   model_name: gpt-5.6-luna
   api_base: http://localhost:8080/openai
+  can_stream: true
+  supports_tools: true
+  vision: true
+  supports_schema: true
 
 - model_id: deepseek-v4-flash-free
   model_name: deepseek-v4-flash-free
