@@ -38,6 +38,12 @@ type = "pane"
 command = "lazydocker"
 description = "Lazydocker"
 
+[[keys.command]]
+key = "prefix+p"
+type = "pane"
+command = "pi --no-session"
+description = "btw"
+
 [theme]
 name = "catppuccin"
 auto_switch = false
