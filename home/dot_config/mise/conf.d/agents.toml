@@ -13,7 +13,6 @@
 "pipx:llm" = "latest"
 "pipx:mistral-vibe" = "latest"
 antigravity-cli = "latest"
-claude = "latest"
 codex = "latest"
 jules = "latest"
 opencode = "latest"
