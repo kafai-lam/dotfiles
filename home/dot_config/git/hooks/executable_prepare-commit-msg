@@ -9,7 +9,6 @@ RECENT_COMMIT_COUNT=5
 DIRECT_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_DIRECT_DIFF_TOKEN_LIMIT:-6000}
 GROUP_DIFF_TOKEN_LIMIT=${PREPARE_COMMIT_MSG_GROUP_DIFF_TOKEN_LIMIT:-9000}
 TTOK_MODEL=${PREPARE_COMMIT_MSG_TTOK_MODEL:-}
-EXTRA_CONTEXT=${PREPARE_COMMIT_MSG_EXTRA_CONTEXT:-}
 COMMIT_CONVENTION_PATHS=(
   COMMIT_CONVENTIONS.md
   docs/COMMIT_CONVENTIONS.md
@@ -90,40 +89,26 @@ staged_diff="$(git diff --staged)"
 [[ -n "$staged_diff" ]] || exit 0
 style_guide="$(cat "$convention_file")"
 
-extra_context_section() {
-  if [[ -n "$EXTRA_CONTEXT" ]]; then
-    cat <<EOF
-Use following <extra-context> to understand the user's intent, but do not contradict the staged diff.
-<extra-context>
-$EXTRA_CONTEXT
-</extra-context>
-
-EOF
-  fi
-}
-
 count_tokens() {
-  if [[ -n "$TTOK_MODEL" ]]; then
-    run_ttok --model "$TTOK_MODEL" 2>/dev/null || printf "0\n"
-  else
-    run_ttok 2>/dev/null || printf "0\n"
-  fi
+  run_ttok 2>/dev/null || printf "0\n"
 }
 
 truncate_tokens() {
   local limit=$1
-  if [[ -n "$TTOK_MODEL" ]]; then
-    run_ttok --model "$TTOK_MODEL" --truncate "$limit" 2>/dev/null || cat
-  else
-    run_ttok --truncate "$limit" 2>/dev/null || cat
-  fi
+  run_ttok --truncate "$limit" 2>/dev/null || cat
 }
 
 run_ttok() {
+  local -a ttok_args=()
+
+  if [[ -n "$TTOK_MODEL" ]]; then
+    ttok_args+=(--model "$TTOK_MODEL")
+  fi
+
   if command -v ttok >/dev/null 2>&1; then
-    ttok "$@" 2>/dev/null
+    ttok "${ttok_args[@]}" "$@" 2>/dev/null
   elif command -v mise >/dev/null 2>&1; then
-    mise exec pipx:ttok -- ttok "$@" 2>/dev/null
+    mise exec pipx:ttok -- ttok "${ttok_args[@]}" "$@" 2>/dev/null
   else
     return 127
   fi
@@ -141,6 +126,17 @@ run_gum() {
   fi
 }
 
+run_with_optional_spinner() {
+  local title=$1
+  shift
+
+  if run_gum --version >/dev/null 2>&1; then
+    run_gum spin --title "$title" -- "$@"
+  else
+    "$@"
+  fi
+}
+
 run_llm() {
   local title=$1
   local prompt=$2
@@ -155,11 +151,8 @@ run_llm() {
     return 127
   fi
 
-  if run_gum --version >/dev/null 2>&1; then
-    printf "%s" "$prompt" | run_gum spin --title "$title" -- "${llm_command[@]}" --no-stream --system "$system"
-  else
-    printf "%s" "$prompt" | "${llm_command[@]}" --no-stream --system "$system"
-  fi
+  llm_command+=(--no-stream --system "$system")
+  printf "%s" "$prompt" | run_with_optional_spinner "$title" "${llm_command[@]}"
 }
 
 build_user_prompt() {
@@ -168,7 +161,7 @@ build_user_prompt() {
 $style_guide
 </style-guide>
 
-$(extra_context_section)<git-diff>
+<git-diff>
 $staged_diff
 </git-diff>
 
@@ -182,24 +175,24 @@ generate_message() {
   run_llm "generating commit message..." "$(build_user_prompt)" "$system_prompt"
 }
 
-sanitize_message() {
+sanitize_tagged_output() {
+  local tag=$1
   local msg
   msg="$(cat)"
-  if grep -qE '<commit-message>' <<< "$msg"; then
-    sed -n '/<commit-message>/,/<\/commit-message>/p' <<< "$msg" | sed '1d;$d'
+  if grep -qF "<${tag}>" <<< "$msg"; then
+    sed -n "/<${tag}>/,/<\\/${tag}>/p" <<< "$msg" |
+      sed -E "1s/.*<${tag}>//; \$s#</${tag}>.*##"
   else
     printf "%s" "$msg"
   fi
 }
 
+sanitize_message() {
+  sanitize_tagged_output commit-message
+}
+
 sanitize_summary() {
-  local msg
-  msg="$(cat)"
-  if grep -qE '<change-summary>' <<< "$msg"; then
-    sed -n '/<change-summary>/,/<\/change-summary>/p' <<< "$msg" | sed '1d;$d'
-  else
-    printf "%s" "$msg"
-  fi
+  sanitize_tagged_output change-summary
 }
 
 build_summary_prompt() {
@@ -246,7 +239,7 @@ build_grouped_final_prompt() {
 $style_guide
 </style-guide>
 
-$(extra_context_section)<change-summaries>
+<change-summaries>
 $summaries
 </change-summaries>
 
