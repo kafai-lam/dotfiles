@@ -3,8 +3,8 @@ aube = "latest"
 bun = "latest"
 chezmoi = "latest"
 fnox = "latest"
-node = "24"
-python = "3.13"
+node = "26"
+python = "3.14"
 rust = "latest"
 uv = "latest"
 
@@ -15,6 +15,7 @@ idiomatic_version_file_enable_tools = ["node", "python"]
 npm.package_manager = "aube"
 pipx.uvx = true
 python.uv_venv_auto = "create|source"
+github.use_git_credentials = true
 
 [plugins]
 fnox-env = "https://github.com/jdx/mise-env-fnox"
