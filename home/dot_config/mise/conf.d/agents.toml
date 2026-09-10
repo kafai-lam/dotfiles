@@ -1,20 +1,21 @@
 [tools]
 "cargo:https://github.com/yuanchuan/aivo" = "latest"
-"github:badlogic/pi-mono" = "latest"
-"github:can1357/oh-my-pi" = "latest"
+"github:benja/ask" = "latest"
+"github:earendil-works/pi" = "latest"
 "github:just-every/code" = { version = "latest", bin = "every-code" }
 "github:Loongphy/codext" = { version = "latest", version_prefix = "codext-", bin = "codext" }
 "github:poolsideai/pool" = "latest"
 "github:mr-kelly/freecode" = "latest"
-"npm:@github/copilot" = "latest"
 "npm:command-code" = "latest"
 "npm:droid" = "latest"
 "npm:freebuff" = "latest"
+"oh-my-pi" = "latest"
 "pipx:hermes-agent" = "latest"
 "pipx:llm" = { version = "latest", uvx_args = "--with llm-fragments-reader,llm-openai-via-codex,llm-tools-exa" }
 "pipx:mistral-vibe" = "latest"
 antigravity-cli = "latest"
 codex = "latest"
+copilot = "latest"
 jules = "latest"
 opencode = "latest"
 qwen = "latest"
