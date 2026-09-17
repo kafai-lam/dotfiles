@@ -13,12 +13,14 @@ defaultBranch = main
 [gpg]
 format = ssh
 
+[branch]
+sort = committerdate
+
 [commit]
 gpgsign = true
 
 [tag]
 gpgSign = true
-
 
 [rebase]
 autoStash = true
