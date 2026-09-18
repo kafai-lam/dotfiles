@@ -1,6 +1,6 @@
 [tools]
-"github:njbrake/agent-of-empires" = { version = "latest", bin = "aoe" }
-"github:ogulcancelik/herdr" = "latest"
+"github:agent-of-empires/agent-of-empires" = { version = "latest", bin = "aoe" }
 "github:silo-rs/silo" = "latest"
 "npm:happy" = "latest"
 claude-squad = "latest"
+herdr = "latest"
