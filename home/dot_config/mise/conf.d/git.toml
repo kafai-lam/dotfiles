@@ -4,7 +4,6 @@
 "github:akunzai/gistui" = "latest"
 "github:dagimg-dot/gitsnip" = "latest"
 "github:lusingander/serie" = "latest"  # git commit
-"github:SierraSoftworks/git-tool" = "latest"  # try-rs
 "npm:difit" = "latest"  # Git diff
 "pipx:git-aggregator" = "latest"
 hunk = "latest"
