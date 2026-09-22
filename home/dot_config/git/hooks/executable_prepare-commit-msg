@@ -35,6 +35,14 @@ if [[ -z "$convention_file" ]]; then
     fi
   done
 fi
+if [[ -z "$convention_file" ]]; then
+  for candidate in "$repo_root"/.agents/skills/*-commit/SKILL.md; do
+    if [[ -f "$candidate" ]]; then
+      convention_file="$candidate"
+      break
+    fi
+  done
+fi
 if [[ -z "$convention_file" && -f "$FALLBACK_COMMIT_CONVENTIONS" ]]; then
   convention_file=$FALLBACK_COMMIT_CONVENTIONS
 fi

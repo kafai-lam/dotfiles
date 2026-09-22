@@ -68,8 +68,10 @@ These helpers are conveniences layered on top of the core chezmoi workflow:
 - `chup`: shell alias for `chezmoi update`.
 - The `prepare-commit-msg` hook generates commit messages using the first
   `COMMIT_CONVENTIONS.md` found in the repository root, `docs/`, or `.github/`.
-  Set `GIT_COMMIT_CONVENTIONS` to override discovery; otherwise it falls back to
+  If none exists, it uses the first `.agents/skills/*-commit/SKILL.md` match
+  in shell alphabetical order, then falls back to
   `~/.config/git/conventions/simple.md`.
+  Set `GIT_COMMIT_CONVENTIONS` to override discovery.
 - Raycast `dotfiles_update`: runs the local update flow from Raycast.
 
 ## Automated Setup
