@@ -1,11 +1,11 @@
 onboarding = false
 
 [ui]
-prompt_new_tab_name = false
-
 agent_panel_sort = "spaces"
-
+prompt_new_tab_name = false
 show_agent_labels_on_pane_borders = true
+sidebar_width = 35
+status_indicators = "symbols"
 
 [ui.toast]
 delivery = "herdr"
