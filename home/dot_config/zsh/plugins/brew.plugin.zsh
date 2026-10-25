@@ -340,6 +340,7 @@ def details(repo, records)
       { "HOMEBREW_NO_AUTO_UPDATE" => "1" },
       "brew", "info", "--json=v2", "--#{repo.kind}", *batch.map(&:name)
     )
+    unavailable = stderr.match?(/No available (?:formula|cask)|Cask '[^']+' is unavailable/)
 
     if status.success?
       key = repo.kind == "formula" ? "formulae" : "casks"
@@ -356,11 +357,11 @@ def details(repo, records)
           "homepage" => item["homepage"],
         }
       end
-    elsif stderr.match?(/No available (formula|cask)/) && batch.length > 1
+    elsif unavailable && batch.length > 1
       midpoint = batch.length / 2
       fetch.call(batch.take(midpoint))
       fetch.call(batch.drop(midpoint))
-    elsif stderr.match?(/No available (formula|cask)/)
+    elsif unavailable
       record = batch.first
       result[record.name] = repository_metadata(repo, record.path)
     else

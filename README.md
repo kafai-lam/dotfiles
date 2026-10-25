@@ -64,7 +64,8 @@ These helpers are conveniences layered on top of the core chezmoi workflow:
   interactively selects formulae and casks added since a Git-compatible date,
   defaulting to `3 days ago`, and opens their homepages. Scope flags limit the
   selection; without them, both types are shown. Repository refreshes are
-  cached for one hour; `--refresh` bypasses the cache. Requires `gum`.
+  cached for one hour; `--refresh` bypasses the cache. Packages unavailable to
+  `brew info` use metadata from the cached repository. Requires `gum`.
 - `chup`: shell alias for `chezmoi update`.
 - The `prepare-commit-msg` hook generates commit messages using the first
   `COMMIT_CONVENTIONS.md` found in the repository root, `docs/`, or `.github/`.
