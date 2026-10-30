@@ -1,27 +1,20 @@
-- model_id: deepseek-v4-flash-free
-  model_name: deepseek-v4-flash-free
-  api_base: http://localhost:8080/openai
+- model_id: codex/gpt-6-astra
+  model_name: codex/gpt-6-astra
+  api_base: http://127.0.0.1:3425/v1
 
-- model_id: devstral-2512
-  model_name: devstral-2512
-  api_base: http://localhost:8080/openai
+- model_id: codex/gpt-6.1-sol
+  model_name: codex/gpt-6.1-sol
+  api_base: http://127.0.0.1:3425/v1
 
-- model_id: mistral-medium-3.5
-  model_name: mistral-medium-3.5
-  api_base: http://localhost:8080/openai
+- model_id: codex/gpt-6.1-terra
+  model_name: codex/gpt-6.1-terra
+  api_base: http://127.0.0.1:3425/v1
 
-- model_id: mistral-small-latest
-  model_name: mistral-small-latest
-  api_base: http://localhost:8080/openai
+- model_id: codex/gpt-6-luna
+  model_name: codex/gpt-6-luna
+  api_base: http://127.0.0.1:3425/v1
 
-- model_id: mimo-v2.5-free
-  model_name: mimo-v2.5-free
-  api_base: http://localhost:8080/openai
+- model_id: commandcode-plan/deepseek/deepseek-v4.1-flash-fast
+  model_name: commandcode-plan/deepseek/deepseek-v4.1-flash-fast
+  api_base: http://127.0.0.1:3425/v1
 
-- model_id: north-mini-code-free
-  model_name: north-mini-code-free
-  api_base: http://localhost:8080/openai
-
-- model_id: nemotron-3-ultra-free
-  model_name: nemotron-3-ultra-free
-  api_base: http://localhost:8080/openai
