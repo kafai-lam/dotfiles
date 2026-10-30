@@ -4,16 +4,11 @@
 COMPDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh/completions"
 mkdir -p -- "$COMPDIR"
 
-(( $+commands[aoe] )) && { (aoe completion zsh > "$COMPDIR/_aoe") 2>/dev/null || true; }
-(( $+commands[chezmoi] )) && { (chezmoi completion zsh > "$COMPDIR/_chezmoi") 2>/dev/null || true; }
-(( $+commands[claude-squad] )) && { (claude-squad completion zsh > "$COMPDIR/_claude-squad") 2>/dev/null || true; }
-(( $+commands[codex] )) && { (codex completion zsh > "$COMPDIR/_codex") 2>/dev/null || true; }
 (( $+commands[fnox] )) && { (fnox completion zsh > "$COMPDIR/_fnox") 2>/dev/null || true; }
 (( $+commands[gitsnip] )) && { (gitsnip completion zsh > "$COMPDIR/_gitsnip") 2>/dev/null || true; }
 (( $+commands[llm] )) && { ((_LLM_COMPLETE=zsh_source llm) > "$COMPDIR/_llm") 2>/dev/null || true; }
 (( $+commands[neon] )) && { (neon completion > "$COMPDIR/_neon") 2>/dev/null || true; }
 (( $+commands[neonctl] )) && { (neonctl completion > "$COMPDIR/_neonctl") 2>/dev/null || true; }
-(( $+commands[opencode] )) && { (opencode completion > "$COMPDIR/_opencode") 2>/dev/null || true; }
 (( $+commands[openspec] )) && { (openspec completion generate zsh >"$COMPDIR/_openspec") 2>/dev/null || true; }
 (( $+commands[ruff] )) && { (ruff generate-shell-completion zsh > "$COMPDIR/_ruff") 2>/dev/null || true; }
 (( $+commands[sesh] )) && { (sesh completion zsh > "$COMPDIR/_sesh") 2>/dev/null || true; }

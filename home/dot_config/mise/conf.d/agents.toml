@@ -1,23 +1,10 @@
 [tools]
-"cargo:https://github.com/yuanchuan/aivo" = "latest"
 "github:benja/ask" = "latest"
-"github:earendil-works/pi" = "latest"
-"github:just-every/code" = { version = "latest", bin = "every-code" }
-"github:Loongphy/codext" = { version = "latest", version_prefix = "codext-", bin = "codext" }
-"github:poolsideai/pool" = "latest"
-"github:mr-kelly/freecode" = "latest"
 "npm:command-code" = "latest"
-"npm:droid" = "latest"
 "npm:freebuff" = "latest"
 "pipx:hermes-agent" = "latest"
-"pipx:llm" = { version = "latest", uvx_args = "--with llm-fragments-reader,llm-openai-via-codex,llm-tools-exa" }
-"pipx:mistral-vibe" = "latest"
-antigravity-cli = "latest"
-codex = "latest"
-copilot = "latest"
-jules = "latest"
-opencode = "latest"
-qwen = "latest"
+"pipx:llm" = { version = "latest", uvx_args = "--with llm-fragments-reader,llm-tools-exa" }
+pi = "latest"
 
 [env]
 OPENCODE_ENABLE_EXA = true
