@@ -1,6 +1,3 @@
 [tools]
-"github:agent-of-empires/agent-of-empires" = { version = "latest", bin = "aoe" }
 "github:silo-rs/silo" = "latest"
 "npm:happy" = "latest"
-claude-squad = "latest"
-herdr = "latest"
