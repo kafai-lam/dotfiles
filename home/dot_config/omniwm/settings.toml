@@ -75,7 +75,7 @@ scrollEnabled = true
 scrollModifierKey = "optionShift"
 scrollSensitivity = 5.0
 trackpadScrollStyle = "snap"
-windowGestureSensitivity = 1.2000000000000002
+windowGestureSensitivity = 1.0
 windowMoveEnabled = false
 windowMoveFingerCount = 4
 windowResizeEnabled = false
@@ -92,8 +92,16 @@ rehideIntervalSeconds = 5.0
 [monitors]
 
 [[monitors.ranking]]
+displayUUID = "BAB8630D-8B00-41C1-9D25-D5A252579D4C"
+name = "Pixio PX275CP"
+
+[[monitors.ranking]]
 displayUUID = "1178AC49-F5D8-4F9D-BF5F-3FB9F2A56E28"
 name = "QG271 E"
+
+[[monitors.ranking]]
+displayUUID = "02366FC7-954B-4F87-BDF8-8AD285599150"
+name = "MSI MD2712P"
 
 [[monitors.ranking]]
 displayUUID = "37D8832A-2D66-02CA-B9F7-8F30A301B230"
@@ -1113,11 +1121,7 @@ layoutType = "niri"
 name = "1"
 
 [workspaces.monitorAssignment]
-type = "specificDisplay"
-
-[workspaces.monitorAssignment.output]
-displayUUID = "BAB8630D-8B00-41C1-9D25-D5A252579D4C"
-name = "Pixio PX275CP"
+type = "main"
 
 [[workspaces]]
 id = "454CECD4-5E9D-4ED1-95D7-979D48817F5F"
@@ -1125,11 +1129,7 @@ layoutType = "niri"
 name = "2"
 
 [workspaces.monitorAssignment]
-type = "specificDisplay"
-
-[workspaces.monitorAssignment.output]
-displayUUID = "BAB8630D-8B00-41C1-9D25-D5A252579D4C"
-name = "Pixio PX275CP"
+type = "main"
 
 [[workspaces]]
 id = "BEB842B5-E894-4791-9FD1-397C3CDD3538"
@@ -1137,11 +1137,7 @@ layoutType = "niri"
 name = "3"
 
 [workspaces.monitorAssignment]
-type = "specificDisplay"
-
-[workspaces.monitorAssignment.output]
-displayUUID = "BAB8630D-8B00-41C1-9D25-D5A252579D4C"
-name = "Pixio PX275CP"
+type = "main"
 
 [[workspaces]]
 id = "248AA883-2261-4D45-943C-79C0E46A232B"
@@ -1149,11 +1145,7 @@ layoutType = "niri"
 name = "4"
 
 [workspaces.monitorAssignment]
-type = "specificDisplay"
-
-[workspaces.monitorAssignment.output]
-displayUUID = "BAB8630D-8B00-41C1-9D25-D5A252579D4C"
-name = "Pixio PX275CP"
+type = "main"
 
 [[workspaces]]
 id = "8B8C45D6-CE9E-41D9-BD50-BE4989D5E3DE"
@@ -1161,37 +1153,23 @@ layoutType = "niri"
 name = "5"
 
 [workspaces.monitorAssignment]
-type = "specificDisplay"
-
-[workspaces.monitorAssignment.output]
-displayUUID = "BAB8630D-8B00-41C1-9D25-D5A252579D4C"
-name = "Pixio PX275CP"
+type = "main"
 
 [[workspaces]]
-displayName = "❤️"
 id = "5953F2BF-A378-4266-91B2-287174C4FA4D"
 layoutType = "niri"
 name = "6"
 
 [workspaces.monitorAssignment]
-type = "specificDisplay"
-
-[workspaces.monitorAssignment.output]
-displayUUID = "BAB8630D-8B00-41C1-9D25-D5A252579D4C"
-name = "Pixio PX275CP"
+type = "main"
 
 [[workspaces]]
-displayName = "🚀"
 id = "A7D5E104-6985-4516-8ED5-07F144F2A33D"
 layoutType = "niri"
 name = "7"
 
 [workspaces.monitorAssignment]
-type = "specificDisplay"
-
-[workspaces.monitorAssignment.output]
-displayUUID = "02366FC7-954B-4F87-BDF8-8AD285599150"
-name = "MSI MD2712P"
+type = "secondary"
 
 [[workspaces]]
 id = "0E18F6B0-345A-4078-8B21-33641F07A861"
@@ -1199,11 +1177,7 @@ layoutType = "niri"
 name = "8"
 
 [workspaces.monitorAssignment]
-type = "specificDisplay"
-
-[workspaces.monitorAssignment.output]
-displayUUID = "02366FC7-954B-4F87-BDF8-8AD285599150"
-name = "MSI MD2712P"
+type = "secondary"
 
 [[workspaces]]
 id = "8D4D711C-2B2F-4FEC-86BF-FA952037738A"
