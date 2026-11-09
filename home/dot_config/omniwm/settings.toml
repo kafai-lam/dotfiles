@@ -1056,7 +1056,7 @@ binding = "Unassigned"
 id = "preselectClear"
 
 [[hotkeys]]
-binding = "Control+Option+Command+Space"
+binding = "Shift+Command+Space"
 id = "openCommandPalette"
 
 [[hotkeys]]
