@@ -83,13 +83,6 @@ function brew-recent() {
   done
 
   local now="$(date +%s)"
-  local max_age="$(git rev-parse --since="$since" 2>/dev/null)"
-  local cutoff="${max_age#--max-age=}"
-
-  if [[ $cutoff != <-> || $cutoff -ge $now ]]; then
-    echo >&2 "Error: interval must resolve to a past Git date: $since"
-    return 2
-  fi
 
   if (( ! $+functions[_try_rs_get_tries_path] )); then
     echo >&2 'Error: try-rs shell integration is not loaded'
@@ -170,6 +163,18 @@ function brew-recent() {
       refresh_markers+=($marker)
     fi
   done
+
+  # Git date parsing requires a repository, regardless of the caller's directory.
+  local max_age
+  if ! max_age="$(git -C "${repos[1]}" rev-parse --since="$since")"; then
+    echo >&2 'Error: could not parse interval with Git'
+    return 1
+  fi
+  local cutoff="${max_age#--max-age=}"
+  if [[ $cutoff != <-> || $cutoff -ge $now ]]; then
+    echo >&2 "Error: interval must resolve to a past Git date: $since"
+    return 2
+  fi
 
   local refresh_index refresh_pid
   for refresh_index in "${refresh_indices[@]}"; do
